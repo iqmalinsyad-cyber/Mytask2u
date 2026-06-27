@@ -58,7 +58,7 @@
 
       <div class="text-center mb-8">
         <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight mb-2">Log Masuk</h1>
-        <p class="text-sm text-slate-500 font-medium">Akses ruang kerja selamat anda.</p>
+        <p class="text-sm text-slate-500 font-medium">"Buat lebih baik dari semalam, walaupun sekadar perubahan kecil."</p>
       </div>
 
       <div id="login-error" class="hidden mb-6 p-3 rounded-xl bg-red-50 text-red-600 text-sm text-center border border-red-100 flex items-center justify-center gap-2">
@@ -88,6 +88,11 @@
         </button>
       </form>
     </div>
+    
+    <!-- FOOTER LOGIN -->
+    <div class="absolute bottom-6 w-full text-center z-20">
+      <p class="text-[11px] text-slate-500 font-medium tracking-wide">2026 @ Aidee Creatives</p>
+    </div>
   </div>
 
 
@@ -111,7 +116,7 @@
         <div class="p-4 space-y-1 mt-6 overflow-y-auto">
           <p class="px-4 text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-4">Ruang Kerja</p>
           <button onclick="window.switchView('dashboard')" id="nav-dashboard" class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 bg-blue-600 text-white shadow-md shadow-blue-600/20">
-            <i data-lucide="layout-dashboard" class="w-4 h-4 mr-3 text-white"></i> Papan Pemuka
+            <i data-lucide="layout-dashboard" class="w-4 h-4 mr-3 text-white"></i> Dashboard
           </button>
           
           <button onclick="window.switchView('task')" id="nav-task" class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-slate-500 hover:bg-slate-50 hover:text-slate-900">
@@ -137,10 +142,13 @@
       </div>
 
       <div class="p-4 border-t border-slate-100 bg-white">
-        <button onclick="window.handleLogout()" class="w-full flex items-center px-4 py-3 text-sm font-medium text-slate-500 hover:text-red-600 hover:bg-red-50 rounded-xl transition-colors">
+        <button onclick="window.handleLogout()" class="w-full flex items-center px-4 py-3 text-sm font-medium text-slate-500 hover:text-red-600 hover:bg-red-50 rounded-xl transition-colors mb-4">
           <i data-lucide="log-out" class="w-4 h-4 mr-3"></i> Log Keluar
         </button>
-        <div class="mt-4 mb-1 text-center text-[10px] text-slate-400 font-semibold tracking-widest uppercase">Versi 1.1.0</div>
+        <div class="text-center">
+          <p class="text-[10px] text-slate-400 font-semibold tracking-widest uppercase mb-1">Versi 1.2.0</p>
+          <p class="text-[10px] text-slate-400/80 font-medium">2026 @ Aidee Creatives.</p>
+        </div>
       </div>
     </aside>
 
@@ -152,7 +160,7 @@
           <button class="md:hidden mr-4 text-slate-600 hover:text-slate-900" onclick="window.toggleSidebar()">
             <i data-lucide="menu" class="w-6 h-6"></i>
           </button>
-          <div id="header-title" class="text-slate-900 font-bold capitalize text-base md:text-lg tracking-tight">Papan Pemuka</div>
+          <div id="header-title" class="text-slate-900 font-bold capitalize text-base md:text-lg tracking-tight">Dashboard</div>
         </div>
         
         <div class="flex items-center gap-4">
@@ -169,10 +177,10 @@
       </header>
 
       <div class="flex-1 overflow-y-auto p-3 sm:p-4 md:p-6 lg:p-8 w-full">
-        <div class="w-full h-full relative">
+        <div class="w-full min-h-full relative flex flex-col">
           
           <!-- VIEW: DASHBOARD (ASNAF) -->
-          <div id="view-dashboard" class="pb-10 transition-opacity duration-300">
+          <div id="view-dashboard" class="pb-6 transition-opacity duration-300">
             <div class="flex flex-col xl:flex-row gap-6">
               
               <!-- Main Dashboard Content -->
@@ -274,7 +282,7 @@
           </div>
 
           <!-- VIEW: TASK SIASATAN -->
-          <div id="view-task" class="hidden-force space-y-6 pb-10 transition-opacity duration-300 w-full">
+          <div id="view-task" class="hidden-force space-y-6 pb-6 transition-opacity duration-300 w-full">
             
             <!-- Dashboard/Stats untuk Task Siasatan -->
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 mb-6">
@@ -357,7 +365,7 @@
           </div>
 
           <!-- VIEW: TARIKH PROGRAM (BARU) -->
-          <div id="view-program" class="hidden-force space-y-6 pb-10 transition-opacity duration-300 w-full">
+          <div id="view-program" class="hidden-force space-y-6 pb-6 transition-opacity duration-300 w-full">
             <div class="bg-white rounded-[1.5rem] shadow-sm border border-slate-200 p-4 md:p-6 w-full overflow-hidden min-h-[500px]">
               <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
                 <h3 class="font-extrabold text-slate-900 text-lg flex items-center"><i data-lucide="calendar" class="w-5 h-5 mr-2 text-blue-600"></i> Pengurusan Tarikh Program</h3>
@@ -374,7 +382,7 @@
           </div>
 
           <!-- VIEW: FORMAT AYAT -->
-          <div id="view-format" class="hidden-force flex-col lg:flex-row gap-6 md:gap-8 h-full pb-10 lg:pb-0 transition-opacity duration-300 w-full">
+          <div id="view-format" class="hidden-force flex-col lg:flex-row gap-6 md:gap-8 h-full pb-6 lg:pb-0 transition-opacity duration-300 w-full">
             <!-- Editor -->
             <div class="flex-1 flex flex-col space-y-4 md:space-y-6 w-full">
               <div class="bg-white rounded-[1.5rem] md:rounded-3xl shadow-sm border border-slate-200 overflow-hidden relative">
@@ -432,7 +440,7 @@
           </div>
 
           <!-- VIEW: SETTINGS -->
-          <div id="view-settings" class="hidden-force w-full max-w-4xl pb-10 transition-opacity duration-300">
+          <div id="view-settings" class="hidden-force w-full max-w-4xl pb-6 transition-opacity duration-300">
             <div class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
               <div class="p-6 md:p-8 border-b border-slate-100">
                 <h2 class="text-xl font-extrabold text-slate-900 flex items-center"><i data-lucide="settings" class="w-5 h-5 mr-3 text-blue-600"></i> Tetapan Akaun</h2>
@@ -483,6 +491,11 @@
               </form>
             </div>
           </div>
+
+          <!-- FOOTER UTAMA -->
+          <footer class="w-full text-center mt-auto pt-6 pb-2">
+            <p class="text-xs text-slate-400 font-medium tracking-wide">2026 @ Aidee Creatives</p>
+          </footer>
 
         </div>
       </div>
@@ -857,14 +870,7 @@
     import { getFirestore, collection, doc, setDoc, getDoc, deleteDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
     // --- Konfigurasi Firebase ---
-    const firebaseConfig = {
-      apiKey: "AIzaSyAcSw-hfF-w_hRH4El-LQ2rLocvR-SVN7A",
-      authDomain: "docuvault-system.firebaseapp.com",
-      projectId: "docuvault-system",
-      storageBucket: "docuvault-system.firebasestorage.app",
-      messagingSenderId: "390300207503",
-      appId: "1:390300207503:web:52baa8802c1ef10d4e23fa"
-   };
+    const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const db = getFirestore(app);
@@ -1009,7 +1015,7 @@
         }
       }
       
-      const titles = { dashboard: 'Papan Pemuka', task: 'Pengurusan Task Siasatan', program: 'Pengurusan Tarikh Program', format: 'Pengurusan & Format Ayat', settings: 'Tetapan Akaun' };
+      const titles = { dashboard: 'Dashboard', task: 'Pengurusan Task Siasatan', program: 'Pengurusan Tarikh Program', format: 'Pengurusan & Format Ayat', settings: 'Tetapan Akaun' };
       el('header-title').textContent = titles[viewName];
       
       if(!el('sidebar').classList.contains('-translate-x-full') && window.innerWidth < 768) window.toggleSidebar();
@@ -1501,7 +1507,6 @@
         await setDoc(doc(collection(db, 'artifacts', appId, 'public', 'data', 'tasks')), newTask);
         window.closeModal('modal-add-task');
         
-        // Hantar ke Webhook G-Drive & G-Sheet menggunakan Promise.all untuk mengelak dibatalkan oleh browser
         if (userProfile.googleWebhook && newTask.images && newTask.images.length > 0) {
            const uploadPromises = newTask.images.map((imgB64, i) => {
                return fetch(userProfile.googleWebhook, {
