@@ -111,7 +111,7 @@
         <div class="p-4 space-y-1 mt-6 overflow-y-auto">
           <p class="px-4 text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-4">Ruang Kerja</p>
           <button onclick="window.switchView('dashboard')" id="nav-dashboard" class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 bg-blue-600 text-white shadow-md shadow-blue-600/20">
-            <i data-lucide="layout-dashboard" class="w-4 h-4 mr-3 text-white"></i> Dashboard
+            <i data-lucide="layout-dashboard" class="w-4 h-4 mr-3 text-white"></i> Papan Pemuka
           </button>
           
           <button onclick="window.switchView('task')" id="nav-task" class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-slate-500 hover:bg-slate-50 hover:text-slate-900">
@@ -140,7 +140,7 @@
         <button onclick="window.handleLogout()" class="w-full flex items-center px-4 py-3 text-sm font-medium text-slate-500 hover:text-red-600 hover:bg-red-50 rounded-xl transition-colors">
           <i data-lucide="log-out" class="w-4 h-4 mr-3"></i> Log Keluar
         </button>
-        <div class="mt-4 mb-1 text-center text-[10px] text-slate-400 font-semibold tracking-widest uppercase">Versi 1.2.0</div>
+        <div class="mt-4 mb-1 text-center text-[10px] text-slate-400 font-semibold tracking-widest uppercase">Versi 1.1.0</div>
       </div>
     </aside>
 
@@ -152,7 +152,7 @@
           <button class="md:hidden mr-4 text-slate-600 hover:text-slate-900" onclick="window.toggleSidebar()">
             <i data-lucide="menu" class="w-6 h-6"></i>
           </button>
-          <div id="header-title" class="text-slate-900 font-bold capitalize text-base md:text-lg tracking-tight">Dashboard</div>
+          <div id="header-title" class="text-slate-900 font-bold capitalize text-base md:text-lg tracking-tight">Papan Pemuka</div>
         </div>
         
         <div class="flex items-center gap-4">
@@ -168,8 +168,8 @@
         </div>
       </header>
 
-      <div className="flex-1 overflow-y-auto p-3 sm:p-4 md:p-6 lg:p-8 w-full">
-        <div className="w-full h-full relative">
+      <div class="flex-1 overflow-y-auto p-3 sm:p-4 md:p-6 lg:p-8 w-full">
+        <div class="w-full h-full relative">
           
           <!-- VIEW: DASHBOARD (ASNAF) -->
           <div id="view-dashboard" class="pb-10 transition-opacity duration-300">
@@ -864,7 +864,7 @@
       storageBucket: "docuvault-system.firebasestorage.app",
       messagingSenderId: "390300207503",
       appId: "1:390300207503:web:52baa8802c1ef10d4e23fa"
-    };
+   };
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const db = getFirestore(app);
@@ -1009,7 +1009,7 @@
         }
       }
       
-      const titles = { dashboard: 'Dashboard', task: 'Pengurusan Task Siasatan', program: 'Pengurusan Tarikh Program', format: 'Pengurusan & Format Ayat', settings: 'Tetapan Akaun' };
+      const titles = { dashboard: 'Papan Pemuka', task: 'Pengurusan Task Siasatan', program: 'Pengurusan Tarikh Program', format: 'Pengurusan & Format Ayat', settings: 'Tetapan Akaun' };
       el('header-title').textContent = titles[viewName];
       
       if(!el('sidebar').classList.contains('-translate-x-full') && window.innerWidth < 768) window.toggleSidebar();
@@ -1168,7 +1168,7 @@
     };
 
     // ==========================================
-    // Dashboard & Asnaf Logic
+    // Papan Pemuka & Asnaf Logic
     // ==========================================
     window.renderAsnafTable = () => {
       const query = el('search-record').value.toLowerCase();
@@ -1501,14 +1501,17 @@
         await setDoc(doc(collection(db, 'artifacts', appId, 'public', 'data', 'tasks')), newTask);
         window.closeModal('modal-add-task');
         
+        // Hantar ke Webhook G-Drive & G-Sheet menggunakan Promise.all untuk mengelak dibatalkan oleh browser
         if (userProfile.googleWebhook && newTask.images && newTask.images.length > 0) {
-           newTask.images.forEach((imgB64, i) => {
-               fetch(userProfile.googleWebhook, {
+           const uploadPromises = newTask.images.map((imgB64, i) => {
+               return fetch(userProfile.googleWebhook, {
                   method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain' },
                   body: JSON.stringify({ action: 'upload_image', name: `${newTask.name}_${newTask.rujukan}_${i+1}`, base64: imgB64 })
                }).catch(console.error);
            });
+           await Promise.all(uploadPromises);
         }
+        window.showAlert("Task dan Gambar berjaya disimpan!");
       } catch(e) { console.error(e); }
       finally { btn.disabled = false; btn.textContent = 'Simpan Task'; }
     });
@@ -1595,14 +1598,15 @@
           images: currentTaskImages
         }, {merge:true});
         
+        // Menggunakan Promise.all untuk pastikan browser tidak cancel HTTP Request semasa modal ditutup
         if (userProfile.googleWebhook && currentTaskImages && currentTaskImages.length > 0) {
-           currentTaskImages.forEach((imgB64, i) => {
-               // Hantar imej yg baru ditambah sahaja ke gdrive jika perlu, ttp untuk mudah kita hantar mana yg ada.
-               fetch(userProfile.googleWebhook, {
+           const uploadPromises = currentTaskImages.map((imgB64, i) => {
+               return fetch(userProfile.googleWebhook, {
                   method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain' },
                   body: JSON.stringify({ action: 'upload_image', name: `${task.name}_${task.rujukan}_Kemaskini_${i+1}`, base64: imgB64 })
                }).catch(console.error);
            });
+           await Promise.all(uploadPromises);
         }
         
         task.status = nStatus; 
