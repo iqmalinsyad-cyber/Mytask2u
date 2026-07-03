@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MyTask2U Sistem</title>
+  <title>Sistem MyTarget Premium</title>
   
   <!-- Sokongan Favicon Penuh Untuk Semua Browser & Peranti -->
   <link rel="icon" href="https://lh3.googleusercontent.com/d/1mnViIqClqdLFbSx5kvgw50zhgU0fs-0a" type="image/png">
@@ -56,7 +56,6 @@
 
     <div class="z-10 bg-white w-full max-w-[400px] rounded-[2rem] p-8 sm:p-10 shadow-2xl relative">
       <div class="flex justify-center mb-8">
-        <!-- Logo Tanpa Frame & Full Size -->
         <img src="https://lh3.googleusercontent.com/d/1mnViIqClqdLFbSx5kvgw50zhgU0fs-0a" alt="MyTarget Logo" class="w-48 sm:w-64 h-auto object-contain" onerror="this.src='https://via.placeholder.com/200x80?text=Logo'" />
       </div>
 
@@ -93,7 +92,6 @@
       </form>
     </div>
     
-    <!-- FOOTER LOGIN -->
     <div class="absolute bottom-6 w-full text-center z-20">
       <p class="text-[11px] text-slate-500 font-medium tracking-wide">2026 @ Aidee Creatives</p>
     </div>
@@ -105,14 +103,11 @@
   <!-- ========================================== -->
   <div id="system-layout" class="hidden-force flex h-screen bg-slate-100 relative w-full">
     
-    <!-- Mobile Overlay -->
     <div id="mobile-overlay" class="hidden fixed inset-0 bg-slate-900/50 z-20 md:hidden backdrop-blur-sm" onclick="window.toggleSidebar()"></div>
 
-    <!-- Sidebar -->
     <aside id="sidebar" class="fixed inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition-transform duration-300 ease-in-out w-64 bg-white border-r border-slate-200 flex flex-col justify-between z-30 shadow-2xl md:shadow-none">
       <div>
         <div class="h-20 flex items-center justify-center px-4 border-b border-slate-100 relative">
-          <!-- Logo Sahaja Tanpa Teks MyTarget -->
           <img src="https://lh3.googleusercontent.com/d/1mnViIqClqdLFbSx5kvgw50zhgU0fs-0a" alt="Logo" class="h-10 w-auto object-contain" onerror="this.src='https://via.placeholder.com/150x50?text=Logo'" />
           <button class="md:hidden text-slate-500 hover:text-slate-900 absolute right-4" onclick="window.toggleSidebar()"><i data-lucide="x" class="w-5 h-5"></i></button>
         </div>
@@ -127,7 +122,11 @@
             <i data-lucide="clipboard-list" class="w-4 h-4 mr-3 text-slate-400"></i> Task Siasatan
           </button>
 
-          <!-- Menu Tarikh Program Baru -->
+          <!-- Menu Task Lapangan Baru -->
+          <button onclick="window.switchView('lapangan')" id="nav-lapangan" class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-slate-500 hover:bg-slate-50 hover:text-slate-900">
+            <i data-lucide="map-pin" class="w-4 h-4 mr-3 text-slate-400"></i> Task Lapangan
+          </button>
+
           <button onclick="window.switchView('program')" id="nav-program" class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-slate-500 hover:bg-slate-50 hover:text-slate-900">
             <i data-lucide="calendar" class="w-4 h-4 mr-3 text-slate-400"></i> Tarikh Program
           </button>
@@ -150,21 +149,19 @@
           <i data-lucide="log-out" class="w-4 h-4 mr-3"></i> Log Keluar
         </button>
         <div class="text-center">
-          <p class="text-[10px] text-slate-400 font-semibold tracking-widest uppercase mb-1">Versi 1.1.0</p>
+          <p class="text-[10px] text-slate-400 font-semibold tracking-widest uppercase mb-1">Versi 1.3.0</p>
           <p class="text-[10px] text-slate-400/80 font-medium">2026 @ Aidee Creatives</p>
         </div>
       </div>
     </aside>
 
-    <!-- Main Content -->
     <main class="flex-1 flex flex-col h-full relative overflow-hidden w-full">
-      <!-- Header -->
       <header class="h-16 md:h-20 bg-white border-b border-slate-200 flex items-center justify-between px-4 md:px-8 z-10 sticky top-0 shrink-0">
         <div class="flex items-center">
           <button class="md:hidden mr-4 text-slate-600 hover:text-slate-900" onclick="window.toggleSidebar()">
             <i data-lucide="menu" class="w-6 h-6"></i>
           </button>
-          <div id="header-title" class="text-slate-900 font-bold capitalize text-base md:text-lg tracking-tight">DASHBOARD</div>
+          <div id="header-title" class="text-slate-900 font-bold capitalize text-base md:text-lg tracking-tight">Dashboard</div>
         </div>
         
         <div class="flex items-center gap-4">
@@ -186,8 +183,6 @@
           <!-- VIEW: DASHBOARD (ASNAF) -->
           <div id="view-dashboard" class="pb-6 transition-opacity duration-300">
             <div class="flex flex-col xl:flex-row gap-6">
-              
-              <!-- Main Dashboard Content -->
               <div class="flex-1 space-y-6">
                 <!-- Stats -->
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
@@ -207,7 +202,7 @@
                       <div class="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center backdrop-blur-sm"><i data-lucide="user-plus" class="w-5 h-5"></i></div>
                     </div>
                     <div class="relative z-10">
-                      <p class="text-emerald-100 text-sm font-semibold uppercase tracking-wider mb-1">DAFTAR BARU</p>
+                      <p class="text-emerald-100 text-sm font-semibold uppercase tracking-wider mb-1">Daftar Baru</p>
                       <h4 class="text-4xl font-extrabold" id="stat-daftar">0</h4>
                     </div>
                   </div>
@@ -217,7 +212,7 @@
                       <div class="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center backdrop-blur-sm"><i data-lucide="user-minus" class="w-5 h-5"></i></div>
                     </div>
                     <div class="relative z-10">
-                      <p class="text-rose-100 text-sm font-semibold uppercase tracking-wider mb-1">TOLAK ASNAF</p>
+                      <p class="text-rose-100 text-sm font-semibold uppercase tracking-wider mb-1">Tolak Asnaf</p>
                       <h4 class="text-4xl font-extrabold" id="stat-tolak">0</h4>
                     </div>
                   </div>
@@ -245,8 +240,8 @@
                     <div class="w-full md:w-48 shrink-0">
                       <select id="filter-record" onchange="window.renderAsnafTable()" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-100 rounded-xl text-sm outline-none text-slate-900 font-bold">
                         <option value="all">Semua Kategori</option>
-                        <option value="Daftar Baru">DAFTAR BARU</option>
-                        <option value="Tolak Asnaf">TOLAK ASNAF</option>
+                        <option value="Daftar Baru">Daftar Baru</option>
+                        <option value="Tolak Asnaf">Tolak Asnaf</option>
                       </select>
                     </div>
                   </div>
@@ -256,7 +251,7 @@
                       <thead>
                         <tr class="border-b border-slate-200">
                           <th class="pb-3 text-xs font-bold text-slate-500 uppercase tracking-wider pl-2">Nama Pemohon</th>
-                          <th class="pb-3 text-xs font-bold text-slate-500 uppercase tracking-wider">ID Rujukan</th>
+                          <th class="pb-3 text-xs font-bold text-slate-500 uppercase tracking-wider">No. MyKAD</th>
                           <th class="pb-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Kategori</th>
                           <th class="pb-3 text-xs font-bold text-slate-500 uppercase tracking-wider text-right pr-2">Tindakan</th>
                         </tr>
@@ -288,7 +283,6 @@
           <!-- VIEW: TASK SIASATAN -->
           <div id="view-task" class="hidden-force space-y-6 pb-6 transition-opacity duration-300 w-full">
             
-            <!-- Dashboard/Stats untuk Task Siasatan -->
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 mb-6">
               <!-- Dalam Proses -->
               <div class="bg-gradient-to-br from-orange-400 to-orange-600 rounded-[1.5rem] p-6 shadow-lg shadow-orange-500/20 text-white relative overflow-hidden">
@@ -368,7 +362,61 @@
             </div>
           </div>
 
-          <!-- VIEW: TARIKH PROGRAM (BARU) -->
+          <!-- VIEW: TASK LAPANGAN (BARU) -->
+          <div id="view-lapangan" class="hidden-force space-y-6 pb-6 transition-opacity duration-300 w-full">
+            <div class="bg-white rounded-[1.5rem] shadow-sm border border-slate-200 p-4 md:p-6 w-full overflow-hidden min-h-[500px]">
+              <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                <h3 class="font-extrabold text-slate-900 text-lg flex items-center"><i data-lucide="map-pin" class="w-5 h-5 mr-2 text-blue-600"></i> Pengurusan Task Lapangan</h3>
+                <button onclick="window.openModal('modal-add-lapangan')" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-xl transition-colors flex items-center shadow-md shadow-blue-600/20 w-fit">
+                  <i data-lucide="plus" class="w-4 h-4 mr-2"></i> Create New Task
+                </button>
+              </div>
+
+              <!-- Grid Lapangan Tasks -->
+              <div id="lapangan-list-container" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                 <!-- Dynamic Lapangan Tasks Here -->
+              </div>
+            </div>
+          </div>
+
+          <!-- VIEW: TASK LAPANGAN DETAILS (SUB TASKS) -->
+          <div id="view-lapangan-detail" class="hidden-force space-y-6 pb-6 transition-opacity duration-300 w-full">
+            <div class="bg-white rounded-[1.5rem] shadow-sm border border-slate-200 p-4 md:p-6 w-full overflow-hidden min-h-[500px]">
+              
+              <div class="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6 border-b border-slate-100 pb-6">
+                <div>
+                  <button onclick="window.backToLapangan()" class="text-sm font-bold text-blue-600 bg-blue-50 hover:bg-blue-100 px-3 py-1.5 rounded-lg transition-colors flex items-center mb-3">
+                    <i data-lucide="arrow-left" class="w-4 h-4 mr-1.5"></i> Kembali
+                  </button>
+                  <h3 class="font-extrabold text-slate-900 text-xl" id="lapangan-detail-title">Nama Task Lapangan</h3>
+                  <p class="text-sm font-medium text-slate-500 mt-1 flex items-center"><i data-lucide="calendar" class="w-3.5 h-3.5 mr-1.5 text-slate-400"></i> <span id="lapangan-detail-date">Tarikh</span></p>
+                </div>
+                <button onclick="window.openModal('modal-add-subtask')" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-xl transition-colors flex items-center shadow-md shadow-blue-600/20 w-fit">
+                  <i data-lucide="plus" class="w-4 h-4 mr-2"></i> Tambah Sub Task
+                </button>
+              </div>
+
+              <div class="overflow-x-auto min-h-[300px]">
+                <table class="w-full text-left border-collapse">
+                  <thead>
+                    <tr class="border-b border-slate-200 bg-slate-50">
+                      <th class="py-3 px-3 text-xs font-bold text-slate-500 uppercase tracking-wider rounded-l-lg">Bil</th>
+                      <th class="py-3 px-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Maklumat Tugasan</th>
+                      <th class="py-3 px-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Kawasan</th>
+                      <th class="py-3 px-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Kategori</th>
+                      <th class="py-3 px-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Status</th>
+                      <th class="py-3 px-3 text-xs font-bold text-slate-500 uppercase tracking-wider text-right rounded-r-lg">Tindakan</th>
+                    </tr>
+                  </thead>
+                  <tbody id="lapangan-subtasks-body" class="divide-y divide-slate-100">
+                    <!-- Dynamic Sub Tasks Rows Here -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- VIEW: TARIKH PROGRAM -->
           <div id="view-program" class="hidden-force space-y-6 pb-6 transition-opacity duration-300 w-full">
             <div class="bg-white rounded-[1.5rem] shadow-sm border border-slate-200 p-4 md:p-6 w-full overflow-hidden min-h-[500px]">
               <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
@@ -524,6 +572,228 @@
     </div>
   </div>
 
+  <!-- Modal Tambah Task Lapangan (Parent) -->
+  <div id="modal-add-lapangan" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+    <div class="bg-white rounded-3xl w-full max-w-md shadow-2xl overflow-hidden relative flex flex-col">
+      <div class="flex justify-between items-center p-6 border-b border-slate-100 shrink-0">
+        <h2 class="text-lg font-extrabold text-slate-900">Create New Task Lapangan</h2>
+        <button onclick="window.closeModal('modal-add-lapangan')" class="p-2 bg-slate-100 text-slate-500 rounded-full hover:bg-slate-200"><i data-lucide="x" class="w-4 h-4"></i></button>
+      </div>
+      <form id="form-add-lapangan" class="p-6 space-y-5">
+        <div>
+          <label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2 block">Nama Task</label>
+          <input type="text" id="add-lapangan-name" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium" required placeholder="Cth: Siasatan Banjir Kawasan A" />
+        </div>
+        <div>
+          <label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2 block">Tarikh</label>
+          <input type="date" id="add-lapangan-date" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium" required />
+        </div>
+        <button type="submit" id="add-lapangan-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-xl shadow-md mt-6">Simpan Task Lapangan</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Tambah Sub Task (Lapangan) -->
+  <div id="modal-add-subtask" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-[60] p-4">
+    <div class="bg-white rounded-3xl w-full max-w-2xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
+      <div class="flex justify-between items-center p-6 border-b border-slate-100 shrink-0">
+        <h2 class="text-lg font-extrabold text-slate-900">Tambah Sub Task</h2>
+        <button onclick="window.closeModal('modal-add-subtask')" class="p-2 bg-slate-100 text-slate-500 rounded-full hover:bg-slate-200"><i data-lucide="x" class="w-4 h-4"></i></button>
+      </div>
+      <form id="form-add-subtask" class="p-6 overflow-y-auto custom-scrollbar flex-1 space-y-5">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2 block">Nama Pemohon / Sub Task</label>
+            <input type="text" id="add-subtask-name" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium" required placeholder="Nama" />
+          </div>
+          <div>
+            <label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2 block">ID Rujukan</label>
+            <input type="text" id="add-subtask-rujukan" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium" required placeholder="Cth: REF12345" />
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2 block">No. Telefon</label>
+            <input type="text" id="add-subtask-phone" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium" required placeholder="012-3456789" />
+          </div>
+          <div>
+            <label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2 block">Kawasan</label>
+            <input type="text" id="add-subtask-kawasan" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium" required placeholder="Cth: Kampung Baru" />
+          </div>
+        </div>
+        
+        <div>
+          <label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2 block">Alamat</label>
+          <textarea id="add-subtask-address" rows="2" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium resize-none" required placeholder="Alamat penuh..."></textarea>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2 block">Jenis Permohonan</label>
+            <select id="add-subtask-type" onchange="window.handleSubtaskTypeChange(this)" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-bold" required>
+              <option value="" disabled selected>Pilih Kategori...</option>
+            </select>
+            <div id="new-subtask-type-container" class="hidden-force mt-2 flex gap-2">
+              <input type="text" id="new-subtask-type-input" placeholder="Taip kategori baru..." class="flex-1 px-3 py-2 bg-white border border-slate-300 rounded-xl text-sm outline-none focus:border-blue-500 font-medium" />
+              <button type="button" onclick="window.saveNewSubtaskType()" class="px-4 py-2 bg-blue-600 text-white rounded-xl text-xs font-bold hover:bg-blue-700 shadow-sm">Simpan</button>
+              <button type="button" onclick="window.cancelNewSubtaskType()" class="px-4 py-2 bg-slate-200 text-slate-700 rounded-xl text-xs font-bold hover:bg-slate-300 shadow-sm">Batal</button>
+            </div>
+          </div>
+          <div>
+            <label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2 block">Status Siasatan</label>
+            <select id="add-subtask-status" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-bold" required>
+              <option value="Draft">Draft</option>
+              <option value="KIV">KIV</option>
+              <option value="Selesai">Selesai</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Image Drag & Drop (Maks 4) - SUBTASK -->
+        <div>
+          <label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2 block">Gambar Siasatan (Maksimum 4)</label>
+          <div class="flex gap-2 mb-3">
+            <button type="button" onclick="document.getElementById('add-subtask-image').click()" class="flex-1 bg-blue-50 hover:bg-blue-100 text-blue-600 font-bold py-2.5 rounded-xl text-xs transition-colors flex items-center justify-center border border-blue-200">
+              <i data-lucide="upload" class="w-4 h-4 mr-2"></i> Muat Naik
+            </button>
+            <button type="button" onclick="document.getElementById('add-subtask-camera').click()" class="flex-1 bg-emerald-50 hover:bg-emerald-100 text-emerald-600 font-bold py-2.5 rounded-xl text-xs transition-colors flex items-center justify-center border border-emerald-200">
+              <i data-lucide="camera" class="w-4 h-4 mr-2"></i> Ambil Gambar
+            </button>
+          </div>
+          <!-- Hidden inputs for triggers -->
+          <input type="file" id="add-subtask-image" accept="image/*" multiple class="hidden-force" />
+          <input type="file" id="add-subtask-camera" accept="image/*" capture="environment" multiple class="hidden-force" />
+          
+          <div id="drop-zone-subtask" class="border-2 border-dashed border-slate-300 rounded-xl p-6 text-center cursor-pointer hover:bg-slate-50 transition-colors relative">
+            <div id="drop-zone-subtask-content" class="pointer-events-none">
+              <i data-lucide="image" class="w-8 h-8 text-slate-400 mx-auto mb-2"></i>
+              <p class="text-sm font-medium text-slate-600">Klik butang di atas atau 'Drop & Drag' gambar di sini</p>
+              <p class="text-xs text-slate-400 mt-1">Sokongan: JPG, PNG (Maks 4)</p>
+            </div>
+            <!-- Container Preview -->
+            <div id="add-subtask-image-previews" class="hidden-force mt-4 grid grid-cols-2 gap-3 relative z-10"></div>
+          </div>
+        </div>
+
+        <button type="submit" id="add-subtask-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-xl shadow-md mt-6">Simpan Sub Task</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Preview / Edit Sub Task (Lapangan) -->
+  <div id="modal-preview-subtask" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-[60] p-4">
+    <div class="bg-white rounded-3xl w-full max-w-lg shadow-2xl overflow-hidden relative max-h-[95vh] flex flex-col">
+      <div id="prev-subtask-header" class="h-16 relative transition-colors bg-slate-500 shrink-0">
+         <button onclick="window.closeModal('modal-preview-subtask')" class="absolute top-4 right-4 p-2 bg-black/20 text-white rounded-full hover:bg-black/30 backdrop-blur-sm"><i data-lucide="x" class="w-4 h-4"></i></button>
+      </div>
+      
+      <div class="p-6 pt-4 relative overflow-y-auto custom-scrollbar flex-1">
+        <!-- View Mode -->
+        <div id="prev-subtask-view-mode">
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <h2 class="text-xl font-extrabold text-slate-900 mb-1" id="prev-subtask-name">Nama</h2>
+              <p class="text-sm font-medium text-slate-500"><span id="prev-subtask-rujukan">No. Rujukan</span></p>
+            </div>
+            <span id="prev-subtask-status-badge" class="px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider">Status</span>
+          </div>
+
+          <div class="space-y-3 bg-slate-50 p-4 rounded-xl border border-slate-100 mb-4 text-sm">
+            <div class="grid grid-cols-3">
+              <span class="text-slate-500 font-semibold col-span-1">Kawasan</span>
+              <span class="text-slate-800 font-bold col-span-2" id="prev-subtask-kawasan">-</span>
+            </div>
+            <div class="grid grid-cols-3">
+              <span class="text-slate-500 font-semibold col-span-1">No. Telefon</span>
+              <span class="text-slate-800 font-bold col-span-2" id="prev-subtask-phone">-</span>
+            </div>
+            <div class="grid grid-cols-3">
+              <span class="text-slate-500 font-semibold col-span-1">Jenis Permohonan</span>
+              <span class="text-slate-800 font-bold col-span-2" id="prev-subtask-type">-</span>
+            </div>
+            <div class="grid grid-cols-3">
+              <span class="text-slate-500 font-semibold col-span-1">Alamat</span>
+              <span class="text-slate-800 font-semibold col-span-2" id="prev-subtask-address">-</span>
+            </div>
+            <div class="grid grid-cols-3 border-t border-slate-200 pt-3">
+              <span class="text-slate-500 font-semibold col-span-1">Catatan</span>
+              <span class="text-slate-800 font-medium col-span-2 whitespace-pre-wrap" id="prev-subtask-remark">-</span>
+            </div>
+          </div>
+
+          <!-- Preview Images -->
+          <div id="prev-subtask-img-container" class="mb-4 hidden-force">
+            <p class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2 block">Gambar Siasatan</p>
+            <div id="prev-subtask-images-grid" class="grid grid-cols-2 gap-3">
+              <!-- Grid Img -->
+            </div>
+          </div>
+
+          <div class="flex justify-between items-center border-t border-slate-100 pt-4">
+              <span class="text-xs text-slate-400 font-medium" id="prev-subtask-date">Tarikh</span>
+              <div class="flex gap-2">
+                <button onclick="window.toggleSubtaskEditMode(true)" class="flex items-center text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 px-3 py-2 rounded-lg text-xs font-bold transition-colors">
+                  <i data-lucide="edit-2" class="w-3.5 h-3.5 mr-1.5"></i> Kemaskini
+                </button>
+                <button onclick="window.deleteSubtask()" class="flex items-center text-red-600 hover:text-red-800 hover:bg-red-50 px-3 py-2 rounded-lg text-xs font-bold transition-colors">
+                  <i data-lucide="trash-2" class="w-3.5 h-3.5 mr-1.5"></i> Padam
+                </button>
+              </div>
+          </div>
+        </div>
+
+        <!-- Edit Mode -->
+        <form id="prev-subtask-edit-mode" class="hidden-force space-y-4 pt-2">
+          <div class="p-3 bg-slate-50 rounded-xl mb-4 border border-slate-100">
+             <p class="text-sm font-bold text-slate-800 mb-1" id="edit-subtask-readonly-name">Nama</p>
+             <p class="text-xs font-medium text-slate-500" id="edit-subtask-readonly-rujukan">Rujukan</p>
+          </div>
+
+          <div>
+            <label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2 block">Ubah Status Siasatan</label>
+            <select id="edit-subtask-status" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-bold" required>
+              <option value="Draft">Draft</option>
+              <option value="KIV">KIV</option>
+              <option value="Selesai">Selesai</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2 block">Catatan / Maklumat Tambahan</label>
+            <textarea id="edit-subtask-remark" rows="3" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium resize-none" placeholder="Tambah catatan siasatan..."></textarea>
+          </div>
+
+          <div class="mt-4 border-t border-slate-100 pt-4">
+            <label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2 block">Ubah/Tambah Gambar Siasatan (Maks 4)</label>
+            <div class="flex gap-2 mb-3">
+              <button type="button" onclick="document.getElementById('edit-subtask-image').click()" class="flex-1 bg-blue-50 hover:bg-blue-100 text-blue-600 font-bold py-2.5 rounded-xl text-xs transition-colors flex items-center justify-center border border-blue-200">
+                <i data-lucide="upload" class="w-4 h-4 mr-2"></i> Muat Naik
+              </button>
+              <button type="button" onclick="document.getElementById('edit-subtask-camera').click()" class="flex-1 bg-emerald-50 hover:bg-emerald-100 text-emerald-600 font-bold py-2.5 rounded-xl text-xs transition-colors flex items-center justify-center border border-emerald-200">
+                <i data-lucide="camera" class="w-4 h-4 mr-2"></i> Ambil Gambar
+              </button>
+            </div>
+            <!-- Hidden inputs -->
+            <input type="file" id="edit-subtask-image" accept="image/*" multiple class="hidden-force" />
+            <input type="file" id="edit-subtask-camera" accept="image/*" capture="environment" multiple class="hidden-force" />
+            
+            <div id="edit-subtask-image-previews" class="grid grid-cols-2 gap-3 mt-3">
+              <!-- Edit Previews rendered here -->
+            </div>
+          </div>
+
+          <div class="flex gap-2 mt-6">
+            <button type="button" onclick="window.toggleSubtaskEditMode(false)" class="flex-1 bg-slate-100 text-slate-600 font-bold py-3 rounded-xl text-sm hover:bg-slate-200 transition-colors">Batal</button>
+            <button type="submit" id="edit-subtask-btn" class="flex-1 bg-blue-600 text-white font-bold py-3 rounded-xl shadow-md text-sm hover:bg-blue-700 transition-colors">Simpan Kemaskini</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+
   <!-- Modal Tambah Program Baru -->
   <div id="modal-add-program" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
     <div class="bg-white rounded-3xl w-full max-w-md shadow-2xl overflow-hidden relative flex flex-col">
@@ -553,7 +823,7 @@
     </div>
   </div>
 
-  <!-- Modal Tambah Task Siasatan -->
+  <!-- Modal Tambah Task Siasatan (Lama/Regular) -->
   <div id="modal-add-task" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
     <div class="bg-white rounded-3xl w-full max-w-2xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
       <div class="flex justify-between items-center p-6 border-b border-slate-100 shrink-0">
@@ -587,7 +857,6 @@
             <label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2 block">Kategori Permohonan</label>
             <select id="add-task-type" onchange="window.handleTaskTypeChange(this)" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-bold" required>
               <option value="" disabled selected>Pilih Kategori...</option>
-              <!-- Dynamic options will be rendered here -->
             </select>
             <div id="new-task-type-container" class="hidden-force mt-2 flex gap-2">
               <input type="text" id="new-task-type-input" placeholder="Taip kategori baru..." class="flex-1 px-3 py-2 bg-white border border-slate-300 rounded-xl text-sm outline-none focus:border-blue-500 font-medium" />
@@ -605,10 +874,8 @@
           </div>
         </div>
 
-        <!-- Image Drag & Drop (Maks 4) -->
         <div>
           <label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2 block">Gambar Siasatan (Maksimum 4)</label>
-          
           <div class="flex gap-2 mb-3">
             <button type="button" onclick="document.getElementById('add-task-image').click()" class="flex-1 bg-blue-50 hover:bg-blue-100 text-blue-600 font-bold py-2.5 rounded-xl text-xs transition-colors flex items-center justify-center border border-blue-200">
               <i data-lucide="upload" class="w-4 h-4 mr-2"></i> Muat Naik
@@ -617,35 +884,29 @@
               <i data-lucide="camera" class="w-4 h-4 mr-2"></i> Ambil Gambar
             </button>
           </div>
-          <!-- Hidden inputs for triggers -->
           <input type="file" id="add-task-image" accept="image/*" multiple class="hidden-force" />
           <input type="file" id="add-task-camera" accept="image/*" capture="environment" multiple class="hidden-force" />
-          
           <div id="drop-zone" class="border-2 border-dashed border-slate-300 rounded-xl p-6 text-center cursor-pointer hover:bg-slate-50 transition-colors relative">
             <div id="drop-zone-content" class="pointer-events-none">
               <i data-lucide="image" class="w-8 h-8 text-slate-400 mx-auto mb-2"></i>
               <p class="text-sm font-medium text-slate-600">Klik butang di atas atau 'Drop & Drag' gambar di sini</p>
               <p class="text-xs text-slate-400 mt-1">Sokongan: JPG, PNG (Maks 4)</p>
             </div>
-            <!-- Container Preview Gambar Baru (Grid up to 4) -->
             <div id="add-image-previews" class="hidden-force mt-4 grid grid-cols-2 gap-3 relative z-10"></div>
           </div>
         </div>
-
         <button type="submit" id="add-task-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-xl shadow-md mt-6">Simpan Task</button>
       </form>
     </div>
   </div>
 
-  <!-- Modal Preview Task Siasatan -->
+  <!-- Modal Preview Task Siasatan (Lama/Regular) -->
   <div id="modal-preview-task" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
     <div class="bg-white rounded-3xl w-full max-w-lg shadow-2xl overflow-hidden relative max-h-[95vh] flex flex-col">
       <div id="prev-task-header" class="h-16 relative transition-colors bg-blue-500 shrink-0">
          <button onclick="window.closeModal('modal-preview-task')" class="absolute top-4 right-4 p-2 bg-black/20 text-white rounded-full hover:bg-black/30 backdrop-blur-sm"><i data-lucide="x" class="w-4 h-4"></i></button>
       </div>
-      
       <div class="p-6 pt-4 relative overflow-y-auto custom-scrollbar flex-1">
-        <!-- View Mode -->
         <div id="prev-task-view-mode">
           <div class="flex justify-between items-start mb-4">
             <div>
@@ -668,19 +929,15 @@
               <span class="text-slate-500 font-semibold col-span-1">Alamat</span>
               <span class="text-slate-800 font-semibold col-span-2" id="prev-task-address">Alamat...</span>
             </div>
-            <!-- Ruangan Catatan (Remark) diletak di mod view -->
             <div class="grid grid-cols-3 border-t border-slate-200 pt-3">
               <span class="text-slate-500 font-semibold col-span-1">Catatan / Remark</span>
               <span class="text-slate-800 font-medium col-span-2 whitespace-pre-wrap" id="prev-task-remark">-</span>
             </div>
           </div>
 
-          <!-- Preview Images (View Mode) -->
           <div id="prev-task-img-container" class="mb-4 hidden-force">
             <p class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2 block">Gambar Siasatan</p>
-            <div id="prev-task-images-grid" class="grid grid-cols-2 gap-3">
-              <!-- Grid Img -->
-            </div>
+            <div id="prev-task-images-grid" class="grid grid-cols-2 gap-3"></div>
           </div>
 
           <div class="flex justify-between items-center border-t border-slate-100 pt-4">
@@ -696,13 +953,11 @@
           </div>
         </div>
 
-        <!-- Edit Mode (Tukar Status, Catatan & Gambar) -->
         <form id="prev-task-edit-mode" class="hidden-force space-y-4 pt-2">
           <div class="p-3 bg-slate-50 rounded-xl mb-4 border border-slate-100">
              <p class="text-sm font-bold text-slate-800 mb-1" id="edit-task-readonly-name">Nama</p>
              <p class="text-xs font-medium text-slate-500" id="edit-task-readonly-rujukan">Rujukan</p>
           </div>
-          
           <div>
             <label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2 block">Ubah Status Siasatan</label>
             <select id="edit-task-status" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-bold" required>
@@ -711,7 +966,6 @@
               <option value="Selesai Tugasan">Selesai Tugasan</option>
             </select>
           </div>
-
           <div>
             <label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2 block">Catatan / Remark</label>
             <textarea id="edit-task-remark" rows="3" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium resize-none" placeholder="Tambah catatan siasatan..."></textarea>
@@ -727,13 +981,9 @@
                 <i data-lucide="camera" class="w-4 h-4 mr-2"></i> Ambil Gambar
               </button>
             </div>
-            <!-- Hidden inputs -->
             <input type="file" id="edit-task-image" accept="image/*" multiple class="hidden-force" />
             <input type="file" id="edit-task-camera" accept="image/*" capture="environment" multiple class="hidden-force" />
-            
-            <div id="edit-image-previews" class="grid grid-cols-2 gap-3 mt-3">
-              <!-- Edit Previews rendered here -->
-            </div>
+            <div id="edit-image-previews" class="grid grid-cols-2 gap-3 mt-3"></div>
           </div>
 
           <div class="flex gap-2 mt-6">
@@ -741,7 +991,6 @@
             <button type="submit" id="edit-task-btn" class="flex-1 bg-blue-600 text-white font-bold py-3 rounded-xl shadow-md text-sm hover:bg-blue-700 transition-colors">Simpan Kemaskini</button>
           </div>
         </form>
-
       </div>
     </div>
   </div>
@@ -767,8 +1016,8 @@
         <div>
           <label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2 block">Kategori Review</label>
           <select id="add-rec-cat" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-bold" required>
-            <option value="Daftar Baru">DAFTAR BARU</option>
-            <option value="Tolak Asnaf">TOLAK ASNAF</option>
+            <option value="Daftar Baru">Daftar Baru</option>
+            <option value="Tolak Asnaf">Tolak Asnaf</option>
           </select>
         </div>
         <button type="submit" id="add-rec-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-xl shadow-md mt-4">Simpan Rekod</button>
@@ -791,7 +1040,7 @@
         <!-- View Mode -->
         <div id="prev-view-mode">
           <h2 class="text-xl font-extrabold text-slate-900 mb-1" id="prev-name">Nama</h2>
-          <p class="text-sm font-medium text-slate-500 mb-6"><span id="prev-mykad">ID Rujukan</span> <span class="text-[10px] bg-slate-100 px-2 py-0.5 rounded text-slate-400 ml-2">ID</span></p>
+          <p class="text-sm font-medium text-slate-500 mb-6"><span id="prev-mykad">Mykad</span> <span class="text-[10px] bg-slate-100 px-2 py-0.5 rounded text-slate-400 ml-2">ID</span></p>
 
           <div class="space-y-4 bg-slate-50 p-4 rounded-xl border border-slate-100">
             <div>
@@ -827,8 +1076,8 @@
           <div>
             <label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Kategori Review</label>
             <select id="edit-rec-cat" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-lg text-sm outline-none font-bold" required>
-              <option value="Daftar Baru">DAFTAR BARU</option>
-              <option value="Tolak Asnaf">TOLAK ASNAF</option>
+              <option value="Daftar Baru">Daftar Baru</option>
+              <option value="Tolak Asnaf">Tolak Asnaf</option>
             </select>
           </div>
           <div class="flex gap-2 mt-6">
@@ -898,7 +1147,9 @@
     
     let asnafRecords = [];
     let taskRecords = [];
-    let programRecords = []; // Untuk simpan Tarikh Program
+    let lapanganTasks = []; // Untuk simpan parent task lapangan
+    let lapanganSubtasks = []; // Untuk simpan child subtasks
+    let programRecords = [];
     let categoriesData = [];
     let taskTypesData = []; 
     let sentencesData = [];
@@ -907,11 +1158,14 @@
     let currentFormatFilterCat = 'all';
     let selectedColor = 'bg-blue-600';
     const CATEGORY_COLORS = ['bg-blue-600', 'bg-emerald-600', 'bg-rose-600', 'bg-amber-500', 'bg-purple-600', 'bg-cyan-600', 'bg-slate-800'];
+    
     let selectedRecordId = null;
     let selectedTaskId = null;
+    let selectedLapanganId = null;
+    let selectedSubtaskId = null;
     
-    // Simpan Base64 Imej Task (Multiple up to 4)
     let currentTaskImages = [];
+    let currentSubtaskImages = [];
 
     // --- Inisialisasi Ikon ---
     const updateIcons = () => { if(window.lucide) window.lucide.createIcons(); }
@@ -1002,7 +1256,7 @@
     };
 
     window.switchView = (viewName) => {
-      ['dashboard', 'task', 'program', 'format', 'settings'].forEach(v => {
+      ['dashboard', 'task', 'lapangan', 'lapangan-detail', 'program', 'format', 'settings'].forEach(v => {
         hide(`view-${v}`);
         const navEl = el(`nav-${v}`);
         if (navEl) {
@@ -1016,7 +1270,10 @@
       });
       
       show(`view-${viewName}`);
-      const activeNav = el(`nav-${viewName}`);
+      
+      // Jika view=lapangan-detail, aktifkan menu nav-lapangan di tepi
+      const activeNavId = viewName === 'lapangan-detail' ? 'nav-lapangan' : `nav-${viewName}`;
+      const activeNav = el(activeNavId);
       if (activeNav) {
         activeNav.className = "w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 bg-blue-600 text-white shadow-md shadow-blue-600/20";
         const activeIcon = activeNav.querySelector('svg') || activeNav.querySelector('i');
@@ -1026,7 +1283,15 @@
         }
       }
       
-      const titles = { dashboard: 'Dashboard', task: 'Pengurusan Task Siasatan', program: 'Pengurusan Tarikh Program', format: 'Pengurusan & Format Ayat', settings: 'Tetapan Akaun' };
+      const titles = { 
+        dashboard: 'Dashboard', 
+        task: 'Pengurusan Task Siasatan', 
+        lapangan: 'Pengurusan Task Lapangan',
+        'lapangan-detail': 'Sub Task Lapangan',
+        program: 'Pengurusan Tarikh Program', 
+        format: 'Pengurusan & Format Ayat', 
+        settings: 'Tetapan Akaun' 
+      };
       el('header-title').textContent = titles[viewName];
       
       if(!el('sidebar').classList.contains('-translate-x-full') && window.innerWidth < 768) window.toggleSidebar();
@@ -1041,8 +1306,13 @@
         currentTaskImages = [];
         window.renderImagePreviews('add');
       }
-      if(id === 'modal-add-program') {
-        el('form-add-program').reset();
+      if(id === 'modal-add-program') { el('form-add-program').reset(); }
+      if(id === 'modal-add-lapangan') { el('form-add-lapangan').reset(); }
+      if(id === 'modal-add-subtask') { 
+        el('form-add-subtask').reset(); 
+        hide('new-subtask-type-container');
+        currentSubtaskImages = [];
+        window.renderSubtaskImagePreviews('add');
       }
     };
 
@@ -1129,29 +1399,34 @@
     const setupRealtimeListeners = () => {
       if(!currentUser) return;
 
-      // Asnaf Records
       onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'asnaf_records'), (snap) => {
         asnafRecords = snap.docs.map(d => ({id: d.id, ...d.data()})).sort((a,b) => b.createdAt - a.createdAt);
         window.renderAsnafTable();
       }, e => console.error(e));
 
-      // Task Records (Siasatan)
       onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'tasks'), (snap) => {
-        taskRecords = snap.docs.map(d => ({id: d.id, ...d.data()})).sort((a,b) => a.createdAt - b.createdAt); // oldest first
+        taskRecords = snap.docs.map(d => ({id: d.id, ...d.data()})).sort((a,b) => a.createdAt - b.createdAt);
         window.renderTaskTable();
       }, e => console.error(e));
 
-      // Program Records
-      onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'programs'), (snap) => {
-        programRecords = snap.docs.map(d => ({id: d.id, ...d.data()})).sort((a,b) => {
-           // Sort by Date ascending
-           return new Date(a.date) - new Date(b.date);
-        });
-        window.renderDashboardPrograms();
-        window.renderProgramPage();
+      // Task Lapangan (Parent)
+      onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'lapangan_tasks'), (snap) => {
+        lapanganTasks = snap.docs.map(d => ({id: d.id, ...d.data()})).sort((a,b) => b.createdAt - a.createdAt);
+        window.renderLapanganTasks();
       }, e => console.error(e));
 
-      // Task Types (Kategori Permohonan)
+      // Task Lapangan (Sub Tasks)
+      onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'lapangan_subtasks'), (snap) => {
+        lapanganSubtasks = snap.docs.map(d => ({id: d.id, ...d.data()})).sort((a,b) => a.createdAt - b.createdAt);
+        window.renderLapanganTasks(); // Update parent count
+        if (selectedLapanganId) window.renderLapanganSubtasks(); // Update if detail view open
+      }, e => console.error(e));
+
+      onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'programs'), (snap) => {
+        programRecords = snap.docs.map(d => ({id: d.id, ...d.data()})).sort((a,b) => new Date(a.date) - new Date(b.date));
+        window.renderDashboardPrograms(); window.renderProgramPage();
+      }, e => console.error(e));
+
       const taskTypeRef = collection(db, 'artifacts', appId, 'public', 'data', 'task_types');
       onSnapshot(taskTypeRef, (snap) => {
         const types = snap.docs.map(d => ({id: d.id, ...d.data()}));
@@ -1161,10 +1436,10 @@
         } else {
           taskTypesData = types.sort((a,b) => a.createdAt - b.createdAt);
           window.renderTaskTypes();
+          window.renderSubtaskTypes(); // Update for subtask form as well
         }
       }, e => console.error(e));
 
-      // Categories (Format Ayat)
       const catRef = collection(db, 'artifacts', appId, 'public', 'data', 'categories');
       onSnapshot(catRef, (snap) => {
         const cats = snap.docs.map(d => ({id: d.id, ...d.data()}));
@@ -1177,7 +1452,6 @@
         }
       }, e => console.error(e));
 
-      // Sentences
       onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'sentences'), (snap) => {
         sentencesData = snap.docs.map(d => ({id: d.id, ...d.data()})).sort((a,b) => b.createdAt - a.createdAt);
         window.renderSentences();
@@ -1185,7 +1459,7 @@
     };
 
     // ==========================================
-    // Papan Pemuka & Asnaf Logic
+    // Asnaf Logic (Sediasa Ada 100%)
     // ==========================================
     window.renderAsnafTable = () => {
       const query = el('search-record').value.toLowerCase();
@@ -1292,68 +1566,41 @@
     };
 
     // ==========================================
-    // Task Siasatan Logic 
+    // Task Siasatan Logic (Sediasa Ada 100%)
     // ==========================================
-    
     window.renderTaskTypes = () => {
       const sel = el('add-task-type');
       if(!sel) return;
       const currentVal = sel.value;
       sel.innerHTML = '<option value="" disabled selected>Pilih Kategori...</option>';
-      
       taskTypesData.forEach(t => {
-        const opt = document.createElement('option');
-        opt.value = t.name;
-        opt.textContent = t.name;
-        sel.appendChild(opt);
+        const opt = document.createElement('option'); opt.value = t.name; opt.textContent = t.name; sel.appendChild(opt);
       });
-      
-      const optNew = document.createElement('option');
-      optNew.value = "CREATE_NEW";
-      optNew.innerHTML = "&#43; Tambah Baru"; 
-      optNew.className = "font-bold text-blue-600 bg-blue-50";
-      sel.appendChild(optNew);
-
-      if (currentVal && currentVal !== "CREATE_NEW" && taskTypesData.find(t=>t.name===currentVal)) {
-        sel.value = currentVal;
-      }
+      const optNew = document.createElement('option'); optNew.value = "CREATE_NEW"; optNew.innerHTML = "&#43; Tambah Baru"; optNew.className = "font-bold text-blue-600 bg-blue-50"; sel.appendChild(optNew);
+      if (currentVal && currentVal !== "CREATE_NEW" && taskTypesData.find(t=>t.name===currentVal)) sel.value = currentVal;
     };
 
     window.handleTaskTypeChange = (selectEl) => {
-      if(selectEl.value === 'CREATE_NEW') {
-        show('new-task-type-container');
-        el('new-task-type-input').focus();
-      } else {
-        hide('new-task-type-container');
-      }
+      if(selectEl.value === 'CREATE_NEW') { show('new-task-type-container'); el('new-task-type-input').focus(); } 
+      else { hide('new-task-type-container'); }
     };
 
     window.saveNewTaskType = async () => {
-      const input = el('new-task-type-input');
-      const newType = input.value.trim();
+      const input = el('new-task-type-input'); const newType = input.value.trim();
       if(newType !== '') {
         if(!currentUser) return;
         await setDoc(doc(collection(db, 'artifacts', appId, 'public', 'data', 'task_types')), { name: newType, createdAt: Date.now() });
-        const sel = el('add-task-type');
-        const opt = document.createElement('option');
-        opt.value = newType; opt.textContent = newType;
-        sel.insertBefore(opt, sel.lastChild); sel.value = newType;
+        const sel = el('add-task-type'); const opt = document.createElement('option');
+        opt.value = newType; opt.textContent = newType; sel.insertBefore(opt, sel.lastChild); sel.value = newType;
         input.value = ''; hide('new-task-type-container');
-      } else {
-        window.showAlert("Sila taipkan nama kategori baru.");
-      }
+      } else { window.showAlert("Sila taipkan nama kategori baru."); }
     };
 
-    window.cancelNewTaskType = () => {
-      el('new-task-type-input').value = '';
-      hide('new-task-type-container');
-      el('add-task-type').value = '';
-    };
+    window.cancelNewTaskType = () => { el('new-task-type-input').value = ''; hide('new-task-type-container'); el('add-task-type').value = ''; };
 
     window.renderTaskTable = () => {
       const query = el('search-task').value.toLowerCase();
       const filter = el('filter-task-status').value;
-      
       const filtered = taskRecords.filter(r => {
         const mQ = r.name.toLowerCase().includes(query) || (r.rujukan || r.mykad || '').toLowerCase().includes(query);
         const mF = filter === 'all' || r.status === filter;
@@ -1364,18 +1611,14 @@
       if(el('stat-task-kiv')) el('stat-task-kiv').textContent = taskRecords.filter(r => r.status === 'KIV').length;
       if(el('stat-task-selesai')) el('stat-task-selesai').textContent = taskRecords.filter(r => r.status === 'Selesai Tugasan').length;
 
-      const tbody = el('task-table-body'); 
-      if(!tbody) return;
-      tbody.innerHTML = '';
-      if (filtered.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="5" class="py-10 text-center text-slate-400 font-medium text-sm">Tiada task dijumpai.</td></tr>`; return;
-      }
+      const tbody = el('task-table-body'); if(!tbody) return; tbody.innerHTML = '';
+      if (filtered.length === 0) { tbody.innerHTML = `<tr><td colspan="5" class="py-10 text-center text-slate-400 font-medium text-sm">Tiada task dijumpai.</td></tr>`; return; }
 
       filtered.forEach((r, idx) => {
         let statusBadge = '';
         if(r.status === 'Dalam Proses') statusBadge = 'bg-orange-100 text-orange-700';
         else if(r.status === 'Selesai Tugasan') statusBadge = 'bg-emerald-100 text-emerald-700';
-        else statusBadge = 'bg-slate-200 text-slate-700'; // KIV
+        else statusBadge = 'bg-slate-200 text-slate-700';
 
         const tr = document.createElement('tr');
         tr.className = "hover:bg-slate-50 transition-colors group cursor-pointer";
@@ -1409,7 +1652,7 @@
             canvas.width = width; canvas.height = height;
             const ctx = canvas.getContext('2d');
             ctx.drawImage(img, 0, 0, width, height);
-            resolve(canvas.toDataURL('image/jpeg', 0.7)); // 70% quality
+            resolve(canvas.toDataURL('image/jpeg', 0.7));
           };
           img.src = e.target.result;
         };
@@ -1417,38 +1660,21 @@
       });
     };
 
-    window.handleTaskImages = async (files, context) => { // context = 'add' or 'edit'
+    window.handleTaskImages = async (files, context) => { 
       const validFiles = Array.from(files).filter(f => f.type.startsWith('image/'));
       if (validFiles.length === 0) { window.showAlert('Sila pilih format gambar sahaja.'); return; }
-      
-      if (currentTaskImages.length + validFiles.length > 4) {
-        window.showAlert('Maksimum 4 gambar sahaja dibenarkan.');
-        return;
-      }
-
-      for (let file of validFiles) {
-        try {
-          const b64 = await window.processImageFile(file);
-          currentTaskImages.push(b64);
-        } catch(e) { console.error(e); }
-      }
+      if (currentTaskImages.length + validFiles.length > 4) { window.showAlert('Maksimum 4 gambar sahaja dibenarkan.'); return; }
+      for (let file of validFiles) { try { const b64 = await window.processImageFile(file); currentTaskImages.push(b64); } catch(e) { console.error(e); } }
       window.renderImagePreviews(context);
     };
 
-    window.removeTaskImage = (index, context) => {
-      currentTaskImages.splice(index, 1);
-      window.renderImagePreviews(context);
-    };
+    window.removeTaskImage = (index, context) => { currentTaskImages.splice(index, 1); window.renderImagePreviews(context); };
 
     window.renderImagePreviews = (context) => {
       const containerId = context === 'add' ? 'add-image-previews' : 'edit-image-previews';
-      const cont = el(containerId);
-      if(!cont) return;
-      cont.innerHTML = '';
-      
+      const cont = el(containerId); if(!cont) return; cont.innerHTML = '';
       if (currentTaskImages.length > 0) {
-        show(containerId);
-        if(context === 'add') hide('drop-zone-content');
+        show(containerId); if(context === 'add') hide('drop-zone-content');
         currentTaskImages.forEach((img, idx) => {
           cont.innerHTML += `
             <div class="relative group">
@@ -1464,205 +1690,401 @@
         else { cont.innerHTML = '<p class="text-xs text-slate-400 col-span-2">Tiada gambar dilampirkan.</p>'; }
       }
       updateIcons();
-      
       if(context === 'add') { if(el('add-task-image')) el('add-task-image').value=''; if(el('add-task-camera')) el('add-task-camera').value=''; }
       if(context === 'edit') { if(el('edit-task-image')) el('edit-task-image').value=''; if(el('edit-task-camera')) el('edit-task-camera').value=''; }
     };
 
-    // Setup Drag & Drop Listeners (hanya jika element ujud)
+    // Setup Drag & Drop regular tasks
     setTimeout(() => {
-        const dropZone = el('drop-zone');
-        const imgInputAdd = el('add-task-image');
-        const camInputAdd = el('add-task-camera'); 
-        
+        const dropZone = el('drop-zone'); const imgInputAdd = el('add-task-image'); const camInputAdd = el('add-task-camera'); 
         if(dropZone && imgInputAdd && camInputAdd) {
             ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eName => { dropZone.addEventListener(eName, preventDefaults, false); });
             function preventDefaults(e) { e.preventDefault(); e.stopPropagation(); }
             ['dragenter', 'dragover'].forEach(eName => { dropZone.addEventListener(eName, () => dropZone.classList.add('drag-over'), false); });
             ['dragleave', 'drop'].forEach(eName => { dropZone.addEventListener(eName, () => dropZone.classList.remove('drag-over'), false); });
             dropZone.addEventListener('drop', (e) => { const dt = e.dataTransfer; window.handleTaskImages(dt.files, 'add'); });
-            
             imgInputAdd.addEventListener('change', function() { window.handleTaskImages(this.files, 'add'); });
             camInputAdd.addEventListener('change', function() { window.handleTaskImages(this.files, 'add'); });
         }
-        
-        const imgInputEdit = el('edit-task-image');
-        const camInputEdit = el('edit-task-camera');
+        const imgInputEdit = el('edit-task-image'); const camInputEdit = el('edit-task-camera');
         if(imgInputEdit) imgInputEdit.addEventListener('change', function() { window.handleTaskImages(this.files, 'edit'); });
         if(camInputEdit) camInputEdit.addEventListener('change', function() { window.handleTaskImages(this.files, 'edit'); });
     }, 1000);
 
-
     el('form-add-task').addEventListener('submit', async (e) => {
       e.preventDefault();
       if(!currentUser) return;
-      
       const typeVal = el('add-task-type').value;
       if(!typeVal || typeVal === "CREATE_NEW") { window.showAlert("Sila pilih Kategori Permohonan yang sah."); return; }
-
       const btn = el('add-task-btn'); btn.disabled = true; btn.textContent = 'Menyimpan...';
-      
       const newTask = {
-        name: el('add-task-name').value.trim(),
-        rujukan: el('add-task-rujukan').value.trim(),
-        phone: el('add-task-phone').value.trim(),
-        address: el('add-task-address').value.trim(),
-        type: typeVal,
-        status: el('add-task-status').value,
-        remark: '', // Ruangan remark asal masa tambah (kosong)
-        images: [...currentTaskImages],
-        createdAt: Date.now()
+        name: el('add-task-name').value.trim(), rujukan: el('add-task-rujukan').value.trim(),
+        phone: el('add-task-phone').value.trim(), address: el('add-task-address').value.trim(),
+        type: typeVal, status: el('add-task-status').value, remark: '', images: [...currentTaskImages], createdAt: Date.now()
       };
-
       try {
         await setDoc(doc(collection(db, 'artifacts', appId, 'public', 'data', 'tasks')), newTask);
         window.closeModal('modal-add-task');
-        
         if (userProfile.googleWebhook && newTask.images && newTask.images.length > 0) {
-           const uploadPromises = newTask.images.map((imgB64, i) => {
-               return fetch(userProfile.googleWebhook, {
-                  method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain' },
-                  body: JSON.stringify({ action: 'upload_image', name: `${newTask.name}_${newTask.rujukan}_${i+1}`, base64: imgB64 })
-               }).catch(console.error);
-           });
+           const uploadPromises = newTask.images.map((imgB64, i) => fetch(userProfile.googleWebhook, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ action: 'upload_image', name: `${newTask.name}_${newTask.rujukan}_${i+1}`, base64: imgB64 }) }).catch(console.error));
            await Promise.all(uploadPromises);
         }
         window.showAlert("Task dan Gambar berjaya disimpan!");
-      } catch(e) { console.error(e); }
-      finally { btn.disabled = false; btn.textContent = 'Simpan Task'; }
+      } catch(e) { console.error(e); } finally { btn.disabled = false; btn.textContent = 'Simpan Task'; }
     });
 
     window.openTaskPreview = (id) => {
-      const task = taskRecords.find(t => t.id === id);
-      if(!task) return;
-      selectedTaskId = id;
-      
-      window.toggleTaskEditMode(false);
-      
-      el('prev-task-name').textContent = task.name;
-      el('prev-task-rujukan').textContent = task.rujukan || task.mykad || '-';
-      el('prev-task-phone').textContent = task.phone;
-      el('prev-task-type').textContent = task.type;
-      el('prev-task-address').textContent = task.address;
-      el('prev-task-remark').textContent = task.remark || '-'; // Paparkan remark
+      const task = taskRecords.find(t => t.id === id); if(!task) return; selectedTaskId = id; window.toggleTaskEditMode(false);
+      el('prev-task-name').textContent = task.name; el('prev-task-rujukan').textContent = task.rujukan || task.mykad || '-';
+      el('prev-task-phone').textContent = task.phone; el('prev-task-type').textContent = task.type;
+      el('prev-task-address').textContent = task.address; el('prev-task-remark').textContent = task.remark || '-';
       el('prev-task-date').textContent = new Date(task.createdAt).toLocaleDateString('ms-MY');
-      
-      const header = el('prev-task-header');
-      const badge = el('prev-task-status-badge');
-      badge.textContent = task.status;
-      
+      const header = el('prev-task-header'); const badge = el('prev-task-status-badge'); badge.textContent = task.status;
       if(task.status === 'Dalam Proses') { header.className = 'h-16 relative bg-orange-500 shrink-0'; badge.className = 'px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider bg-orange-100 text-orange-700'; }
       else if(task.status === 'Selesai Tugasan') { header.className = 'h-16 relative bg-emerald-500 shrink-0'; badge.className = 'px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider bg-emerald-100 text-emerald-700'; }
       else { header.className = 'h-16 relative bg-slate-500 shrink-0'; badge.className = 'px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider bg-slate-100 text-slate-700'; }
 
       const imagesArr = task.images || (task.imageBase64 ? [task.imageBase64] : []);
-      const grid = el('prev-task-images-grid');
-      grid.innerHTML = '';
+      const grid = el('prev-task-images-grid'); grid.innerHTML = '';
       if(imagesArr.length > 0) {
         show('prev-task-img-container');
-        imagesArr.forEach((img, idx) => {
-          grid.innerHTML += `
+        imagesArr.forEach((img, idx) => { grid.innerHTML += `<div class="relative group"><img src="${img}" class="w-full h-32 md:h-40 object-cover rounded-xl border border-slate-200" /><button onclick="window.downloadTaskImage(${idx})" class="absolute bottom-2 right-2 bg-slate-900/70 hover:bg-slate-900 text-white p-2 rounded-lg backdrop-blur-sm transition-colors shadow-lg"><i data-lucide="download" class="w-4 h-4"></i></button></div>`; });
+      } else { hide('prev-task-img-container'); }
+      window.openModal('modal-preview-task'); updateIcons();
+    };
+
+    window.toggleTaskEditMode = (showEdit) => {
+      if(showEdit) {
+        hide('prev-task-view-mode'); show('prev-task-edit-mode');
+        const task = taskRecords.find(t => t.id === selectedTaskId);
+        if(task) { el('edit-task-status').value = task.status; el('edit-task-remark').value = task.remark || ''; el('edit-task-readonly-name').textContent = task.name; el('edit-task-readonly-rujukan').textContent = task.rujukan || task.mykad || '-'; currentTaskImages = task.images ? [...task.images] : (task.imageBase64 ? [task.imageBase64] : []); window.renderImagePreviews('edit'); }
+      } else { show('prev-task-view-mode'); hide('prev-task-edit-mode'); }
+    };
+
+    el('prev-task-edit-mode').addEventListener('submit', async (e) => {
+      e.preventDefault(); if(!currentUser || !selectedTaskId) return;
+      const btn = el('edit-task-btn'); btn.disabled = true;
+      const nStatus = el('edit-task-status').value; const nRemark = el('edit-task-remark').value.trim(); const task = taskRecords.find(t => t.id === selectedTaskId);
+      try {
+        await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'tasks', selectedTaskId), { status: nStatus, remark: nRemark, images: currentTaskImages }, {merge:true});
+        if (userProfile.googleWebhook && currentTaskImages && currentTaskImages.length > 0) {
+           const uploadPromises = currentTaskImages.map((imgB64, i) => fetch(userProfile.googleWebhook, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ action: 'upload_image', name: `${task.name}_${task.rujukan}_Kemaskini_${i+1}`, base64: imgB64 }) }).catch(console.error));
+           await Promise.all(uploadPromises);
+        }
+        task.status = nStatus; task.remark = nRemark; task.images = [...currentTaskImages]; window.openTaskPreview(selectedTaskId); 
+      } catch(err) { console.error(err); window.showAlert("Gagal mengemaskini maklumat task."); } finally { btn.disabled = false; }
+    });
+
+    window.downloadTaskImage = (idx) => {
+      const task = taskRecords.find(t => t.id === selectedTaskId); if(!task) return;
+      const imagesArr = task.images || (task.imageBase64 ? [task.imageBase64] : []); if(!imagesArr[idx]) return;
+      const a = document.createElement('a'); a.href = imagesArr[idx]; a.download = `Siasatan_${task.name.replace(/\s+/g, '_')}_${Date.now()}_img${idx+1}.jpg`; document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    };
+
+    window.deleteTask = async () => {
+      if(!currentUser || !selectedTaskId) return;
+      window.showConfirm("Padam task siasatan ini?", async () => { try { await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'tasks', selectedTaskId)); window.closeModal('modal-preview-task'); } catch(e){ console.error(e); } });
+    };
+
+    // ==========================================
+    // TASK LAPANGAN LOGIC (MODUL BAHARU)
+    // ==========================================
+
+    // --- Task Lapangan (Parent) ---
+    el('form-add-lapangan').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if(!currentUser) return;
+      const btn = el('add-lapangan-btn'); btn.disabled = true; btn.textContent = 'Menyimpan...';
+      const nName = el('add-lapangan-name').value.trim();
+      const nDate = el('add-lapangan-date').value;
+      try {
+        await setDoc(doc(collection(db, 'artifacts', appId, 'public', 'data', 'lapangan_tasks')), {
+          name: nName, date: nDate, createdAt: Date.now()
+        });
+        window.closeModal('modal-add-lapangan');
+      } catch(e) { console.error(e); }
+      finally { btn.disabled = false; btn.textContent = 'Simpan Task Lapangan'; }
+    });
+
+    window.renderLapanganTasks = () => {
+      const cont = el('lapangan-list-container');
+      if(!cont) return;
+      cont.innerHTML = '';
+      if(lapanganTasks.length === 0) {
+        cont.innerHTML = `<div class="col-span-full py-10 text-center text-slate-400 font-medium text-sm">Tiada Task Lapangan.</div>`; return;
+      }
+      lapanganTasks.forEach(task => {
+         const tDate = new Date(task.date).toLocaleDateString('ms-MY', { day: 'numeric', month: 'long', year: 'numeric' });
+         // Count subtasks
+         const totalSub = lapanganSubtasks.filter(s => s.parentId === task.id).length;
+         
+         cont.innerHTML += `
+           <div class="border border-slate-200 p-5 rounded-[1.2rem] bg-white hover:border-blue-300 transition-colors relative cursor-pointer" onclick="window.openLapanganDetail('${task.id}')">
+             <div class="flex justify-between items-start mb-3">
+               <span class="px-2 py-1 bg-blue-100 text-blue-700 text-[9px] font-bold rounded uppercase tracking-wider">Folder Lapangan</span>
+               <button onclick="window.deleteLapangan(event, '${task.id}')" class="text-slate-400 hover:text-red-500 transition-colors"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+             </div>
+             <h4 class="font-bold text-base mb-3 leading-snug text-slate-900">${task.name}</h4>
+             <div class="flex flex-col gap-2 mt-auto border-t border-slate-100 pt-3">
+               <p class="text-xs font-medium text-slate-500 flex items-center"><i data-lucide="calendar" class="w-3.5 h-3.5 mr-2 text-slate-400"></i> ${tDate}</p>
+               <p class="text-xs font-bold text-slate-700 flex items-center"><i data-lucide="layers" class="w-3.5 h-3.5 mr-2 text-blue-500"></i> ${totalSub} Sub Task</p>
+             </div>
+           </div>
+         `;
+      });
+      updateIcons();
+    };
+
+    window.deleteLapangan = (e, id) => {
+      e.stopPropagation();
+      if(!currentUser) return;
+      window.showConfirm("Padam Task Lapangan ini? Semua sub-task didalamnya tidak akan dipadam secara automatik.", async () => {
+        await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'lapangan_tasks', id));
+      });
+    };
+
+    window.openLapanganDetail = (id) => {
+      const task = lapanganTasks.find(t => t.id === id);
+      if(!task) return;
+      selectedLapanganId = id;
+      el('lapangan-detail-title').textContent = task.name;
+      el('lapangan-detail-date').textContent = new Date(task.date).toLocaleDateString('ms-MY', { day: 'numeric', month: 'long', year: 'numeric' });
+      
+      window.switchView('lapangan-detail');
+      window.renderLapanganSubtasks();
+    };
+
+    window.backToLapangan = () => {
+      selectedLapanganId = null;
+      window.switchView('lapangan');
+    };
+
+    // --- Sub Task Lapangan ---
+    window.renderSubtaskTypes = () => {
+      const sel = el('add-subtask-type');
+      if(!sel) return;
+      const currentVal = sel.value;
+      sel.innerHTML = '<option value="" disabled selected>Pilih Kategori...</option>';
+      taskTypesData.forEach(t => { const opt = document.createElement('option'); opt.value = t.name; opt.textContent = t.name; sel.appendChild(opt); });
+      const optNew = document.createElement('option'); optNew.value = "CREATE_NEW"; optNew.innerHTML = "&#43; Tambah Baru"; optNew.className = "font-bold text-blue-600 bg-blue-50"; sel.appendChild(optNew);
+      if (currentVal && currentVal !== "CREATE_NEW" && taskTypesData.find(t=>t.name===currentVal)) sel.value = currentVal;
+    };
+
+    window.handleSubtaskTypeChange = (selectEl) => {
+      if(selectEl.value === 'CREATE_NEW') { show('new-subtask-type-container'); el('new-subtask-type-input').focus(); } else { hide('new-subtask-type-container'); }
+    };
+    window.saveNewSubtaskType = async () => {
+      const input = el('new-subtask-type-input'); const newType = input.value.trim();
+      if(newType !== '') {
+        if(!currentUser) return;
+        await setDoc(doc(collection(db, 'artifacts', appId, 'public', 'data', 'task_types')), { name: newType, createdAt: Date.now() });
+        const sel = el('add-subtask-type'); const opt = document.createElement('option');
+        opt.value = newType; opt.textContent = newType; sel.insertBefore(opt, sel.lastChild); sel.value = newType;
+        input.value = ''; hide('new-subtask-type-container');
+      } else { window.showAlert("Sila taipkan nama kategori baru."); }
+    };
+    window.cancelNewSubtaskType = () => { el('new-subtask-type-input').value = ''; hide('new-subtask-type-container'); el('add-subtask-type').value = ''; };
+
+    window.renderLapanganSubtasks = () => {
+      const tbody = el('lapangan-subtasks-body');
+      if(!tbody || !selectedLapanganId) return;
+      tbody.innerHTML = '';
+      
+      const subs = lapanganSubtasks.filter(s => s.parentId === selectedLapanganId);
+      if(subs.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" class="py-10 text-center text-slate-400 font-medium text-sm">Tiada Sub Task didalam folder lapangan ini.</td></tr>`; return;
+      }
+
+      subs.forEach((r, idx) => {
+        let statusBadge = '';
+        const stat = r.status || 'Draft';
+        if(stat === 'Draft') statusBadge = 'bg-slate-200 text-slate-700';
+        else if(stat === 'KIV') statusBadge = 'bg-orange-100 text-orange-700';
+        else if(stat === 'Selesai') statusBadge = 'bg-emerald-100 text-emerald-700';
+
+        const tr = document.createElement('tr');
+        tr.className = "hover:bg-slate-50 transition-colors group cursor-pointer border-b border-slate-100";
+        tr.onclick = () => window.openSubtaskPreview(r.id);
+        tr.innerHTML = `
+          <td class="py-4 px-3 font-bold text-slate-500 text-sm">${idx + 1}</td>
+          <td class="py-4 px-3">
+             <p class="font-bold text-slate-800 text-sm leading-tight">${r.name}</p>
+             <p class="text-slate-500 text-xs mt-0.5">${r.rujukan || '-'} • ${r.phone}</p>
+          </td>
+          <td class="py-4 px-3 font-bold text-slate-600 text-sm">${r.kawasan}</td>
+          <td class="py-4 px-3 font-bold text-slate-600 text-sm"><span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-[10px] uppercase tracking-wider">${r.type}</span></td>
+          <td class="py-4 px-3"><span class="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider ${statusBadge}">${stat}</span></td>
+          <td class="py-4 px-3 text-right"><button class="text-blue-600 hover:text-blue-800 text-xs font-bold bg-blue-50 px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">Lihat</button></td>
+        `;
+        tbody.appendChild(tr);
+      });
+      updateIcons();
+    };
+
+    // Subtask Image Handlers
+    window.handleSubtaskImages = async (files, context) => { 
+      const validFiles = Array.from(files).filter(f => f.type.startsWith('image/'));
+      if (validFiles.length === 0) { window.showAlert('Sila pilih format gambar sahaja.'); return; }
+      if (currentSubtaskImages.length + validFiles.length > 4) { window.showAlert('Maksimum 4 gambar sahaja dibenarkan.'); return; }
+      for (let file of validFiles) { try { const b64 = await window.processImageFile(file); currentSubtaskImages.push(b64); } catch(e) { console.error(e); } }
+      window.renderSubtaskImagePreviews(context);
+    };
+
+    window.removeSubtaskImage = (index, context) => { currentSubtaskImages.splice(index, 1); window.renderSubtaskImagePreviews(context); };
+
+    window.renderSubtaskImagePreviews = (context) => {
+      const containerId = context === 'add' ? 'add-subtask-image-previews' : 'edit-subtask-image-previews';
+      const dropId = context === 'add' ? 'drop-zone-subtask-content' : null;
+      const cont = el(containerId); if(!cont) return; cont.innerHTML = '';
+      
+      if (currentSubtaskImages.length > 0) {
+        show(containerId); if(dropId) hide(dropId);
+        currentSubtaskImages.forEach((img, idx) => {
+          cont.innerHTML += `
             <div class="relative group">
-              <img src="${img}" class="w-full h-32 md:h-40 object-cover rounded-xl border border-slate-200" />
-              <button onclick="window.downloadTaskImage(${idx})" class="absolute bottom-2 right-2 bg-slate-900/70 hover:bg-slate-900 text-white p-2 rounded-lg backdrop-blur-sm transition-colors shadow-lg">
-                <i data-lucide="download" class="w-4 h-4"></i>
+              <img src="${img}" class="w-full h-24 object-cover rounded-lg shadow-sm border border-slate-200" />
+              <button type="button" onclick="window.removeSubtaskImage(${idx}, '${context}')" class="absolute top-1 right-1 bg-red-500 text-white p-1 rounded-full hover:bg-red-600 shadow-md">
+                <i data-lucide="x" class="w-3 h-3"></i>
               </button>
             </div>
           `;
         });
       } else {
-        hide('prev-task-img-container');
+        if(dropId) { hide(containerId); show(dropId); }
+        else { cont.innerHTML = '<p class="text-xs text-slate-400 col-span-2">Tiada gambar dilampirkan.</p>'; }
       }
-
-      window.openModal('modal-preview-task');
       updateIcons();
+      if(context === 'add') { if(el('add-subtask-image')) el('add-subtask-image').value=''; if(el('add-subtask-camera')) el('add-subtask-camera').value=''; }
+      if(context === 'edit') { if(el('edit-subtask-image')) el('edit-subtask-image').value=''; if(el('edit-subtask-camera')) el('edit-subtask-camera').value=''; }
     };
 
-    window.toggleTaskEditMode = (showEdit) => {
-      if(showEdit) {
-        hide('prev-task-view-mode'); 
-        show('prev-task-edit-mode');
-        const task = taskRecords.find(t => t.id === selectedTaskId);
-        if(task) {
-          el('edit-task-status').value = task.status;
-          el('edit-task-remark').value = task.remark || ''; // Isikan remark
-          el('edit-task-readonly-name').textContent = task.name;
-          el('edit-task-readonly-rujukan').textContent = task.rujukan || task.mykad || '-';
-          
-          currentTaskImages = task.images ? [...task.images] : (task.imageBase64 ? [task.imageBase64] : []);
-          window.renderImagePreviews('edit');
+    // Setup Drag & Drop Subtasks
+    setTimeout(() => {
+        const dropZoneSub = el('drop-zone-subtask'); const imgInputSubAdd = el('add-subtask-image'); const camInputSubAdd = el('add-subtask-camera'); 
+        if(dropZoneSub && imgInputSubAdd && camInputSubAdd) {
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eName => { dropZoneSub.addEventListener(eName, preventDefaults, false); });
+            function preventDefaults(e) { e.preventDefault(); e.stopPropagation(); }
+            ['dragenter', 'dragover'].forEach(eName => { dropZoneSub.addEventListener(eName, () => dropZoneSub.classList.add('drag-over'), false); });
+            ['dragleave', 'drop'].forEach(eName => { dropZoneSub.addEventListener(eName, () => dropZoneSub.classList.remove('drag-over'), false); });
+            dropZoneSub.addEventListener('drop', (e) => { const dt = e.dataTransfer; window.handleSubtaskImages(dt.files, 'add'); });
+            imgInputSubAdd.addEventListener('change', function() { window.handleSubtaskImages(this.files, 'add'); });
+            camInputSubAdd.addEventListener('change', function() { window.handleSubtaskImages(this.files, 'add'); });
         }
-      } else {
-        show('prev-task-view-mode'); 
-        hide('prev-task-edit-mode');
-      }
-    };
+        const imgInputSubEdit = el('edit-subtask-image'); const camInputSubEdit = el('edit-subtask-camera');
+        if(imgInputSubEdit) imgInputSubEdit.addEventListener('change', function() { window.handleSubtaskImages(this.files, 'edit'); });
+        if(camInputSubEdit) camInputSubEdit.addEventListener('change', function() { window.handleSubtaskImages(this.files, 'edit'); });
+    }, 1000);
 
-    el('prev-task-edit-mode').addEventListener('submit', async (e) => {
+    el('form-add-subtask').addEventListener('submit', async (e) => {
       e.preventDefault();
-      if(!currentUser || !selectedTaskId) return;
-      const btn = el('edit-task-btn'); btn.disabled = true;
-      
-      const nStatus = el('edit-task-status').value;
-      const nRemark = el('edit-task-remark').value.trim(); // Ambil remark
-      const task = taskRecords.find(t => t.id === selectedTaskId);
-      
+      if(!currentUser || !selectedLapanganId) return;
+      const typeVal = el('add-subtask-type').value;
+      if(!typeVal || typeVal === "CREATE_NEW") { window.showAlert("Sila pilih Jenis Permohonan yang sah."); return; }
+
+      const btn = el('add-subtask-btn'); btn.disabled = true; btn.textContent = 'Menyimpan...';
+      const newSubtask = {
+        parentId: selectedLapanganId,
+        name: el('add-subtask-name').value.trim(),
+        rujukan: el('add-subtask-rujukan').value.trim(),
+        phone: el('add-subtask-phone').value.trim(),
+        kawasan: el('add-subtask-kawasan').value.trim(),
+        address: el('add-subtask-address').value.trim(),
+        type: typeVal,
+        status: el('add-subtask-status').value,
+        remark: '',
+        images: [...currentSubtaskImages],
+        createdAt: Date.now()
+      };
+
       try {
-        await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'tasks', selectedTaskId), { 
-          status: nStatus,
-          remark: nRemark,
-          images: currentTaskImages
-        }, {merge:true});
+        await setDoc(doc(collection(db, 'artifacts', appId, 'public', 'data', 'lapangan_subtasks')), newSubtask);
+        window.closeModal('modal-add-subtask');
         
-        // Menggunakan Promise.all untuk pastikan browser tidak cancel HTTP Request semasa modal ditutup
-        if (userProfile.googleWebhook && currentTaskImages && currentTaskImages.length > 0) {
-           const uploadPromises = currentTaskImages.map((imgB64, i) => {
+        // Hantar ke Webhook G-Drive & G-Sheet menggunakan Promise.all untuk mengelak dibatalkan oleh browser
+        if (userProfile.googleWebhook && newSubtask.images && newSubtask.images.length > 0) {
+           const uploadPromises = newSubtask.images.map((imgB64, i) => {
                return fetch(userProfile.googleWebhook, {
                   method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain' },
-                  body: JSON.stringify({ action: 'upload_image', name: `${task.name}_${task.rujukan}_Kemaskini_${i+1}`, base64: imgB64 })
+                  body: JSON.stringify({ action: 'upload_image', name: `Subtask_${newSubtask.name}_${newSubtask.rujukan}_${i+1}`, base64: imgB64 })
                }).catch(console.error);
            });
            await Promise.all(uploadPromises);
         }
-        
-        task.status = nStatus; 
-        task.remark = nRemark;
-        task.images = [...currentTaskImages];
-        window.openTaskPreview(selectedTaskId); 
-      } catch(err) {
-        console.error(err);
-        window.showAlert("Gagal mengemaskini maklumat task.");
-      } finally {
-        btn.disabled = false;
-      }
+        window.showAlert("Sub Task dan Gambar berjaya disimpan!");
+      } catch(e) { console.error(e); }
+      finally { btn.disabled = false; btn.textContent = 'Simpan Sub Task'; }
     });
 
-    window.downloadTaskImage = (idx) => {
-      const task = taskRecords.find(t => t.id === selectedTaskId);
-      if(!task) return;
-      const imagesArr = task.images || (task.imageBase64 ? [task.imageBase64] : []);
-      if(!imagesArr[idx]) return;
+    window.openSubtaskPreview = (id) => {
+      const task = lapanganSubtasks.find(t => t.id === id); if(!task) return; selectedSubtaskId = id; window.toggleSubtaskEditMode(false);
+      el('prev-subtask-name').textContent = task.name; el('prev-subtask-rujukan').textContent = task.rujukan || '-';
+      el('prev-subtask-phone').textContent = task.phone; el('prev-subtask-type').textContent = task.type;
+      el('prev-subtask-kawasan').textContent = task.kawasan || '-';
+      el('prev-subtask-address').textContent = task.address; el('prev-subtask-remark').textContent = task.remark || '-';
+      el('prev-subtask-date').textContent = new Date(task.createdAt).toLocaleDateString('ms-MY');
+
+      const stat = task.status || 'Draft';
+      const header = el('prev-subtask-header');
+      const badge = el('prev-subtask-status-badge');
+      badge.textContent = stat;
       
-      const a = document.createElement('a');
-      a.href = imagesArr[idx];
-      a.download = `Siasatan_${task.name.replace(/\s+/g, '_')}_${Date.now()}_img${idx+1}.jpg`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
+      if(stat === 'Draft') { header.className = 'h-16 relative transition-colors bg-slate-500 shrink-0'; badge.className = 'px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider bg-slate-100 text-slate-700'; }
+      else if(stat === 'KIV') { header.className = 'h-16 relative transition-colors bg-orange-500 shrink-0'; badge.className = 'px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider bg-orange-100 text-orange-700'; }
+      else if(stat === 'Selesai') { header.className = 'h-16 relative transition-colors bg-emerald-500 shrink-0'; badge.className = 'px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider bg-emerald-100 text-emerald-700'; }
+
+      const imagesArr = task.images || [];
+      const grid = el('prev-subtask-images-grid'); grid.innerHTML = '';
+      if(imagesArr.length > 0) {
+        show('prev-subtask-img-container');
+        imagesArr.forEach((img, idx) => { grid.innerHTML += `<div class="relative group"><img src="${img}" class="w-full h-32 md:h-40 object-cover rounded-xl border border-slate-200" /><button onclick="window.downloadSubtaskImage(${idx})" class="absolute bottom-2 right-2 bg-slate-900/70 hover:bg-slate-900 text-white p-2 rounded-lg backdrop-blur-sm transition-colors shadow-lg"><i data-lucide="download" class="w-4 h-4"></i></button></div>`; });
+      } else { hide('prev-subtask-img-container'); }
+      window.openModal('modal-preview-subtask'); updateIcons();
     };
 
-    window.deleteTask = async () => {
-      if(!currentUser || !selectedTaskId) return;
-      window.showConfirm("Padam task siasatan ini?", async () => {
-        try {
-          await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'tasks', selectedTaskId));
-          window.closeModal('modal-preview-task');
-        } catch(e){ console.error(e); }
-      });
+    window.toggleSubtaskEditMode = (showEdit) => {
+      if(showEdit) {
+        hide('prev-subtask-view-mode'); show('prev-subtask-edit-mode');
+        const task = lapanganSubtasks.find(t => t.id === selectedSubtaskId);
+        if(task) { 
+           el('edit-subtask-status').value = task.status || 'Draft';
+           el('edit-subtask-remark').value = task.remark || ''; 
+           el('edit-subtask-readonly-name').textContent = task.name; 
+           el('edit-subtask-readonly-rujukan').textContent = task.rujukan || '-'; 
+           currentSubtaskImages = task.images ? [...task.images] : []; 
+           window.renderSubtaskImagePreviews('edit'); 
+        }
+      } else { show('prev-subtask-view-mode'); hide('prev-subtask-edit-mode'); }
     };
+
+    el('prev-subtask-edit-mode').addEventListener('submit', async (e) => {
+      e.preventDefault(); if(!currentUser || !selectedSubtaskId) return;
+      const btn = el('edit-subtask-btn'); btn.disabled = true;
+      const nStatus = el('edit-subtask-status').value;
+      const nRemark = el('edit-subtask-remark').value.trim(); const task = lapanganSubtasks.find(t => t.id === selectedSubtaskId);
+      try {
+        await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'lapangan_subtasks', selectedSubtaskId), { remark: nRemark, status: nStatus, images: currentSubtaskImages }, {merge:true});
+        if (userProfile.googleWebhook && currentSubtaskImages && currentSubtaskImages.length > 0) {
+           const uploadPromises = currentSubtaskImages.map((imgB64, i) => fetch(userProfile.googleWebhook, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ action: 'upload_image', name: `Subtask_${task.name}_${task.rujukan}_Kemaskini_${i+1}`, base64: imgB64 }) }).catch(console.error));
+           await Promise.all(uploadPromises);
+        }
+        task.remark = nRemark; task.status = nStatus; task.images = [...currentSubtaskImages]; window.openSubtaskPreview(selectedSubtaskId); 
+      } catch(err) { console.error(err); window.showAlert("Gagal mengemaskini maklumat task."); } finally { btn.disabled = false; }
+    });
+
+    window.downloadSubtaskImage = (idx) => {
+      const task = lapanganSubtasks.find(t => t.id === selectedSubtaskId); if(!task) return;
+      const imagesArr = task.images || []; if(!imagesArr[idx]) return;
+      const a = document.createElement('a'); a.href = imagesArr[idx]; a.download = `Siasatan_${task.name.replace(/\s+/g, '_')}_${Date.now()}_img${idx+1}.jpg`; document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    };
+
+    window.deleteSubtask = async () => {
+      if(!currentUser || !selectedSubtaskId) return;
+      window.showConfirm("Padam sub task siasatan ini?", async () => { try { await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'lapangan_subtasks', selectedSubtaskId)); window.closeModal('modal-preview-subtask'); } catch(e){ console.error(e); } });
+    };
+
 
     // ==========================================
-    // Tarikh Program Logic (BARU)
+    // Tarikh Program Logic 
     // ==========================================
 
     window.renderDashboardPrograms = () => {
@@ -1673,7 +2095,6 @@
       const today = new Date();
       today.setHours(0,0,0,0);
 
-      // Hanya program aktif (harini dan ke atas)
       const activePrograms = programRecords.filter(p => {
          const pDate = new Date(p.date);
          return pDate >= today;
@@ -1723,7 +2144,6 @@
          const isPast = pDate < today;
          const dStr = pDate.toLocaleDateString('ms-MY', { day: 'numeric', month: 'long', year: 'numeric' });
 
-         // Styling logic: Kelabu dan Strikethrough jika telah lepas
          const cardClass = isPast ? "bg-slate-100 opacity-70 grayscale" : "bg-white hover:border-blue-300";
          const textClass = isPast ? "text-slate-500 line-through decoration-slate-400" : "text-slate-900";
          const iconColor = isPast ? "text-slate-400" : "text-blue-500";
