@@ -2,14 +2,22 @@
 <html lang="ms">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sistem MyTask2u</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Sistem MyTarget Premium</title>
   
   <link rel="icon" href="https://lh3.googleusercontent.com/d/1mnViIqClqdLFbSx5kvgw50zhgU0fs-0a" type="image/png">
   <link rel="shortcut icon" href="https://lh3.googleusercontent.com/d/1mnViIqClqdLFbSx5kvgw50zhgU0fs-0a" type="image/x-icon">
   <link rel="apple-touch-icon" href="https://lh3.googleusercontent.com/d/1mnViIqClqdLFbSx5kvgw50zhgU0fs-0a">
   
+  <meta name="application-name" content="MyTarget">
+  <meta name="apple-mobile-web-app-title" content="MyTarget">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#2563eb"> <link rel="manifest" href="manifest.json">
+  
   <script src="https://cdn.tailwindcss.com"></script>
+  
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <script>
@@ -32,7 +40,6 @@
 </head>
 <body class="bg-slate-50 text-slate-800 selection:bg-blue-200 overflow-hidden w-full h-screen">
 
-  <!-- HALAMAN LOG MASUK -->
   <div id="login-view" class="min-h-screen relative flex flex-col items-center justify-center bg-slate-950 overflow-hidden px-4 z-50">
     <div class="absolute inset-0 pointer-events-none overflow-hidden flex items-center justify-center opacity-20">
       <div class="absolute w-[800px] h-[800px] bg-blue-600 rounded-full blur-[150px] top-[-20%] left-[-10%]"></div>
@@ -45,7 +52,7 @@
       </div>
       <div class="text-center mb-8">
         <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight mb-2">Log Masuk</h1>
-        <p class="text-sm text-slate-500 font-medium">"Fokus pada matlamat, bukan pada halangan"</p>
+        <p class="text-sm text-slate-500 font-medium">Akses ruang kerja selamat anda.</p>
       </div>
       <div id="login-error" class="hidden mb-6 p-3 rounded-xl bg-red-50 text-red-600 text-sm text-center border border-red-100 flex items-center justify-center gap-2">
         <i data-lucide="alert-circle" class="w-4 h-4"></i> <span id="login-error-text">Ralat</span>
@@ -68,7 +75,6 @@
     </div>
   </div>
 
-  <!-- SUSUN ATUR SISTEM UTAMA -->
   <div id="system-layout" class="hidden-force flex h-screen bg-slate-100 relative w-full">
     <div id="mobile-overlay" class="hidden fixed inset-0 bg-slate-900/50 z-20 md:hidden backdrop-blur-sm" onclick="window.toggleSidebar()"></div>
 
@@ -85,7 +91,7 @@
             <i data-lucide="layout-dashboard" class="w-4 h-4 mr-3 text-inherit"></i> Dashboard
           </button>
           <button onclick="window.switchView('task')" id="nav-task" class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-slate-500 hover:bg-slate-50 hover:text-slate-900">
-            <i data-lucide="clipboard-list" class="w-4 h-4 mr-3 text-inherit"></i> Task Siasatan Kes
+            <i data-lucide="clipboard-list" class="w-4 h-4 mr-3 text-inherit"></i> Task Siasatan
           </button>
           <button onclick="window.switchView('lapangan')" id="nav-lapangan" class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-slate-500 hover:bg-slate-50 hover:text-slate-900">
             <i data-lucide="map-pin" class="w-4 h-4 mr-3 text-inherit"></i> Task Lapangan
@@ -113,7 +119,7 @@
           <i data-lucide="log-out" class="w-4 h-4 mr-3 text-inherit"></i> Log Keluar
         </button>
         <div class="text-center">
-          <p class="text-[10px] text-slate-400 font-semibold tracking-widest uppercase mb-1">Versi 1.5.1</p>
+          <p class="text-[10px] text-slate-400 font-semibold tracking-widest uppercase mb-1">Versi 1.6.0</p>
           <p class="text-[10px] text-slate-400/80 font-medium">2026 @ Aidee Creatives</p>
         </div>
       </div>
@@ -139,11 +145,9 @@
       <div class="flex-1 overflow-y-auto p-3 sm:p-4 md:p-6 lg:p-8 w-full custom-scrollbar">
         <div class="w-full min-h-full relative flex flex-col">
           
-          <!-- VIEW: DASHBOARD -->
           <div id="view-dashboard" class="pb-6 transition-opacity duration-300">
             <div class="flex flex-col xl:flex-row gap-6">
               <div class="flex-1 space-y-6">
-                <!-- Stats -->
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
                   <div class="bg-gradient-to-br from-blue-500 to-blue-700 rounded-[1.5rem] p-6 shadow-lg shadow-blue-600/20 text-white relative overflow-hidden">
                     <div class="absolute right-[-10%] top-[-10%] w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
@@ -162,7 +166,6 @@
                   </div>
                 </div>
 
-                <!-- Table Section Asnaf -->
                 <div class="bg-white rounded-[1.5rem] shadow-sm border border-slate-200 p-4 md:p-6 w-full overflow-hidden">
                   <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
                     <h3 class="font-extrabold text-slate-900 text-lg">Senarai Rekod Pemohon</h3>
@@ -191,7 +194,6 @@
                 </div>
               </div>
               
-              <!-- Right Sidebar: Tarikh Program Aktif -->
               <div class="w-full xl:w-80 shrink-0 space-y-6">
                 <div class="bg-white rounded-[1.5rem] shadow-sm border border-slate-200 p-5 w-full">
                   <div class="flex items-center justify-between mb-4">
@@ -204,7 +206,6 @@
             </div>
           </div>
 
-          <!-- VIEW: TASK SIASATAN -->
           <div id="view-task" class="hidden-force space-y-6 pb-6 transition-opacity duration-300 w-full">
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 mb-6">
               <div class="bg-gradient-to-br from-orange-400 to-orange-600 rounded-[1.5rem] p-6 shadow-lg shadow-orange-500/20 text-white relative overflow-hidden">
@@ -250,7 +251,6 @@
             </div>
           </div>
 
-          <!-- VIEW: TASK LAPANGAN (PARENT) -->
           <div id="view-lapangan" class="hidden-force space-y-6 pb-6 transition-opacity duration-300 w-full">
             <div class="bg-white rounded-[1.5rem] shadow-sm border border-slate-200 p-4 md:p-6 w-full overflow-hidden min-h-[500px]">
               <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
@@ -261,7 +261,6 @@
             </div>
           </div>
 
-          <!-- VIEW: TASK LAPANGAN DETAILS (SUB TASKS) -->
           <div id="view-lapangan-detail" class="hidden-force space-y-6 pb-6 transition-opacity duration-300 w-full">
             <div class="bg-white rounded-[1.5rem] shadow-sm border border-slate-200 p-4 md:p-6 w-full overflow-hidden min-h-[500px]">
               <div class="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6 border-b border-slate-100 pb-6">
@@ -290,7 +289,6 @@
             </div>
           </div>
 
-          <!-- VIEW: TARIKH PROGRAM -->
           <div id="view-program" class="hidden-force space-y-6 pb-6 transition-opacity duration-300 w-full">
             <div class="bg-white rounded-[1.5rem] shadow-sm border border-slate-200 p-4 md:p-6 w-full overflow-hidden min-h-[500px]">
               <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
@@ -301,7 +299,6 @@
             </div>
           </div>
 
-          <!-- VIEW: LINKHUB -->
           <div id="view-linkhub" class="hidden-force space-y-6 pb-6 transition-opacity duration-300 w-full">
             <div class="bg-white rounded-[1.5rem] shadow-sm border border-slate-200 p-4 md:p-6 w-full overflow-hidden min-h-[600px]">
               <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
@@ -322,7 +319,6 @@
             </div>
           </div>
 
-          <!-- VIEW: FORMAT AYAT -->
           <div id="view-format" class="hidden-force flex-col lg:flex-row gap-6 md:gap-8 h-full pb-6 lg:pb-0 transition-opacity duration-300 w-full">
             <div class="flex-1 flex flex-col space-y-4 md:space-y-6 w-full">
               <div class="bg-white rounded-[1.5rem] md:rounded-3xl shadow-sm border border-slate-200 overflow-hidden relative">
@@ -346,7 +342,6 @@
               <div id="format-notif" class="hidden bg-slate-800 text-white px-4 py-3 rounded-xl shadow-lg text-sm font-medium self-start flex items-center transition-opacity"><i data-lucide="check-circle-2" class="w-4 h-4 mr-2 text-emerald-400"></i> <span id="format-notif-text">Berjaya</span></div>
             </div>
 
-            <!-- Arkib Ayat -->
             <div class="w-full lg:w-[400px] xl:w-[45%] flex flex-col space-y-6 shrink-0">
               <div class="bg-white rounded-[1.5rem] md:rounded-3xl shadow-sm border border-slate-200 p-4 md:p-6 flex flex-col h-[600px] lg:h-[calc(100vh-10rem)] w-full">
                 <div class="flex items-center justify-between mb-4 md:mb-6">
@@ -359,7 +354,6 @@
             </div>
           </div>
 
-          <!-- VIEW: SETTINGS -->
           <div id="view-settings" class="hidden-force w-full max-w-4xl pb-6 transition-opacity duration-300">
             <div class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
               <div class="p-6 md:p-8 border-b border-slate-100">
@@ -392,7 +386,6 @@
             </div>
           </div>
 
-          <!-- FOOTER UTAMA -->
           <footer class="w-full text-center mt-auto pt-6 pb-2">
             <p class="text-xs text-slate-400 font-medium tracking-wide">2026 @ Aidee Creatives</p>
           </footer>
@@ -402,11 +395,6 @@
     </main>
   </div>
 
-  <!-- ========================================== -->
-  <!-- MODALS KESELURUHAN                         -->
-  <!-- ========================================== -->
-
-  <!-- Custom Alert/Confirm Modal -->
   <div id="custom-dialog" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-[100] p-4">
     <div class="bg-white rounded-2xl w-full max-w-sm shadow-2xl p-6 text-center border border-slate-100">
       <h3 class="text-lg font-extrabold text-slate-900 mb-2 flex items-center justify-center gap-2"><i data-lucide="info" class="w-5 h-5 text-blue-600"></i> Perhatian</h3>
@@ -418,7 +406,6 @@
     </div>
   </div>
 
-  <!-- Modal Tambah Task Siasatan -->
   <div id="modal-add-task" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
     <div class="bg-white rounded-3xl w-full max-w-2xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
       <div class="flex justify-between items-center p-6 border-b border-slate-100 shrink-0">
@@ -461,7 +448,6 @@
     </div>
   </div>
 
-  <!-- Modal Preview Task Siasatan -->
   <div id="modal-preview-task" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
     <div class="bg-white rounded-3xl w-full max-w-lg shadow-2xl overflow-hidden relative max-h-[95vh] flex flex-col">
       <div id="prev-task-header" class="h-16 relative transition-colors bg-blue-500 shrink-0">
@@ -524,7 +510,6 @@
     </div>
   </div>
 
-  <!-- Modal Tambah Task Lapangan -->
   <div id="modal-add-lapangan" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
     <div class="bg-white rounded-3xl w-full max-w-md shadow-2xl overflow-hidden relative flex flex-col">
       <div class="flex justify-between items-center p-6 border-b border-slate-100 shrink-0">
@@ -539,7 +524,6 @@
     </div>
   </div>
 
-  <!-- Modal Tambah Sub Task (Lapangan) -->
   <div id="modal-add-subtask" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-[60] p-4">
     <div class="bg-white rounded-3xl w-full max-w-2xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
       <div class="flex justify-between items-center p-6 border-b border-slate-100 shrink-0">
@@ -576,7 +560,6 @@
           </div>
           <input type="file" id="add-subtask-image" accept="image/*" multiple class="hidden-force" />
           <input type="file" id="add-subtask-camera" accept="image/*" capture="environment" multiple class="hidden-force" />
-          
           <div id="drop-zone-subtask" class="border-2 border-dashed border-slate-300 rounded-xl p-6 text-center cursor-pointer hover:bg-slate-50 transition-colors relative">
             <div id="drop-zone-subtask-content" class="pointer-events-none"><i data-lucide="image" class="w-8 h-8 text-slate-400 mx-auto mb-2"></i><p class="text-sm font-medium text-slate-600">Klik butang di atas atau 'Drop & Drag' gambar di sini</p><p class="text-xs text-slate-400 mt-1">Sokongan: JPG, PNG (Maks 4)</p></div>
             <div id="add-subtask-image-previews" class="hidden-force mt-4 grid grid-cols-2 gap-3 relative z-10"></div>
@@ -587,7 +570,6 @@
     </div>
   </div>
 
-  <!-- Modal Preview / Edit Sub Task -->
   <div id="modal-preview-subtask" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-[60] p-4">
     <div class="bg-white rounded-3xl w-full max-w-lg shadow-2xl overflow-hidden relative max-h-[95vh] flex flex-col">
       <div id="prev-subtask-header" class="h-16 relative transition-colors bg-blue-500 shrink-0">
@@ -639,7 +621,6 @@
     </div>
   </div>
 
-  <!-- Modal Tambah Program Baru -->
   <div id="modal-add-program" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
     <div class="bg-white rounded-3xl w-full max-w-md shadow-2xl overflow-hidden relative flex flex-col">
       <div class="flex justify-between items-center p-6 border-b border-slate-100 shrink-0">
@@ -656,8 +637,53 @@
     </div>
   </div>
 
+  <div id="modal-add-record" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+    <div class="bg-white rounded-3xl w-full max-w-md shadow-2xl overflow-hidden">
+      <div class="flex justify-between items-center p-6 border-b border-slate-100">
+        <h2 class="text-lg font-extrabold text-slate-900">Tambah Data Baru</h2>
+        <button onclick="window.closeModal('modal-add-record')" class="p-2 bg-slate-100 text-slate-500 rounded-full hover:bg-slate-200"><i data-lucide="x" class="w-4 h-4"></i></button>
+      </div>
+      <form id="form-add-record" onsubmit="return false;" class="p-6 space-y-5">
+        <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2 block">Nama Penuh</label><input type="text" id="add-rec-name" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium" required placeholder="Ali bin Abu" /></div>
+        <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2 block">No. MyKAD</label><input type="text" id="add-rec-mykad" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium" required placeholder="801231-10-5555" /><p class="text-[10px] text-slate-400 mt-1">Digunakan sebagai ID Rujukan (Primary Key) Google Sheet.</p></div>
+        <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2 block">Kategori Review</label><select id="add-rec-cat" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-bold" required><option value="Daftar Baru">Daftar Baru</option><option value="Tolak Asnaf">Tolak Asnaf</option></select></div>
+        <button type="submit" id="add-rec-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-xl shadow-md mt-4">Simpan Rekod</button>
+      </form>
+    </div>
+  </div>
 
-  <!-- Modal Tambah LinkHub -->
+  <div id="modal-preview-record" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+    <div class="bg-white rounded-3xl w-full max-w-sm shadow-2xl overflow-hidden relative">
+      <div id="prev-header" class="h-24 bg-emerald-500 relative transition-colors">
+         <button onclick="window.closeModal('modal-preview-record')" class="absolute top-4 right-4 p-2 bg-black/20 text-white rounded-full hover:bg-black/30 backdrop-blur-sm"><i data-lucide="x" class="w-4 h-4"></i></button>
+      </div>
+      <div class="px-6 pb-6 pt-0 relative">
+        <div class="w-16 h-16 bg-white rounded-2xl shadow-lg border-4 border-white flex items-center justify-center -mt-8 mb-4 relative z-10"><i data-lucide="user" class="w-7 h-7 text-slate-400"></i></div>
+        <div id="prev-view-mode">
+          <h2 class="text-xl font-extrabold text-slate-900 mb-1" id="prev-name">Nama</h2>
+          <p class="text-sm font-medium text-slate-500 mb-6"><span id="prev-mykad">Mykad</span> <span class="text-[10px] bg-slate-100 px-2 py-0.5 rounded text-slate-400 ml-2">ID</span></p>
+          <div class="space-y-4 bg-slate-50 p-4 rounded-xl border border-slate-100">
+            <div><p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Status Kategori</p><span id="prev-cat-badge" class="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-700">Daftar Baru</span></div>
+            <div><p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Tarikh Direkod</p><p class="text-sm font-semibold text-slate-800" id="prev-date">Tarikh</p></div>
+          </div>
+          <div class="mt-6 flex justify-between items-center border-t border-slate-100 pt-4">
+             <button onclick="window.toggleEditMode(true)" class="flex items-center text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg text-xs font-bold transition-colors"><i data-lucide="edit-2" class="w-3.5 h-3.5 mr-1.5"></i> Edit Data</button>
+             <button onclick="window.deleteRecord()" class="flex items-center text-red-600 hover:text-red-800 hover:bg-red-50 px-3 py-2 rounded-lg text-xs font-bold transition-colors"><i data-lucide="trash-2" class="w-3.5 h-3.5 mr-1.5"></i> Padam</button>
+          </div>
+        </div>
+        <form id="prev-edit-mode" onsubmit="return false;" class="hidden-force space-y-4 pt-2">
+          <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Nama Penuh</label><input type="text" id="edit-rec-name" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-lg text-sm outline-none font-medium" required /></div>
+          <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">No. MyKAD (Tetap)</label><input type="text" id="edit-rec-mykad" disabled class="w-full px-3 py-2 bg-slate-100 border border-slate-200 rounded-lg text-sm outline-none text-slate-500 font-medium cursor-not-allowed" /></div>
+          <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Kategori Review</label><select id="edit-rec-cat" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-lg text-sm outline-none font-bold" required><option value="Daftar Baru">Daftar Baru</option><option value="Tolak Asnaf">Tolak Asnaf</option></select></div>
+          <div class="flex gap-2 mt-6">
+            <button type="button" onclick="window.toggleEditMode(false)" class="flex-1 bg-slate-100 text-slate-600 font-bold py-2 rounded-lg text-sm hover:bg-slate-200">Batal</button>
+            <button type="submit" id="edit-rec-btn" class="flex-1 bg-blue-600 text-white font-bold py-2 rounded-lg shadow-md text-sm hover:bg-blue-700">Simpan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <div id="modal-add-link" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
     <div class="bg-white rounded-3xl w-full max-w-md shadow-2xl overflow-hidden relative flex flex-col">
       <div class="flex justify-between items-center p-6 border-b border-slate-100 shrink-0">
@@ -673,7 +699,6 @@
     </div>
   </div>
 
-  <!-- Modal Edit LinkHub -->
   <div id="modal-edit-link" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
     <div class="bg-white rounded-3xl w-full max-w-md shadow-2xl overflow-hidden relative flex flex-col">
       <div class="flex justify-between items-center p-6 border-b border-slate-100 shrink-0">
@@ -689,7 +714,6 @@
     </div>
   </div>
 
-  <!-- Modal Urus Kategori LinkHub -->
   <div id="modal-manage-link-cat" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-end md:items-center justify-center z-50 p-0 md:p-4">
     <div class="bg-white rounded-t-3xl md:rounded-3xl w-full max-w-md shadow-2xl overflow-hidden">
       <div class="flex justify-between items-center p-5 md:p-6 border-b border-slate-100">
@@ -710,7 +734,6 @@
     </div>
   </div>
 
-  <!-- Modal Urus Kategori Format Ayat -->
   <div id="modal-manage-cat" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-end md:items-center justify-center z-50 p-0 md:p-4">
     <div class="bg-white rounded-t-3xl md:rounded-3xl w-full max-w-md shadow-2xl overflow-hidden">
       <div class="flex justify-between items-center p-5 md:p-6 border-b border-slate-100">
@@ -732,9 +755,6 @@
   </div>
 
 
-  <!-- ========================================== -->
-  <!-- JAVASCRIPT & FIREBASE LOGIC                -->
-  <!-- ========================================== -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
     import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
@@ -768,99 +788,38 @@
     let selectedRecordId = null; let selectedTaskId = null; let selectedLapanganId = null; let selectedSubtaskId = null; let selectedLinkEditId = null;
     let currentTaskImages = []; let currentSubtaskImages = [];
 
+    // --- KESELAMATAN: SESSION & TOKEN ---
+    window.verifySession = () => {
+      if (el('system-layout') && el('system-layout').classList.contains('hidden-force')) return true; 
+      const token = localStorage.getItem('appSessionToken');
+      const expiry = localStorage.getItem('appSessionExpiry');
+      if (!token || !expiry || Date.now() > parseInt(expiry)) { window.handleLogout(); window.showAlert("Sesi tamat keselamatan. Log masuk semula."); return false; }
+      return true;
+    };
+    window.setSession = () => { localStorage.setItem('appSessionToken', crypto.randomUUID() + "-" + Date.now()); localStorage.setItem('appSessionExpiry', Date.now() + 2 * 60 * 60 * 1000); };
+    window.clearSession = () => { localStorage.removeItem('appSessionToken'); localStorage.removeItem('appSessionExpiry'); };
+    setInterval(() => { if (el('system-layout') && !el('system-layout').classList.contains('hidden-force')) window.verifySession(); }, 60000);
+
+    // --- KESELAMATAN: PASSWORD HASHING SHA-256 + SALT ---
+    window.generateSalt = () => { const array = new Uint8Array(16); crypto.getRandomValues(array); return Array.from(array, dec => ('0' + dec.toString(16)).substr(-2)).join(''); };
+    window.hashPassword = async (plain, salt = '') => { try { const msgBuffer = new TextEncoder().encode(plain + salt); const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer); const hashArray = Array.from(new Uint8Array(hashBuffer)); return hashArray.map(b => b.toString(16).padStart(2, '0')).join(''); } catch (err) { return plain; } };
+
+    // --- KESELAMATAN: RATE LIMIT ---
+    window.checkRateLimit = () => { const lockTime = localStorage.getItem('loginLockUntil'); if (lockTime && Date.now() < parseInt(lockTime)) return Math.ceil((parseInt(lockTime) - Date.now()) / 60000); if (lockTime) { localStorage.removeItem('loginLockUntil'); localStorage.removeItem('loginAttempts'); } return 0; };
+    window.recordFailedAttempt = () => { let attempts = parseInt(localStorage.getItem('loginAttempts') || '0') + 1; localStorage.setItem('loginAttempts', attempts); if (attempts >= 5) { localStorage.setItem('loginLockUntil', Date.now() + 15 * 60000); return 15; } return 0; };
+    window.resetAttempts = () => { localStorage.removeItem('loginAttempts'); localStorage.removeItem('loginLockUntil'); };
+
+    // --- KESELAMATAN: INTERCEPTOR ---
+    const setDoc = async (docRef, data, options) => { if (!window.verifySession()) throw new Error("Akses ditolak."); return originalSetDoc(docRef, data, options); };
+    const deleteDoc = async (docRef) => { if (!window.verifySession()) throw new Error("Akses ditolak."); return originalDeleteDoc(docRef); };
+
+    // Helper Lanjutan UI
     window.updateIcons = () => { if(window.lucide) window.lucide.createIcons(); };
     const el = (id) => document.getElementById(id);
     const show = (id) => { const e = el(id); if(e) e.classList.remove('hidden-force', 'hidden'); };
     const hide = (id) => { const e = el(id); if(e) e.classList.add('hidden-force'); };
 
-    // --- KESELAMATAN: SESSION & TOKEN ---
-    window.verifySession = () => {
-      if (el('system-layout') && el('system-layout').classList.contains('hidden-force')) return true; // Lepaskan jika sedang di skrin login
-      const token = localStorage.getItem('appSessionToken');
-      const expiry = localStorage.getItem('appSessionExpiry');
-      if (!token || !expiry || Date.now() > parseInt(expiry)) {
-        window.handleLogout();
-        window.showAlert("Sesi telah tamat atas faktor keselamatan. Sila log masuk semula.");
-        return false;
-      }
-      return true;
-    };
-
-    window.setSession = () => {
-      localStorage.setItem('appSessionToken', crypto.randomUUID() + "-" + Date.now());
-      localStorage.setItem('appSessionExpiry', Date.now() + 2 * 60 * 60 * 1000); // Expiry 2 Jam
-    };
-
-    window.clearSession = () => {
-      localStorage.removeItem('appSessionToken');
-      localStorage.removeItem('appSessionExpiry');
-    };
-
-    // Auto-semak Token setiap 1 Minit
-    setInterval(() => {
-        if (el('system-layout') && !el('system-layout').classList.contains('hidden-force')) {
-            window.verifySession();
-        }
-    }, 60000);
-
-    // --- KESELAMATAN: PASSWORD HASHING SHA-256 + SALT ---
-    window.generateSalt = () => {
-       const array = new Uint8Array(16);
-       crypto.getRandomValues(array);
-       return Array.from(array, dec => ('0' + dec.toString(16)).substr(-2)).join('');
-    };
-
-    window.hashPassword = async (plain, salt = '') => {
-      try { 
-        const msgBuffer = new TextEncoder().encode(plain + salt); 
-        const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer); 
-        const hashArray = Array.from(new Uint8Array(hashBuffer)); 
-        return hashArray.map(b => b.toString(16).padStart(2, '0')).join(''); 
-      } catch (err) { console.error("Hash error:", err); return plain; }
-    };
-
-    // --- KESELAMATAN: RATE LIMIT LOG MASUK ---
-    window.checkRateLimit = () => {
-      const lockTime = localStorage.getItem('loginLockUntil');
-      if (lockTime && Date.now() < parseInt(lockTime)) { return Math.ceil((parseInt(lockTime) - Date.now()) / 60000); }
-      if (lockTime) { localStorage.removeItem('loginLockUntil'); localStorage.removeItem('loginAttempts'); }
-      return 0;
-    };
-
-    window.recordFailedAttempt = () => {
-      let attempts = parseInt(localStorage.getItem('loginAttempts') || '0') + 1;
-      localStorage.setItem('loginAttempts', attempts);
-      if (attempts >= 5) {
-          localStorage.setItem('loginLockUntil', Date.now() + 15 * 60000); // 15 Minit Lock
-          return 15;
-      }
-      return 0;
-    };
-
-    window.resetAttempts = () => {
-      localStorage.removeItem('loginAttempts'); localStorage.removeItem('loginLockUntil');
-    };
-
-    // --- KESELAMATAN: INTERCEPTOR PANGKALAN DATA ---
-    const setDoc = async (docRef, data, options) => {
-       if (!window.verifySession()) throw new Error("Sesi tamat. Akses ditolak.");
-       return originalSetDoc(docRef, data, options);
-    };
-
-    const deleteDoc = async (docRef) => {
-       if (!window.verifySession()) throw new Error("Sesi tamat. Akses ditolak.");
-       return originalDeleteDoc(docRef);
-    };
-
-
-    // Helper Lanjutan UI
-    window.togglePasswordVisibility = () => {
-      const input = el('login-password'); const icon = el('eye-icon');
-      if(input.type === 'password') { input.type = 'text'; icon.setAttribute('data-lucide', 'eye-off'); } 
-      else { input.type = 'password'; icon.setAttribute('data-lucide', 'eye'); }
-      window.updateIcons();
-    };
-
+    window.togglePasswordVisibility = () => { const input = el('login-password'); const icon = el('eye-icon'); if(input.type === 'password') { input.type = 'text'; icon.setAttribute('data-lucide', 'eye-off'); } else { input.type = 'password'; icon.setAttribute('data-lucide', 'eye'); } window.updateIcons(); };
     window.showAlert = (msg) => { el('dialog-message').textContent = msg; el('dialog-btn-cancel').classList.add('hidden'); el('dialog-btn-confirm').textContent = 'OK'; el('dialog-btn-confirm').onclick = () => hide('custom-dialog'); show('custom-dialog'); window.updateIcons(); };
     window.showConfirm = (msg, onConfirm) => { el('dialog-message').textContent = msg; el('dialog-btn-cancel').classList.remove('hidden'); el('dialog-btn-cancel').onclick = () => hide('custom-dialog'); el('dialog-btn-confirm').textContent = 'Pasti'; el('dialog-btn-confirm').onclick = () => { hide('custom-dialog'); onConfirm(); }; show('custom-dialog'); window.updateIcons(); };
 
@@ -873,7 +832,7 @@
         currentUser = user;
         const profileSnap = await getDoc(doc(db, 'artifacts', appId, 'public', 'data', 'settings', 'profile'));
         if (profileSnap.exists()) userProfile = { ...userProfile, ...profileSnap.data() };
-        else await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'settings', 'profile'), userProfile);
+        else await originalSetDoc(doc(db, 'artifacts', appId, 'public', 'data', 'settings', 'profile'), userProfile);
         updateUserUI(); setupRealtimeListeners();
       }
     });
@@ -889,26 +848,12 @@
     window.handleLogin = async () => {
       try {
         const lockedMins = window.checkRateLimit();
-        if (lockedMins > 0) {
-            el('login-error-text').textContent = `Akaun disekat keselamatan. Cuba lagi selepas ${lockedMins} minit.`; show('login-error'); return;
-        }
-
+        if (lockedMins > 0) { el('login-error-text').textContent = `Akaun disekat keselamatan. Cuba lagi selepas ${lockedMins} minit.`; show('login-error'); return; }
         const btn = el('login-btn'); btn.innerHTML = '<div class="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>'; btn.disabled = true; hide('login-error');
-        const emailInput = el('login-email').value.trim().toLowerCase(); 
-        const passInput = el('login-password').value; 
-        const salt = userProfile.salt || '';
-        const hash = await window.hashPassword(passInput, salt);
-        
+        const emailInput = el('login-email').value.trim().toLowerCase(); const passInput = el('login-password').value; const salt = userProfile.salt || ''; const hash = await window.hashPassword(passInput, salt);
         setTimeout(() => {
-          if (emailInput === userProfile.email.toLowerCase() && hash === userProfile.passwordHash) { 
-             window.resetAttempts(); window.setSession();
-             hide('login-view'); show('system-layout'); window.switchView('dashboard'); window.updateIcons(); 
-          } else { 
-             const lockMins = window.recordFailedAttempt();
-             if (lockMins > 0) { el('login-error-text').textContent = `Terlalu banyak cubaan gagal. Akaun disekat ${lockMins} minit.`; }
-             else { el('login-error-text').textContent = 'E-mel atau kata laluan tidak sah.'; }
-             show('login-error'); 
-          }
+          if (emailInput === userProfile.email.toLowerCase() && hash === userProfile.passwordHash) { window.resetAttempts(); window.setSession(); hide('login-view'); show('system-layout'); window.switchView('dashboard'); window.updateIcons(); } 
+          else { const lockMins = window.recordFailedAttempt(); if (lockMins > 0) { el('login-error-text').textContent = `Cubaan gagal. Akaun disekat ${lockMins} minit.`; } else { el('login-error-text').textContent = 'E-mel atau kata laluan tidak sah.'; } show('login-error'); }
           btn.innerHTML = 'Log Masuk'; btn.disabled = false;
         }, 800);
       } catch (err) {}
@@ -949,8 +894,8 @@
 
     const setupRealtimeListeners = () => {
       if(!currentUser) return;
-      const sub = (col, cb, sortFn) => onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', col), snap => { const data = snap.docs.map(d => ({id: d.id, ...d.data()})); if(sortFn) data.sort(sortFn); cb(data); }, e => console.error(e));
-      const initSub = (col, defaults, cb, sortFn) => onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', col), snap => { const data = snap.docs.map(d => ({id: d.id, ...d.data()})); if(data.length === 0) { defaults.forEach(item => originalSetDoc(doc(collection(db, 'artifacts', appId, 'public', 'data', col)), {...item, createdAt: Date.now()})); } else { if(sortFn) data.sort(sortFn); cb(data); } }, e => console.error(e));
+      const sub = (col, cb, sortFn) => onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', col), snap => { const data = snap.docs.map(d => ({id: d.id, ...d.data()})); if(sortFn) data.sort(sortFn); cb(data); });
+      const initSub = (col, defaults, cb, sortFn) => onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', col), snap => { const data = snap.docs.map(d => ({id: d.id, ...d.data()})); if(data.length === 0) { defaults.forEach(item => originalSetDoc(doc(collection(db, 'artifacts', appId, 'public', 'data', col)), {...item, createdAt: Date.now()})); } else { if(sortFn) data.sort(sortFn); cb(data); } });
 
       sub('asnaf_records', d => { asnafRecords = d; window.renderAsnafTable(); }, (a,b) => b.createdAt - a.createdAt);
       sub('tasks', d => { taskRecords = d; window.renderTaskTable(); }, (a,b) => a.createdAt - b.createdAt);
@@ -968,10 +913,7 @@
     window.uploadImagesToDrive = async (images, prefixName) => {
         if (!userProfile.googleWebhook || !images || images.length === 0) return;
         if (!window.verifySession()) return;
-        try {
-          const promises = images.map((imgB64, i) => fetch(userProfile.googleWebhook, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ action: 'upload_image', name: `${prefixName}_${i+1}`, base64: imgB64 }) }).catch(console.error));
-          await Promise.all(promises);
-        } catch(e) {}
+        try { const promises = images.map((imgB64, i) => fetch(userProfile.googleWebhook, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ action: 'upload_image', name: `${prefixName}_${i+1}`, base64: imgB64 }) })); await Promise.all(promises); } catch(e) {}
     };
 
     window.processImageFile = (file) => {
@@ -989,10 +931,8 @@
     };
 
     setTimeout(() => {
-        window.setupImageUploader('drop-zone', 'add-task-image', 'add-task-camera', 'add', window.handleTaskImages);
-        window.setupImageUploader(null, 'edit-task-image', 'edit-task-camera', 'edit', window.handleTaskImages);
-        window.setupImageUploader('drop-zone-subtask', 'add-subtask-image', 'add-subtask-camera', 'add', window.handleSubtaskImages);
-        window.setupImageUploader(null, 'edit-subtask-image', 'edit-subtask-camera', 'edit', window.handleSubtaskImages);
+        window.setupImageUploader('drop-zone', 'add-task-image', 'add-task-camera', 'add', window.handleTaskImages); window.setupImageUploader(null, 'edit-task-image', 'edit-task-camera', 'edit', window.handleTaskImages);
+        window.setupImageUploader('drop-zone-subtask', 'add-subtask-image', 'add-subtask-camera', 'add', window.handleSubtaskImages); window.setupImageUploader(null, 'edit-subtask-image', 'edit-subtask-camera', 'edit', window.handleSubtaskImages);
     }, 1000);
 
     // ASNAF
@@ -1011,11 +951,7 @@
       } catch (err) { window.showAlert("Gagal menarik data."); } finally { if (icon) icon.classList.remove('animate-spin'); }
     };
 
-    window.syncToGoogleSheet = async (action, dataObj) => {
-      if (!userProfile.googleWebhook) return;
-      if (!window.verifySession()) return;
-      try { await fetch(userProfile.googleWebhook, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ action: action, name: dataObj.name, mykad: dataObj.mykad, status: dataObj.category }) }); } catch (err) {}
-    };
+    window.syncToGoogleSheet = async (action, dataObj) => { if (!userProfile.googleWebhook || !window.verifySession()) return; try { await fetch(userProfile.googleWebhook, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ action: action, name: dataObj.name, mykad: dataObj.mykad, status: dataObj.category }) }); } catch (err) {} };
 
     window.renderAsnafTable = () => {
       const query = (el('search-record')?.value || '').toLowerCase(); const filter = el('filter-record')?.value || 'all';
@@ -1037,8 +973,7 @@
 
     window.openPreview = (id) => {
       const record = asnafRecords.find(r => r.id === id); if(!record) return; selectedRecordId = id; window.toggleEditMode(false);
-      el('prev-header').className = `h-24 relative transition-colors ${record.category === 'Daftar Baru' ? 'bg-emerald-500' : 'bg-rose-500'}`;
-      el('prev-name').textContent = record.name; el('prev-mykad').textContent = record.mykad; el('prev-cat-badge').textContent = record.category; el('prev-cat-badge').className = `px-2.5 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider ${record.category === 'Daftar Baru' ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}`; el('prev-date').textContent = new Date(record.createdAt).toLocaleDateString('ms-MY'); el('edit-rec-name').value = record.name; el('edit-rec-mykad').value = record.mykad; el('edit-rec-cat').value = record.category; window.openModal('modal-preview-record'); window.updateIcons();
+      el('prev-header').className = `h-24 relative transition-colors ${record.category === 'Daftar Baru' ? 'bg-emerald-500' : 'bg-rose-500'}`; el('prev-name').textContent = record.name; el('prev-mykad').textContent = record.mykad; el('prev-cat-badge').textContent = record.category; el('prev-cat-badge').className = `px-2.5 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider ${record.category === 'Daftar Baru' ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}`; el('prev-date').textContent = new Date(record.createdAt).toLocaleDateString('ms-MY'); el('edit-rec-name').value = record.name; el('edit-rec-mykad').value = record.mykad; el('edit-rec-cat').value = record.category; window.openModal('modal-preview-record'); window.updateIcons();
     };
 
     window.toggleEditMode = (showEdit) => { if(showEdit) { hide('prev-view-mode'); show('prev-edit-mode'); } else { show('prev-view-mode'); hide('prev-edit-mode'); } };
@@ -1048,16 +983,13 @@
       try { const updated = { ...record, name: nName, category: nCat }; await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'asnaf_records', selectedRecordId), { name: nName, category: nCat }, {merge:true}); window.syncToGoogleSheet('edit', updated); window.closeModal('modal-preview-record'); } catch(e) {} finally { btn.disabled = false; }
     });
 
-    window.deleteRecord = async () => {
-      if(!currentUser || !selectedRecordId) return; const record = asnafRecords.find(r => r.id === selectedRecordId);
-      window.showConfirm("Padam rekod ini? Ini juga akan dipadam di Google Sheet.", async () => { try { await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'asnaf_records', selectedRecordId)); window.syncToGoogleSheet('delete', record); window.closeModal('modal-preview-record'); } catch(e){} });
-    };
+    window.deleteRecord = async () => { if(!currentUser || !selectedRecordId) return; const record = asnafRecords.find(r => r.id === selectedRecordId); window.showConfirm("Padam rekod ini?", async () => { try { await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'asnaf_records', selectedRecordId)); window.syncToGoogleSheet('delete', record); window.closeModal('modal-preview-record'); } catch(e){} }); };
 
     // TASK SIASATAN
     window.renderTaskTypes = () => {
       const sel = el('add-task-type'); if(!sel) return; const currentVal = sel.value; sel.innerHTML = '<option value="" disabled selected>Pilih Kategori...</option>';
       taskTypesData.forEach(t => { const opt = document.createElement('option'); opt.value = t.name; opt.textContent = t.name; sel.appendChild(opt); });
-      const optNew = document.createElement('option'); optNew.value = "CREATE_NEW"; optNew.innerHTML = "&#43; Tambah Baru"; optNew.className = "font-bold text-blue-600 bg-blue-50"; sel.appendChild(optNew);
+      const optNew = document.createElement('option'); optNew.value = "CREATE_NEW"; optNew.innerHTML = "+ Tambah Baru"; optNew.className = "font-bold text-blue-600 bg-blue-50"; sel.appendChild(optNew);
       if (currentVal && currentVal !== "CREATE_NEW" && taskTypesData.find(t=>t.name===currentVal)) sel.value = currentVal;
     };
 
@@ -1114,6 +1046,7 @@
       el('prev-task-name').textContent = task.name; el('prev-task-rujukan').textContent = task.rujukan || task.mykad || '-'; el('prev-task-phone').textContent = task.phone; el('prev-task-type').textContent = task.type; el('prev-task-address').textContent = task.address; el('prev-task-remark').textContent = task.remark || '-'; el('prev-task-date').textContent = new Date(task.createdAt).toLocaleDateString('ms-MY');
       const header = el('prev-task-header'); const badge = el('prev-task-status-badge'); badge.textContent = task.status;
       if(task.status === 'Dalam Proses') { header.className = 'h-16 relative bg-orange-500 shrink-0'; badge.className = 'px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider bg-orange-100 text-orange-700'; } else if(task.status === 'Selesai Tugasan') { header.className = 'h-16 relative bg-emerald-500 shrink-0'; badge.className = 'px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider bg-emerald-100 text-emerald-700'; } else { header.className = 'h-16 relative bg-slate-500 shrink-0'; badge.className = 'px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider bg-slate-100 text-slate-700'; }
+
       const imagesArr = task.images || (task.imageBase64 ? [task.imageBase64] : []); const grid = el('prev-task-images-grid'); grid.innerHTML = '';
       if(imagesArr.length > 0) { show('prev-task-img-container'); imagesArr.forEach((img, idx) => { grid.innerHTML += `<div class="relative group"><img src="${img}" class="w-full h-32 md:h-40 object-cover rounded-xl border border-slate-200" /><button onclick="window.downloadTaskImage(${idx})" class="absolute bottom-2 right-2 bg-slate-900/70 hover:bg-slate-900 text-white p-2 rounded-lg backdrop-blur-sm transition-colors shadow-lg"><i data-lucide="download" class="w-4 h-4"></i></button></div>`; }); } else { hide('prev-task-img-container'); } window.openModal('modal-preview-task'); window.updateIcons();
     };
@@ -1148,14 +1081,14 @@
       window.updateIcons();
     };
 
-    window.deleteLapangan = (e, id) => { e.stopPropagation(); if(!currentUser) return; window.showConfirm("Padam Task Lapangan ini? Semua sub-task didalamnya tidak akan dipadam secara automatik.", async () => { await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'lapangan_tasks', id)); }); };
+    window.deleteLapangan = (e, id) => { e.stopPropagation(); if(!currentUser) return; window.showConfirm("Padam Task Lapangan ini?", async () => { await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'lapangan_tasks', id)); }); };
     window.openLapanganDetail = (id) => { const task = lapanganTasks.find(t => t.id === id); if(!task) return; selectedLapanganId = id; el('lapangan-detail-title').textContent = task.name; el('lapangan-detail-date').textContent = new Date(task.date).toLocaleDateString('ms-MY', { day: 'numeric', month: 'long', year: 'numeric' }); window.switchView('lapangan-detail'); window.renderLapanganSubtasks(); };
     window.backToLapangan = () => { selectedLapanganId = null; window.switchView('lapangan'); };
 
     // Sub Task Lapangan
     window.renderSubtaskTypes = () => {
       const sel = el('add-subtask-type'); if(!sel) return; const currentVal = sel.value; sel.innerHTML = '<option value="" disabled selected>Pilih Kategori...</option>';
-      taskTypesData.forEach(t => { const opt = document.createElement('option'); opt.value = t.name; opt.textContent = t.name; sel.appendChild(opt); }); const optNew = document.createElement('option'); optNew.value = "CREATE_NEW"; optNew.innerHTML = "&#43; Tambah Baru"; optNew.className = "font-bold text-blue-600 bg-blue-50"; sel.appendChild(optNew); if (currentVal && currentVal !== "CREATE_NEW" && taskTypesData.find(t=>t.name===currentVal)) sel.value = currentVal;
+      taskTypesData.forEach(t => { const opt = document.createElement('option'); opt.value = t.name; opt.textContent = t.name; sel.appendChild(opt); }); const optNew = document.createElement('option'); optNew.value = "CREATE_NEW"; optNew.innerHTML = "+ Tambah Baru"; optNew.className = "font-bold text-blue-600 bg-blue-50"; sel.appendChild(optNew); if (currentVal && currentVal !== "CREATE_NEW" && taskTypesData.find(t=>t.name===currentVal)) sel.value = currentVal;
     };
     window.handleSubtaskTypeChange = (selectEl) => { if(selectEl.value === 'CREATE_NEW') { show('new-subtask-type-container'); el('new-subtask-type-input').focus(); } else { hide('new-subtask-type-container'); } };
     window.saveNewSubtaskType = async () => { const input = el('new-subtask-type-input'); const newType = input.value.trim(); if(newType !== '') { if(!currentUser) return; await setDoc(doc(collection(db, 'artifacts', appId, 'public', 'data', 'task_types')), { name: newType, createdAt: Date.now() }); const sel = el('add-subtask-type'); const opt = document.createElement('option'); opt.value = newType; opt.textContent = newType; sel.insertBefore(opt, sel.lastChild); sel.value = newType; input.value = ''; hide('new-subtask-type-container'); } else { window.showAlert("Sila taipkan nama kategori baru."); } };
