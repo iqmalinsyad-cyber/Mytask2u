@@ -1,0 +1,22 @@
+{
+  "name": "Sistem MyTask2u",
+  "short_name": "MyTask2u",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#2563eb",
+  "icons": [
+    {
+      "src": "https://lh3.googleusercontent.com/d/1t2uEa_lOs2FrwxQx7HUS396x3Ji9Y916",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/1t2uEa_lOs2FrwxQx7HUS396x3Ji9Y916",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
+
