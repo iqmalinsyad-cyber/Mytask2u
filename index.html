@@ -17,13 +17,15 @@
   <meta name="theme-color" content="#2563eb"> 
   
   <!-- Pautan PWA Rasmi -->
-  <link rel="manifest" href="manifest.json">
+  <link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjoiTXlUYXJnZXQgUHJlbWl1bSIsInNob3J0X25hbWUiOiJNeVRhcmdldCIsInN0YXJ0X3VybCI6Ii4iLCJkaXNwbGF5Ijoic3RhbmRhbG9uZSIsImJhY2tncm91bmRfY29sb3IiOiIjMDIwNjE3IiwidGhlbWVfY29sb3IiOiIjMjU2M2ViIiwiaWNvbnMiOlt7InNyYyI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9kLzF0MnVFYV9sT3MyRnJ3eFF4N0hVUzM5NngzSmlZWTkxNiIsInNpemVzIjoiMTkyeDE5MiIsInR5cGUiOiJpbWFnZS9wbmciLCJwdXJwb3NlIjoiYW55IG1hc2thYmxlIn0seyJzcmMiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vZC8xdDJ1RWFfbE9zMkZyd3hReDdIVVMzOTZ4M0ppWVk5MTYiLCJzaXplcyI6IjUxMng1MTIiLCJ0eXBlIjoiaW1hZ2UvcG5nIn1dfQ==">
   
-  <!-- Pendaftaran PWA Service Worker Rasmi -->
+  <!-- Pendaftaran PWA Service Worker -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js').catch((err) => console.log('PWA Service Worker Error:', err));
+        const swContent = "self.addEventListener('fetch', (e) => {});";
+        const blob = new Blob([swContent], { type: 'application/javascript' });
+        navigator.serviceWorker.register(URL.createObjectURL(blob)).catch((err) => console.log('PWA Service Worker Error:', err));
       });
     }
   </script>
@@ -120,7 +122,7 @@
       <div class="p-4 border-t border-slate-100 bg-white shrink-0">
         <button onclick="window.handleLogout()" class="w-full flex items-center px-4 py-3 text-sm font-medium text-slate-500 hover:text-red-600 hover:bg-red-50 rounded-xl transition-colors mb-4"><i data-lucide="log-out" class="w-4 h-4 mr-3 text-inherit"></i> Log Keluar</button>
         <div class="text-center">
-          <p class="text-[10px] text-slate-400 font-semibold tracking-widest uppercase mb-1">Versi 1.9.0</p>
+          <p class="text-[10px] text-slate-400 font-semibold tracking-widest uppercase mb-1">Versi 1.9.1</p>
           <p class="text-[10px] text-slate-400/80 font-medium">2026 @ Aidee Creatives</p>
         </div>
       </div>
@@ -368,78 +370,32 @@
 
           <!-- VIEW: LAPORAN ADUAN -->
           <div id="view-laporan" class="hidden-force flex-col lg:flex-row gap-6 md:gap-8 h-full pb-6 lg:pb-0 transition-opacity duration-300 w-full">
-            <div class="w-full lg:w-[40%] xl:w-[35%] flex flex-col space-y-4 md:space-y-6 overflow-y-auto custom-scrollbar pr-2 shrink-0">
+            <div class="w-full lg:w-[400px] xl:w-[450px] flex flex-col space-y-4 md:space-y-6 overflow-y-auto custom-scrollbar pr-2 shrink-0">
               <div class="bg-white rounded-[1.5rem] md:rounded-3xl shadow-sm border border-slate-200 p-5 md:p-6">
                 <h3 class="font-extrabold text-slate-900 text-lg mb-6 flex items-center"><i data-lucide="file-signature" class="w-5 h-5 mr-2 text-blue-600"></i> Borang Laporan</h3>
-                
                 <form id="form-laporan" class="space-y-5">
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Tarikh Terima Aduan</label>
-                      <input type="text" id="lap-tarikh-aduan" oninput="window.generateLaporan()" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium" placeholder="Cth: 12 Julai 2026" />
-                    </div>
-                    <div>
-                      <label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Tarikh Siasatan</label>
-                      <input type="text" id="lap-tarikh-siasat" oninput="window.generateLaporan()" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium" placeholder="Cth: 15 Julai 2026" />
-                    </div>
+                    <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Tarikh Terima Aduan</label><input type="text" id="lap-tarikh-aduan" oninput="window.generateLaporan()" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium" placeholder="Cth: 12 Julai 2026" /></div>
+                    <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Tarikh Siasatan</label><input type="text" id="lap-tarikh-siasat" oninput="window.generateLaporan()" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium" placeholder="Cth: 15 Julai 2026" /></div>
                   </div>
-                  <div>
-                    <label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Sumber</label>
-                    <input type="text" id="lap-sumber" oninput="window.generateLaporan()" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium" placeholder="Cth: Aduan CMU" />
-                  </div>
-                  
+                  <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Sumber</label><input type="text" id="lap-sumber" oninput="window.generateLaporan()" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium" placeholder="Cth: Skuad Jejak Asnaf" /></div>
                   <div class="pt-4 border-t border-slate-100"><p class="text-[11px] font-bold text-blue-600 uppercase tracking-widest mb-3">Maklumat Kes</p></div>
-                  
-                  <div>
-                    <label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Nama Pemohon</label>
-                    <input type="text" id="lap-nama" oninput="window.generateLaporan()" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium" placeholder="Nama penuh..." />
-                  </div>
+                  <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Nama Pemohon</label><input type="text" id="lap-nama" oninput="window.generateLaporan()" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium" placeholder="Nama penuh..." /></div>
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">No KP</label>
-                      <input type="text" id="lap-kp" oninput="window.generateLaporan()" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium" placeholder="000000-00-0000" />
-                    </div>
-                    <div>
-                      <label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">No Tel</label>
-                      <input type="text" id="lap-tel" oninput="window.generateLaporan()" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium" placeholder="012-3456789" />
-                    </div>
+                    <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">No KP</label><input type="text" id="lap-kp" oninput="window.generateLaporan()" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium" placeholder="000000-00-0000" /></div>
+                    <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">No Tel</label><input type="text" id="lap-tel" oninput="window.generateLaporan()" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium" placeholder="012-3456789" /></div>
                   </div>
-                  <div>
-                    <label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Alamat</label>
-                    <textarea id="lap-alamat" oninput="window.generateLaporan()" rows="2" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium resize-none" placeholder="Alamat penuh..."></textarea>
-                  </div>
-                  <div>
-                    <label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Kariah</label>
-                    <input type="text" id="lap-kariah" oninput="window.generateLaporan()" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium" placeholder="Cth: Masjid Al-Hasanah" />
-                  </div>
-
-                  <div class="pt-4 border-t border-slate-100"><p class="text-[11px] font-bold text-blue-600 uppercase tracking-widest mb-3">Laporan & Siasatan (Baris baharu untuk titik baharu)</p></div>
-
-                  <div>
-                    <label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Ringkasan Kes (Setiap baris = 📌)</label>
-                    <textarea id="lap-ringkasan" oninput="window.generateLaporan()" rows="3" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium resize-none" placeholder="1. Tinggal menyewa&#10;2. Hilang punca pendapatan"></textarea>
-                  </div>
-                  <div>
-                    <label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Hasil Siasatan (Setiap baris = 🔖)</label>
-                    <textarea id="lap-hasil" oninput="window.generateLaporan()" rows="3" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium resize-none" placeholder="1. Pasangan telah bercerai&#10;2. Menanggung 3 anak"></textarea>
-                  </div>
-                  <div>
-                    <label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Rekod Bantuan Yang Diterima 2026 (Setiap baris = 🔖)</label>
-                    <textarea id="lap-rekod" oninput="window.generateLaporan()" rows="2" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium resize-none" placeholder="1. Bantuan Kewangan Bulanan"></textarea>
-                  </div>
-                  <div>
-                    <label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Cadangan Bantuan</label>
-                    <textarea id="lap-cadangan" oninput="window.generateLaporan()" rows="2" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium resize-none" placeholder="Meluluskan bantuan sewa rumah"></textarea>
-                  </div>
-                  <div>
-                    <label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Tindakan LZS (Setiap baris = 📋)</label>
-                    <textarea id="lap-tindakan" oninput="window.generateLaporan()" rows="2" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium resize-none" placeholder="1. Borang permohonan diserahkan"></textarea>
-                  </div>
+                  <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Alamat</label><textarea id="lap-alamat" oninput="window.generateLaporan()" rows="2" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium resize-none" placeholder="Alamat penuh..."></textarea></div>
+                  <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Kariah</label><input type="text" id="lap-kariah" oninput="window.generateLaporan()" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium" placeholder="Cth: Masjid Al-Hasanah" /></div>
+                  <div class="pt-4 border-t border-slate-100"><p class="text-[11px] font-bold text-blue-600 uppercase tracking-widest mb-3">Laporan & Siasatan</p></div>
+                  <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Ringkasan Kes (Setiap baris = 📌)</label><textarea id="lap-ringkasan" oninput="window.generateLaporan()" rows="3" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium resize-none" placeholder="1. Tinggal menyewa&#10;2. Hilang punca pendapatan"></textarea></div>
+                  <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Hasil Siasatan (Setiap baris = 🔖)</label><textarea id="lap-hasil" oninput="window.generateLaporan()" rows="3" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium resize-none" placeholder="1. Pasangan telah bercerai&#10;2. Menanggung 3 anak"></textarea></div>
+                  <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Rekod Bantuan Yang Diterima 2026 (Setiap baris = 🔖)</label><textarea id="lap-rekod" oninput="window.generateLaporan()" rows="2" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium resize-none" placeholder="1. Bantuan Kewangan Bulanan"></textarea></div>
+                  <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Cadangan Bantuan</label><textarea id="lap-cadangan" oninput="window.generateLaporan()" rows="2" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium resize-none" placeholder="Meluluskan bantuan sewa rumah"></textarea></div>
+                  <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Tindakan LZS (Setiap baris = 📋)</label><textarea id="lap-tindakan" oninput="window.generateLaporan()" rows="2" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium resize-none" placeholder="1. Borang permohonan diserahkan"></textarea></div>
                 </form>
               </div>
             </div>
-
-            <!-- Output Editor -->
             <div class="flex-1 flex flex-col space-y-4 w-full">
               <div class="bg-white rounded-[1.5rem] md:rounded-3xl shadow-sm border border-slate-200 flex flex-col h-[600px] lg:h-[calc(100vh-10rem)] w-full overflow-hidden">
                 <div class="p-3 border-b border-slate-100 flex justify-between items-center bg-slate-50">
@@ -494,9 +450,10 @@
   </div>
 
   <!-- ========================================== -->
-  <!-- MODALS KESELURUHAN                         -->
+  <!-- MODALS KESELURUHAN -->
   <!-- ========================================== -->
 
+  <!-- Custom Alert/Confirm Modal -->
   <div id="custom-dialog" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-[100] p-4">
     <div class="bg-white rounded-2xl w-full max-w-sm shadow-2xl p-6 text-center border border-slate-100">
       <h3 class="text-lg font-extrabold text-slate-900 mb-2 flex items-center justify-center gap-2"><i data-lucide="info" class="w-5 h-5 text-blue-600"></i> Perhatian</h3>
@@ -508,6 +465,56 @@
     </div>
   </div>
 
+  <!-- Modal Tambah Rekod (Asnaf Asal) -->
+  <div id="modal-add-record" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+    <div class="bg-white rounded-3xl w-full max-w-md shadow-2xl overflow-hidden">
+      <div class="flex justify-between items-center p-6 border-b border-slate-100">
+        <h2 class="text-lg font-extrabold text-slate-900">Tambah Data Baru</h2>
+        <button onclick="window.closeModal('modal-add-record')" class="p-2 bg-slate-100 text-slate-500 rounded-full hover:bg-slate-200"><i data-lucide="x" class="w-4 h-4"></i></button>
+      </div>
+      <form id="form-add-record" onsubmit="return false;" class="p-6 space-y-5">
+        <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2 block">Nama Penuh</label><input type="text" id="add-rec-name" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium" required placeholder="Ali bin Abu" /></div>
+        <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2 block">No. MyKAD</label><input type="text" id="add-rec-mykad" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium" required placeholder="801231-10-5555" /><p class="text-[10px] text-slate-400 mt-1">Digunakan sebagai ID Rujukan (Primary Key) Google Sheet.</p></div>
+        <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2 block">Kategori Review</label><select id="add-rec-cat" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-bold" required><option value="Daftar Baru">Daftar Baru</option><option value="Tolak Asnaf">Tolak Asnaf</option></select></div>
+        <button type="submit" id="add-rec-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-xl shadow-md mt-4">Simpan Rekod</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Preview / Edit Rekod (Asnaf Asal) -->
+  <div id="modal-preview-record" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+    <div class="bg-white rounded-3xl w-full max-w-sm shadow-2xl overflow-hidden relative">
+      <div id="prev-header" class="h-24 bg-emerald-500 relative transition-colors">
+         <button onclick="window.closeModal('modal-preview-record')" class="absolute top-4 right-4 p-2 bg-black/20 text-white rounded-full hover:bg-black/30 backdrop-blur-sm"><i data-lucide="x" class="w-4 h-4"></i></button>
+      </div>
+      <div class="px-6 pb-6 pt-0 relative">
+        <div class="w-16 h-16 bg-white rounded-2xl shadow-lg border-4 border-white flex items-center justify-center -mt-8 mb-4 relative z-10"><i data-lucide="user" class="w-7 h-7 text-slate-400"></i></div>
+        <div id="prev-view-mode">
+          <h2 class="text-xl font-extrabold text-slate-900 mb-1" id="prev-name">Nama</h2>
+          <p class="text-sm font-medium text-slate-500 mb-6"><span id="prev-mykad">Mykad</span> <span class="text-[10px] bg-slate-100 px-2 py-0.5 rounded text-slate-400 ml-2">ID</span></p>
+          <div class="space-y-4 bg-slate-50 p-4 rounded-xl border border-slate-100">
+            <div><p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Status Kategori</p><span id="prev-cat-badge" class="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-700">Daftar Baru</span></div>
+            <div><p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Tarikh Direkod</p><p class="text-sm font-semibold text-slate-800" id="prev-date">Tarikh</p></div>
+          </div>
+          <div class="mt-6 flex justify-between items-center border-t border-slate-100 pt-4">
+             <button onclick="window.toggleEditMode(true)" class="flex items-center text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg text-xs font-bold transition-colors"><i data-lucide="edit-2" class="w-3.5 h-3.5 mr-1.5"></i> Edit Data</button>
+             <button onclick="window.deleteRecord()" class="flex items-center text-red-600 hover:text-red-800 hover:bg-red-50 px-3 py-2 rounded-lg text-xs font-bold transition-colors"><i data-lucide="trash-2" class="w-3.5 h-3.5 mr-1.5"></i> Padam</button>
+          </div>
+        </div>
+        <form id="prev-edit-mode" onsubmit="return false;" class="hidden-force space-y-4 pt-2">
+          <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Nama Penuh</label><input type="text" id="edit-rec-name" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-lg text-sm outline-none font-medium" required /></div>
+          <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">No. MyKAD (Tetap)</label><input type="text" id="edit-rec-mykad" disabled class="w-full px-3 py-2 bg-slate-100 border border-slate-200 rounded-lg text-sm outline-none text-slate-500 font-medium cursor-not-allowed" /></div>
+          <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Kategori Review</label><select id="edit-rec-cat" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-lg text-sm outline-none font-bold" required><option value="Daftar Baru">Daftar Baru</option><option value="Tolak Asnaf">Tolak Asnaf</option></select></div>
+          <div class="flex gap-2 mt-6">
+            <button type="button" onclick="window.toggleEditMode(false)" class="flex-1 bg-slate-100 text-slate-600 font-bold py-2 rounded-lg text-sm hover:bg-slate-200">Batal</button>
+            <button type="submit" id="edit-rec-btn" class="flex-1 bg-blue-600 text-white font-bold py-2 rounded-lg shadow-md text-sm hover:bg-blue-700">Simpan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Tambah Task Siasatan -->
   <div id="modal-add-task" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
     <div class="bg-white rounded-3xl w-full max-w-2xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
       <div class="flex justify-between items-center p-6 border-b border-slate-100 shrink-0">
@@ -550,6 +557,7 @@
     </div>
   </div>
 
+  <!-- Modal Preview Task Siasatan -->
   <div id="modal-preview-task" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
     <div class="bg-white rounded-3xl w-full max-w-lg shadow-2xl overflow-hidden relative max-h-[95vh] flex flex-col">
       <div id="prev-task-header" class="h-16 relative transition-colors bg-blue-500 shrink-0">
@@ -612,6 +620,7 @@
     </div>
   </div>
 
+  <!-- Modal Tambah Task Lapangan -->
   <div id="modal-add-lapangan" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
     <div class="bg-white rounded-3xl w-full max-w-md shadow-2xl overflow-hidden relative flex flex-col">
       <div class="flex justify-between items-center p-6 border-b border-slate-100 shrink-0">
@@ -626,6 +635,7 @@
     </div>
   </div>
 
+  <!-- Modal Tambah Sub Task -->
   <div id="modal-add-subtask" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-[60] p-4">
     <div class="bg-white rounded-3xl w-full max-w-2xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
       <div class="flex justify-between items-center p-6 border-b border-slate-100 shrink-0">
@@ -673,6 +683,7 @@
     </div>
   </div>
 
+  <!-- Modal Preview / Edit Sub Task -->
   <div id="modal-preview-subtask" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-[60] p-4">
     <div class="bg-white rounded-3xl w-full max-w-lg shadow-2xl overflow-hidden relative max-h-[95vh] flex flex-col">
       <div id="prev-subtask-header" class="h-16 relative transition-colors bg-blue-500 shrink-0">
@@ -724,6 +735,7 @@
     </div>
   </div>
 
+  <!-- Modal Tambah Program Baru -->
   <div id="modal-add-program" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
     <div class="bg-white rounded-3xl w-full max-w-md shadow-2xl overflow-hidden relative flex flex-col">
       <div class="flex justify-between items-center p-6 border-b border-slate-100 shrink-0">
@@ -741,6 +753,7 @@
   </div>
 
 
+  <!-- Modal Tambah LinkHub -->
   <div id="modal-add-link" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
     <div class="bg-white rounded-3xl w-full max-w-md shadow-2xl overflow-hidden relative flex flex-col">
       <div class="flex justify-between items-center p-6 border-b border-slate-100 shrink-0">
@@ -756,6 +769,7 @@
     </div>
   </div>
 
+  <!-- Modal Edit LinkHub -->
   <div id="modal-edit-link" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
     <div class="bg-white rounded-3xl w-full max-w-md shadow-2xl overflow-hidden relative flex flex-col">
       <div class="flex justify-between items-center p-6 border-b border-slate-100 shrink-0">
@@ -771,6 +785,7 @@
     </div>
   </div>
 
+  <!-- Modal Urus Kategori LinkHub -->
   <div id="modal-manage-link-cat" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-end md:items-center justify-center z-50 p-0 md:p-4">
     <div class="bg-white rounded-t-3xl md:rounded-3xl w-full max-w-md shadow-2xl overflow-hidden">
       <div class="flex justify-between items-center p-5 md:p-6 border-b border-slate-100">
@@ -791,6 +806,7 @@
     </div>
   </div>
 
+  <!-- Modal Urus Kategori Format Ayat -->
   <div id="modal-manage-cat" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-end md:items-center justify-center z-50 p-0 md:p-4">
     <div class="bg-white rounded-t-3xl md:rounded-3xl w-full max-w-md shadow-2xl overflow-hidden">
       <div class="flex justify-between items-center p-5 md:p-6 border-b border-slate-100">
@@ -874,35 +890,26 @@
     window.showAlert = (msg) => { el('dialog-message').textContent = msg; el('dialog-btn-cancel').classList.add('hidden'); el('dialog-btn-confirm').textContent = 'OK'; el('dialog-btn-confirm').onclick = () => hide('custom-dialog'); show('custom-dialog'); window.updateIcons(); };
     window.showConfirm = (msg, onConfirm) => { el('dialog-message').textContent = msg; el('dialog-btn-cancel').classList.remove('hidden'); el('dialog-btn-cancel').onclick = () => hide('custom-dialog'); el('dialog-btn-confirm').textContent = 'Pasti'; el('dialog-btn-confirm').onclick = () => { hide('custom-dialog'); onConfirm(); }; show('custom-dialog'); window.updateIcons(); };
 
+    const initAuth = async () => { try { if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) await signInWithCustomToken(auth, __initial_auth_token); else await signInAnonymously(auth); } catch (e) {} };
+    initAuth();
+
     let isListenersActive = false;
 
-    const initSystem = async () => {
-        try { 
-            if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                await signInWithCustomToken(auth, __initial_auth_token); 
-            } else {
-                await signInAnonymously(auth); 
-            }
-        } catch (e) {}
-
-        onAuthStateChanged(auth, async (user) => {
-          if (user) {
-            currentUser = user;
-            if(!isListenersActive) {
-                try {
-                    const profileSnap = await getDoc(doc(db, 'artifacts', appId, 'public', 'data', 'settings', 'profile'));
-                    if (profileSnap.exists()) userProfile = { ...userProfile, ...profileSnap.data() };
-                    else await originalSetDoc(doc(db, 'artifacts', appId, 'public', 'data', 'settings', 'profile'), userProfile);
-                } catch(e) {}
-                updateUserUI(); 
-                setupRealtimeListeners();
-                isListenersActive = true;
-            }
-          }
-        });
-    };
-    
-    initSystem();
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        currentUser = user;
+        if(!isListenersActive) {
+            try {
+                const profileSnap = await getDoc(doc(db, 'artifacts', appId, 'public', 'data', 'settings', 'profile'));
+                if (profileSnap.exists()) userProfile = { ...userProfile, ...profileSnap.data() };
+                else await originalSetDoc(doc(db, 'artifacts', appId, 'public', 'data', 'settings', 'profile'), userProfile);
+            } catch(e) {}
+            updateUserUI(); 
+            setupRealtimeListeners();
+            isListenersActive = true;
+        }
+      }
+    });
 
     const updateUserUI = () => {
       if(el('header-user-name')) el('header-user-name').textContent = userProfile.name;
@@ -946,13 +953,14 @@
       const titles = { dashboard: 'Papan Pemuka', task: 'Pengurusan Task Siasatan', lapangan: 'Pengurusan Task Lapangan', 'lapangan-detail': 'Sub Task Lapangan', program: 'Pengurusan Tarikh Program', linkhub: 'Pengurusan LinkHub', format: 'Pengurusan & Format Ayat', laporan: 'Penjanaan Laporan Aduan', settings: 'Tetapan Akaun' };
       if(el('header-title')) el('header-title').textContent = titles[viewName];
       if(!el('sidebar').classList.contains('-translate-x-full') && window.innerWidth < 768) window.toggleSidebar();
-      
+
       if(viewName === 'laporan') window.generateLaporan();
     };
 
     window.openModal = (id) => show(id);
     window.closeModal = (id) => {
       hide(id);
+      if(id === 'modal-add-record') { el('form-add-record').reset(); }
       if(id === 'modal-add-task') { el('form-add-task').reset(); hide('new-task-type-container'); currentTaskImages = []; window.renderImagePreviews('add'); }
       if(id === 'modal-add-program') { el('form-add-program').reset(); }
       if(id === 'modal-add-lapangan') { el('form-add-lapangan').reset(); }
@@ -963,21 +971,8 @@
 
     const setupRealtimeListeners = () => {
       if(!currentUser) return;
-      const sub = (col, cb, sortFn) => onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', col), snap => { 
-        const data = snap.docs.map(d => ({id: d.id, ...d.data()})); 
-        if(sortFn) data.sort(sortFn); 
-        cb(data); 
-      });
-
-      const initSub = (col, defaults, cb, sortFn) => onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', col), snap => { 
-        const data = snap.docs.map(d => ({id: d.id, ...d.data()})); 
-        if(data.length === 0) { 
-            defaults.forEach(item => originalSetDoc(doc(collection(db, 'artifacts', appId, 'public', 'data', col)), {...item, createdAt: Date.now()})); 
-        } else { 
-            if(sortFn) data.sort(sortFn); 
-            cb(data); 
-        } 
-      });
+      const sub = (col, cb, sortFn) => onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', col), snap => { const data = snap.docs.map(d => ({id: d.id, ...d.data()})); if(sortFn) data.sort(sortFn); cb(data); });
+      const initSub = (col, defaults, cb, sortFn) => onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', col), snap => { const data = snap.docs.map(d => ({id: d.id, ...d.data()})); if(data.length === 0) { defaults.forEach(item => originalSetDoc(doc(collection(db, 'artifacts', appId, 'public', 'data', col)), {...item, createdAt: Date.now()})); } else { if(sortFn) data.sort(sortFn); cb(data); } });
 
       sub('asnaf_records', d => { asnafRecords = d; window.renderAsnafTable(); }, (a,b) => b.createdAt - a.createdAt);
       sub('tasks', d => { taskRecords = d; window.renderTaskTable(); }, (a,b) => a.createdAt - b.createdAt);
@@ -1323,21 +1318,29 @@
 
     // LAPORAN ADUAN
     window.generateLaporan = () => {
-      const tAduan = el('lap-tarikh-aduan').value || '(Tarikh)'; const tSiasat = el('lap-tarikh-siasat').value || '(Tarikh)'; const sumber = el('lap-sumber').value || '(Sumber)';
-      const nama = el('lap-nama').value || '(Nama)'; const kp = el('lap-kp').value || '(No KP)'; const tel = el('lap-tel').value || '(No Tel)';
-      const alamat = el('lap-alamat').value || '(Alamat)'; const kariah = el('lap-kariah').value || '(Kariah)';
+      const tAduan = el('lap-tarikh-aduan') ? el('lap-tarikh-aduan').value || '(Tarikh)' : '(Tarikh)'; 
+      const tSiasat = el('lap-tarikh-siasat') ? el('lap-tarikh-siasat').value || '(Tarikh)' : '(Tarikh)'; 
+      const sumber = el('lap-sumber') ? el('lap-sumber').value || '(Sumber)' : '(Sumber)';
+      const nama = el('lap-nama') ? el('lap-nama').value || '(Nama)' : '(Nama)'; 
+      const kp = el('lap-kp') ? el('lap-kp').value || '(No KP)' : '(No KP)'; 
+      const tel = el('lap-tel') ? el('lap-tel').value || '(No Tel)' : '(No Tel)';
+      const alamat = el('lap-alamat') ? el('lap-alamat').value || '(Alamat)' : '(Alamat)'; 
+      const kariah = el('lap-kariah') ? el('lap-kariah').value || '(Kariah)' : '(Kariah)';
       
-      const formatPoint = (text, icon) => { if(!text.trim()) return `${icon} (Tiada maklumat)`; return text.split('\n').filter(l => l.trim() !== '').map(l => `${icon} ${l.trim()}`).join('\n'); };
+      const formatPoint = (text, icon) => { if(!text || !text.trim()) return `${icon} (Tiada maklumat)`; return text.split('\n').filter(l => l.trim() !== '').map(l => `${icon} ${l.trim()}`).join('\n'); };
 
-      const ringkasan = formatPoint(el('lap-ringkasan').value, '📌'); const hasil = formatPoint(el('lap-hasil').value, '🔖'); const rekod = formatPoint(el('lap-rekod').value, '🔖');
-      const cadangan = el('lap-cadangan').value.trim() || '(Tiada cadangan)'; const tindakan = formatPoint(el('lap-tindakan').value, '📋');
+      const ringkasan = formatPoint(el('lap-ringkasan') ? el('lap-ringkasan').value : '', '📌'); 
+      const hasil = formatPoint(el('lap-hasil') ? el('lap-hasil').value : '', '🔖'); 
+      const rekod = formatPoint(el('lap-rekod') ? el('lap-rekod').value : '', '🔖');
+      const cadangan = (el('lap-cadangan') && el('lap-cadangan').value.trim()) ? el('lap-cadangan').value.trim() : '(Tiada cadangan)'; 
+      const tindakan = formatPoint(el('lap-tindakan') ? el('lap-tindakan').value : '', '📋');
 
       const reportText = `LAPORAN SIASATAN DAERAH HULU LANGAT\n\nTarikh Terima Aduan:  ${tAduan}\nTarikh Siasatan:  ${tSiasat}\nSumber:  ${sumber}\n\nMAKLUMAT KES\nNama:  ${nama}\nNo KP:  ${kp}\nNo Tel:  ${tel}\nAlamat: ${alamat}\nKariah:  ${kariah}\n\nRINGKASAN KES\n${ringkasan}\n\nHASIL SIASATAN\n\n${hasil}\n\n\nREKOD BANTUAN YANG DITERIMA 2026\n\n${rekod}\n\nCADANGAN BANTUAN\n${cadangan}\n\nTINDAKAN LZS\n\n${tindakan}\n\n\nSekian laporan\n\nMuhamad Nabeel Iqmal Bin Muhamad Zin\nEOAD Zon Beranang\nLZS Daerah Hulu Langat\n\nCC :\nKOAD Hulu Langat\nRIDZUAN AHMAD SHUHAIMI`;
-      el('laporan-output').value = reportText;
+      if(el('laporan-output')) el('laporan-output').value = reportText;
     };
 
     window.copyLaporan = () => {
-      const ta = el('laporan-output'); if(!ta.value) return; ta.select(); document.execCommand("copy");
+      const ta = el('laporan-output'); if(!ta || !ta.value) return; ta.select(); document.execCommand("copy");
       const btn = el('btn-copy-laporan'); const originalHTML = btn.innerHTML;
       btn.innerHTML = `<i data-lucide="check-circle-2" class="w-3.5 h-3.5 mr-1.5 text-emerald-300"></i> Disalin!`; btn.classList.replace('bg-slate-900', 'bg-emerald-700'); window.updateIcons();
       setTimeout(() => { btn.innerHTML = originalHTML; btn.classList.replace('bg-emerald-700', 'bg-slate-900'); window.updateIcons(); }, 2000);
