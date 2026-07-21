@@ -51,7 +51,9 @@
 </head>
 <body class="bg-slate-50 text-slate-800 selection:bg-blue-200 overflow-hidden w-full h-screen">
 
+  <!-- ========================================== -->
   <!-- HALAMAN LOG MASUK -->
+  <!-- ========================================== -->
   <div id="login-view" class="min-h-screen relative flex flex-col items-center justify-center bg-slate-950 overflow-hidden px-4 z-50">
     <div class="absolute inset-0 pointer-events-none overflow-hidden flex items-center justify-center opacity-20">
       <div class="absolute w-[800px] h-[800px] bg-blue-600 rounded-full blur-[150px] top-[-20%] left-[-10%]"></div>
@@ -64,7 +66,7 @@
       </div>
       <div class="text-center mb-8">
         <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight mb-2">Log Masuk</h1>
-        <p class="text-sm text-slate-500 font-medium">"Buat lebih baik dari semalam, walaupun sekadar perubahan kecil"</p>
+        <p class="text-sm text-slate-500 font-medium">Akses ruang kerja selamat anda.</p>
       </div>
       <div id="login-error" class="hidden mb-6 p-3 rounded-xl bg-red-50 text-red-600 text-sm text-center border border-red-100 flex items-center justify-center gap-2">
         <i data-lucide="alert-circle" class="w-4 h-4"></i> <span id="login-error-text">Ralat</span>
@@ -87,7 +89,9 @@
     </div>
   </div>
 
+  <!-- ========================================== -->
   <!-- SUSUN ATUR SISTEM UTAMA -->
+  <!-- ========================================== -->
   <div id="system-layout" class="hidden-force flex h-screen bg-slate-100 relative w-full">
     <div id="mobile-overlay" class="hidden fixed inset-0 bg-slate-900/50 z-20 md:hidden backdrop-blur-sm" onclick="window.toggleSidebar()"></div>
 
@@ -98,41 +102,25 @@
           <button class="md:hidden text-slate-500 hover:text-slate-900 absolute right-4" onclick="window.toggleSidebar()"><i data-lucide="x" class="w-5 h-5"></i></button>
         </div>
         
-        <div class="p-4 space-y-1 mt-6 overflow-y-auto">
+        <div class="p-4 space-y-1 mt-6 overflow-y-auto custom-scrollbar">
           <p class="px-4 text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-4">Ruang Kerja</p>
-          <button onclick="window.switchView('dashboard')" id="nav-dashboard" class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 bg-blue-600 text-white shadow-md shadow-blue-600/20">
-            <i data-lucide="layout-dashboard" class="w-4 h-4 mr-3 text-inherit"></i> Papan Pemuka
-          </button>
-          <button onclick="window.switchView('task')" id="nav-task" class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-slate-500 hover:bg-slate-50 hover:text-slate-900">
-            <i data-lucide="clipboard-list" class="w-4 h-4 mr-3 text-inherit"></i> Task Siasatan
-          </button>
-          <button onclick="window.switchView('lapangan')" id="nav-lapangan" class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-slate-500 hover:bg-slate-50 hover:text-slate-900">
-            <i data-lucide="map-pin" class="w-4 h-4 mr-3 text-inherit"></i> Task Lapangan
-          </button>
-          <button onclick="window.switchView('program')" id="nav-program" class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-slate-500 hover:bg-slate-50 hover:text-slate-900">
-            <i data-lucide="calendar" class="w-4 h-4 mr-3 text-inherit"></i> Tarikh Program
-          </button>
-          <button onclick="window.switchView('linkhub')" id="nav-linkhub" class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-slate-500 hover:bg-slate-50 hover:text-slate-900">
-            <i data-lucide="link" class="w-4 h-4 mr-3 text-inherit"></i> LinkHub
-          </button>
           <button onclick="window.switchView('format')" id="nav-format" class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-slate-500 hover:bg-slate-50 hover:text-slate-900">
             <i data-lucide="type" class="w-4 h-4 mr-3 text-inherit"></i> Format Ayat
+          </button>
+          <button onclick="window.switchView('laporan')" id="nav-laporan" class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-slate-500 hover:bg-slate-50 hover:text-slate-900">
+            <i data-lucide="file-signature" class="w-4 h-4 mr-3 text-inherit"></i> Laporan Aduan
           </button>
           
           <div class="mt-8 mb-4 border-t border-slate-100 pt-6">
              <p class="px-4 text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-4">Sistem</p>
-             <button onclick="window.switchView('settings')" id="nav-settings" class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-slate-500 hover:bg-slate-50 hover:text-slate-900">
-              <i data-lucide="settings" class="w-4 h-4 mr-3 text-inherit"></i> Tetapan Akaun
-            </button>
+             <button onclick="window.switchView('settings')" id="nav-settings" class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-slate-500 hover:bg-slate-50 hover:text-slate-900"><i data-lucide="settings" class="w-4 h-4 mr-3 text-inherit"></i> Tetapan Akaun</button>
           </div>
         </div>
       </div>
       <div class="p-4 border-t border-slate-100 bg-white">
-        <button onclick="window.handleLogout()" class="w-full flex items-center px-4 py-3 text-sm font-medium text-slate-500 hover:text-red-600 hover:bg-red-50 rounded-xl transition-colors mb-4">
-          <i data-lucide="log-out" class="w-4 h-4 mr-3 text-inherit"></i> Log Keluar
-        </button>
+        <button onclick="window.handleLogout()" class="w-full flex items-center px-4 py-3 text-sm font-medium text-slate-500 hover:text-red-600 hover:bg-red-50 rounded-xl transition-colors mb-4"><i data-lucide="log-out" class="w-4 h-4 mr-3 text-inherit"></i> Log Keluar</button>
         <div class="text-center">
-          <p class="text-[10px] text-slate-400 font-semibold tracking-widest uppercase mb-1">Versi 1.8.1</p>
+          <p class="text-[10px] text-slate-400 font-semibold tracking-widest uppercase mb-1">Versi 1.1.0</p>
           <p class="text-[10px] text-slate-400/80 font-medium">2026 @ Aidee Creatives</p>
         </div>
       </div>
@@ -158,7 +146,7 @@
       <div class="flex-1 overflow-y-auto p-3 sm:p-4 md:p-6 lg:p-8 w-full custom-scrollbar">
         <div class="w-full min-h-full relative flex flex-col">
           
-          <!-- VIEW: DASHBOARD -->
+          <!-- VIEW: DASHBOARD (ASNAF) -->
           <div id="view-dashboard" class="pb-6 transition-opacity duration-300">
             <div class="flex flex-col xl:flex-row gap-6">
               <div class="flex-1 space-y-6">
@@ -197,14 +185,14 @@
                   <div class="overflow-x-auto">
                     <table class="w-full text-left border-collapse">
                       <thead>
-                        <tr class="border-b border-slate-200">
-                          <th class="pb-3 text-xs font-bold text-slate-500 uppercase tracking-wider pl-2">Nama Pemohon</th>
-                          <th class="pb-3 text-xs font-bold text-slate-500 uppercase tracking-wider">No. MyKAD</th>
-                          <th class="pb-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Kategori</th>
-                          <th class="pb-3 text-xs font-bold text-slate-500 uppercase tracking-wider text-right pr-2">Tindakan</th>
+                        <tr class="border-b border-slate-200 bg-slate-50">
+                          <th class="py-3 px-3 text-xs font-bold text-slate-500 uppercase tracking-wider rounded-l-lg">Nama Pemohon</th>
+                          <th class="py-3 px-3 text-xs font-bold text-slate-500 uppercase tracking-wider">No. MyKAD</th>
+                          <th class="py-3 px-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Kategori</th>
+                          <th class="py-3 px-3 text-xs font-bold text-slate-500 uppercase tracking-wider text-right rounded-r-lg">Tindakan</th>
                         </tr>
                       </thead>
-                      <tbody id="asnaf-table-body"></tbody>
+                      <tbody id="asnaf-table-body" class="divide-y divide-slate-100"></tbody>
                     </table>
                   </div>
                 </div>
@@ -378,6 +366,47 @@
             </div>
           </div>
 
+          <!-- VIEW: LAPORAN ADUAN -->
+          <div id="view-laporan" class="hidden-force flex-col lg:flex-row gap-6 md:gap-8 h-full pb-6 lg:pb-0 transition-opacity duration-300 w-full">
+            <div class="flex-1 flex flex-col space-y-4 md:space-y-6 w-full lg:w-1/2 overflow-y-auto custom-scrollbar pr-2">
+              <div class="bg-white rounded-[1.5rem] md:rounded-3xl shadow-sm border border-slate-200 p-5 md:p-6">
+                <h3 class="font-extrabold text-slate-900 text-lg mb-6 flex items-center"><i data-lucide="file-signature" class="w-5 h-5 mr-2 text-blue-600"></i> Borang Penjanaan Laporan</h3>
+                <form id="form-laporan" class="space-y-5">
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Tarikh Terima Aduan</label><input type="text" id="lap-tarikh-aduan" oninput="window.generateLaporan()" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium" placeholder="Cth: 12 Julai 2026" /></div>
+                    <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Tarikh Siasatan</label><input type="text" id="lap-tarikh-siasat" oninput="window.generateLaporan()" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium" placeholder="Cth: 15 Julai 2026" /></div>
+                  </div>
+                  <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Sumber</label><input type="text" id="lap-sumber" oninput="window.generateLaporan()" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium" placeholder="Cth: Skuad Jejak Asnaf" /></div>
+                  
+                  <div class="pt-4 border-t border-slate-100"><p class="text-[11px] font-bold text-blue-600 uppercase tracking-widest mb-3">Maklumat Kes</p></div>
+                  <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Nama Pemohon</label><input type="text" id="lap-nama" oninput="window.generateLaporan()" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium" placeholder="Nama penuh..." /></div>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">No KP</label><input type="text" id="lap-kp" oninput="window.generateLaporan()" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium" placeholder="000000-00-0000" /></div>
+                    <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">No Tel</label><input type="text" id="lap-tel" oninput="window.generateLaporan()" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium" placeholder="012-3456789" /></div>
+                  </div>
+                  <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Alamat</label><textarea id="lap-alamat" oninput="window.generateLaporan()" rows="2" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium resize-none" placeholder="Alamat penuh..."></textarea></div>
+                  <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Kariah</label><input type="text" id="lap-kariah" oninput="window.generateLaporan()" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium" placeholder="Cth: Masjid Al-Hasanah" /></div>
+
+                  <div class="pt-4 border-t border-slate-100"><p class="text-[11px] font-bold text-blue-600 uppercase tracking-widest mb-3">Laporan & Siasatan (Baris baharu untuk titik baharu)</p></div>
+                  <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Ringkasan Kes (Setiap baris = 📌)</label><textarea id="lap-ringkasan" oninput="window.generateLaporan()" rows="3" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium resize-none" placeholder="1. Tinggal menyewa&#10;2. Hilang punca pendapatan"></textarea></div>
+                  <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Hasil Siasatan (Setiap baris = 🔖)</label><textarea id="lap-hasil" oninput="window.generateLaporan()" rows="3" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium resize-none" placeholder="1. Pasangan telah bercerai&#10;2. Menanggung 3 anak"></textarea></div>
+                  <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Rekod Bantuan Yang Diterima 2026 (Setiap baris = 🔖)</label><textarea id="lap-rekod" oninput="window.generateLaporan()" rows="2" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium resize-none" placeholder="1. Bantuan Kewangan Bulanan"></textarea></div>
+                  <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Cadangan Bantuan</label><textarea id="lap-cadangan" oninput="window.generateLaporan()" rows="2" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium resize-none" placeholder="Meluluskan bantuan sewa rumah"></textarea></div>
+                  <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Tindakan LZS (Setiap baris = 📋)</label><textarea id="lap-tindakan" oninput="window.generateLaporan()" rows="2" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium resize-none" placeholder="1. Borang permohonan diserahkan"></textarea></div>
+                </form>
+              </div>
+            </div>
+            <div class="w-full lg:w-1/2 flex flex-col space-y-4 shrink-0">
+              <div class="bg-white rounded-[1.5rem] md:rounded-3xl shadow-sm border border-slate-200 flex flex-col h-[600px] lg:h-[calc(100vh-10rem)] w-full overflow-hidden">
+                <div class="p-3 border-b border-slate-100 flex justify-between items-center bg-slate-50">
+                  <h3 class="font-bold text-slate-800 text-sm ml-2 flex items-center"><i data-lucide="eye" class="w-4 h-4 mr-2 text-slate-500"></i> Pratonton Laporan</h3>
+                  <button onclick="window.copyLaporan()" id="btn-copy-laporan" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold transition-colors flex items-center shadow-md"><i data-lucide="copy" class="w-3.5 h-3.5 mr-1.5" id="icon-copy-laporan"></i> Salin Laporan</button>
+                </div>
+                <textarea id="laporan-output" readonly class="w-full flex-1 p-5 lg:p-6 bg-transparent resize-none outline-none text-slate-800 text-sm font-medium leading-relaxed custom-scrollbar whitespace-pre-wrap"></textarea>
+              </div>
+            </div>
+          </div>
+
           <!-- VIEW: SETTINGS -->
           <div id="view-settings" class="hidden-force w-full max-w-4xl pb-6 transition-opacity duration-300">
             <div class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
@@ -420,15 +449,55 @@
     </main>
   </div>
 
+  <!-- ========================================== -->
   <!-- MODALS KESELURUHAN -->
+  <!-- ========================================== -->
 
-  <div id="custom-dialog" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-[100] p-4">
-    <div class="bg-white rounded-2xl w-full max-w-sm shadow-2xl p-6 text-center border border-slate-100">
-      <h3 class="text-lg font-extrabold text-slate-900 mb-2 flex items-center justify-center gap-2"><i data-lucide="info" class="w-5 h-5 text-blue-600"></i> Perhatian</h3>
-      <p id="dialog-message" class="text-sm text-slate-600 mb-6 font-medium leading-relaxed"></p>
-      <div class="flex gap-3 justify-center">
-        <button id="dialog-btn-cancel" class="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-sm hidden transition-colors">Batal</button>
-        <button id="dialog-btn-confirm" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-sm transition-colors shadow-md shadow-blue-600/20">OK</button>
+  <!-- Modal Tambah Rekod (Asnaf Asal) -->
+  <div id="modal-add-record" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+    <div class="bg-white rounded-3xl w-full max-w-md shadow-2xl overflow-hidden">
+      <div class="flex justify-between items-center p-6 border-b border-slate-100">
+        <h2 class="text-lg font-extrabold text-slate-900">Tambah Data Baru</h2>
+        <button onclick="window.closeModal('modal-add-record')" class="p-2 bg-slate-100 text-slate-500 rounded-full hover:bg-slate-200"><i data-lucide="x" class="w-4 h-4"></i></button>
+      </div>
+      <form id="form-add-record" onsubmit="return false;" class="p-6 space-y-5">
+        <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2 block">Nama Penuh</label><input type="text" id="add-rec-name" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium" required placeholder="Ali bin Abu" /></div>
+        <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2 block">No. MyKAD</label><input type="text" id="add-rec-mykad" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium" required placeholder="801231-10-5555" /><p class="text-[10px] text-slate-400 mt-1">Digunakan sebagai ID Rujukan (Primary Key) Google Sheet.</p></div>
+        <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2 block">Kategori Review</label><select id="add-rec-cat" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-bold" required><option value="Daftar Baru">Daftar Baru</option><option value="Tolak Asnaf">Tolak Asnaf</option></select></div>
+        <button type="submit" id="add-rec-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-xl shadow-md mt-4">Simpan Rekod</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Preview / Edit Rekod (Asnaf Asal) -->
+  <div id="modal-preview-record" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+    <div class="bg-white rounded-3xl w-full max-w-sm shadow-2xl overflow-hidden relative">
+      <div id="prev-header" class="h-24 bg-emerald-500 relative transition-colors">
+         <button onclick="window.closeModal('modal-preview-record')" class="absolute top-4 right-4 p-2 bg-black/20 text-white rounded-full hover:bg-black/30 backdrop-blur-sm"><i data-lucide="x" class="w-4 h-4"></i></button>
+      </div>
+      <div class="px-6 pb-6 pt-0 relative">
+        <div class="w-16 h-16 bg-white rounded-2xl shadow-lg border-4 border-white flex items-center justify-center -mt-8 mb-4 relative z-10"><i data-lucide="user" class="w-7 h-7 text-slate-400"></i></div>
+        <div id="prev-view-mode">
+          <h2 class="text-xl font-extrabold text-slate-900 mb-1" id="prev-name">Nama</h2>
+          <p class="text-sm font-medium text-slate-500 mb-6"><span id="prev-mykad">Mykad</span> <span class="text-[10px] bg-slate-100 px-2 py-0.5 rounded text-slate-400 ml-2">ID</span></p>
+          <div class="space-y-4 bg-slate-50 p-4 rounded-xl border border-slate-100">
+            <div><p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Status Kategori</p><span id="prev-cat-badge" class="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-700">Daftar Baru</span></div>
+            <div><p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Tarikh Direkod</p><p class="text-sm font-semibold text-slate-800" id="prev-date">Tarikh</p></div>
+          </div>
+          <div class="mt-6 flex justify-between items-center border-t border-slate-100 pt-4">
+             <button onclick="window.toggleEditMode(true)" class="flex items-center text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg text-xs font-bold transition-colors"><i data-lucide="edit-2" class="w-3.5 h-3.5 mr-1.5"></i> Edit Data</button>
+             <button onclick="window.deleteRecord()" class="flex items-center text-red-600 hover:text-red-800 hover:bg-red-50 px-3 py-2 rounded-lg text-xs font-bold transition-colors"><i data-lucide="trash-2" class="w-3.5 h-3.5 mr-1.5"></i> Padam</button>
+          </div>
+        </div>
+        <form id="prev-edit-mode" onsubmit="return false;" class="hidden-force space-y-4 pt-2">
+          <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Nama Penuh</label><input type="text" id="edit-rec-name" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-lg text-sm outline-none font-medium" required /></div>
+          <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">No. MyKAD (Tetap)</label><input type="text" id="edit-rec-mykad" disabled class="w-full px-3 py-2 bg-slate-100 border border-slate-200 rounded-lg text-sm outline-none text-slate-500 font-medium cursor-not-allowed" /></div>
+          <div><label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Kategori Review</label><select id="edit-rec-cat" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-lg text-sm outline-none font-bold" required><option value="Daftar Baru">Daftar Baru</option><option value="Tolak Asnaf">Tolak Asnaf</option></select></div>
+          <div class="flex gap-2 mt-6">
+            <button type="button" onclick="window.toggleEditMode(false)" class="flex-1 bg-slate-100 text-slate-600 font-bold py-2 rounded-lg text-sm hover:bg-slate-200">Batal</button>
+            <button type="submit" id="edit-rec-btn" class="flex-1 bg-blue-600 text-white font-bold py-2 rounded-lg shadow-md text-sm hover:bg-blue-700">Simpan</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -649,7 +718,6 @@
     </div>
   </div>
 
-  <!-- Modal Tambah Program Baru -->
   <div id="modal-add-program" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
     <div class="bg-white rounded-3xl w-full max-w-md shadow-2xl overflow-hidden relative flex flex-col">
       <div class="flex justify-between items-center p-6 border-b border-slate-100 shrink-0">
@@ -666,8 +734,6 @@
     </div>
   </div>
 
-
-  <!-- Modal Tambah LinkHub -->
   <div id="modal-add-link" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
     <div class="bg-white rounded-3xl w-full max-w-md shadow-2xl overflow-hidden relative flex flex-col">
       <div class="flex justify-between items-center p-6 border-b border-slate-100 shrink-0">
@@ -683,7 +749,6 @@
     </div>
   </div>
 
-  <!-- Modal Edit LinkHub -->
   <div id="modal-edit-link" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
     <div class="bg-white rounded-3xl w-full max-w-md shadow-2xl overflow-hidden relative flex flex-col">
       <div class="flex justify-between items-center p-6 border-b border-slate-100 shrink-0">
@@ -699,7 +764,6 @@
     </div>
   </div>
 
-  <!-- Modal Urus Kategori LinkHub -->
   <div id="modal-manage-link-cat" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-end md:items-center justify-center z-50 p-0 md:p-4">
     <div class="bg-white rounded-t-3xl md:rounded-3xl w-full max-w-md shadow-2xl overflow-hidden">
       <div class="flex justify-between items-center p-5 md:p-6 border-b border-slate-100">
@@ -720,7 +784,6 @@
     </div>
   </div>
 
-  <!-- Modal Urus Kategori Format Ayat -->
   <div id="modal-manage-cat" class="hidden-force fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-end md:items-center justify-center z-50 p-0 md:p-4">
     <div class="bg-white rounded-t-3xl md:rounded-3xl w-full max-w-md shadow-2xl overflow-hidden">
       <div class="flex justify-between items-center p-5 md:p-6 border-b border-slate-100">
@@ -804,7 +867,6 @@
     window.showAlert = (msg) => { el('dialog-message').textContent = msg; el('dialog-btn-cancel').classList.add('hidden'); el('dialog-btn-confirm').textContent = 'OK'; el('dialog-btn-confirm').onclick = () => hide('custom-dialog'); show('custom-dialog'); window.updateIcons(); };
     window.showConfirm = (msg, onConfirm) => { el('dialog-message').textContent = msg; el('dialog-btn-cancel').classList.remove('hidden'); el('dialog-btn-cancel').onclick = () => hide('custom-dialog'); el('dialog-btn-confirm').textContent = 'Pasti'; el('dialog-btn-confirm').onclick = () => { hide('custom-dialog'); onConfirm(); }; show('custom-dialog'); window.updateIcons(); };
 
-    // --- KEMASKINI: Aliran Pengesahan (Auth Flow) Yang Betul ---
     let isListenersActive = false;
 
     const initSystem = async () => {
@@ -814,7 +876,7 @@
             } else {
                 await signInAnonymously(auth); 
             }
-        } catch (e) { console.error("Ralat Auth:", e); }
+        } catch (e) {}
 
         onAuthStateChanged(auth, async (user) => {
           if (user) {
@@ -824,8 +886,7 @@
                     const profileSnap = await getDoc(doc(db, 'artifacts', appId, 'public', 'data', 'settings', 'profile'));
                     if (profileSnap.exists()) userProfile = { ...userProfile, ...profileSnap.data() };
                     else await originalSetDoc(doc(db, 'artifacts', appId, 'public', 'data', 'settings', 'profile'), userProfile);
-                } catch(e) { console.error("Profil error:", e); }
-                
+                } catch(e) {}
                 updateUserUI(); 
                 setupRealtimeListeners();
                 isListenersActive = true;
@@ -868,16 +929,18 @@
     };
 
     window.switchView = (viewName) => {
-      ['dashboard', 'task', 'lapangan', 'lapangan-detail', 'program', 'linkhub', 'format', 'settings'].forEach(v => {
+      ['dashboard', 'task', 'lapangan', 'lapangan-detail', 'program', 'linkhub', 'format', 'laporan', 'settings'].forEach(v => {
         hide(`view-${v}`); const navEl = el(`nav-${v}`);
         if (navEl) { navEl.className = "w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-slate-500 hover:bg-slate-50 hover:text-slate-900"; const icon = navEl.querySelector('svg') || navEl.querySelector('i'); if (icon) { icon.classList.remove('text-white'); icon.classList.add('text-slate-400'); } }
       });
       show(`view-${viewName}`);
       const activeNavId = viewName === 'lapangan-detail' ? 'nav-lapangan' : `nav-${viewName}`; const activeNav = el(activeNavId);
       if (activeNav) { activeNav.className = "w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 bg-blue-600 text-white shadow-md shadow-blue-600/20"; const activeIcon = activeNav.querySelector('svg') || activeNav.querySelector('i'); if (activeIcon) { activeIcon.classList.remove('text-slate-400'); activeIcon.classList.add('text-white'); } }
-      const titles = { dashboard: 'Papan Pemuka', task: 'Pengurusan Task Siasatan', lapangan: 'Pengurusan Task Lapangan', 'lapangan-detail': 'Sub Task Lapangan', program: 'Pengurusan Tarikh Program', linkhub: 'Pengurusan LinkHub', format: 'Pengurusan & Format Ayat', settings: 'Tetapan Akaun' };
+      const titles = { dashboard: 'Papan Pemuka', task: 'Pengurusan Task Siasatan', lapangan: 'Pengurusan Task Lapangan', 'lapangan-detail': 'Sub Task Lapangan', program: 'Pengurusan Tarikh Program', linkhub: 'Pengurusan LinkHub', format: 'Pengurusan & Format Ayat', laporan: 'Penjanaan Laporan Aduan', settings: 'Tetapan Akaun' };
       if(el('header-title')) el('header-title').textContent = titles[viewName];
       if(!el('sidebar').classList.contains('-translate-x-full') && window.innerWidth < 768) window.toggleSidebar();
+      
+      if(viewName === 'laporan') window.generateLaporan();
     };
 
     window.openModal = (id) => show(id);
@@ -897,17 +960,17 @@
         const data = snap.docs.map(d => ({id: d.id, ...d.data()})); 
         if(sortFn) data.sort(sortFn); 
         cb(data); 
-      }, e => console.error(`Snapshot error in ${col}:`, e));
+      });
 
       const initSub = (col, defaults, cb, sortFn) => onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', col), snap => { 
         const data = snap.docs.map(d => ({id: d.id, ...d.data()})); 
         if(data.length === 0) { 
-            defaults.forEach(item => originalSetDoc(doc(collection(db, 'artifacts', appId, 'public', 'data', col)), {...item, createdAt: Date.now()}).catch(e => console.error("Default init err:", e))); 
+            defaults.forEach(item => originalSetDoc(doc(collection(db, 'artifacts', appId, 'public', 'data', col)), {...item, createdAt: Date.now()})); 
         } else { 
             if(sortFn) data.sort(sortFn); 
             cb(data); 
         } 
-      }, e => console.error(`Snapshot error in ${col}:`, e));
+      });
 
       sub('asnaf_records', d => { asnafRecords = d; window.renderAsnafTable(); }, (a,b) => b.createdAt - a.createdAt);
       sub('tasks', d => { taskRecords = d; window.renderTaskTable(); }, (a,b) => a.createdAt - b.createdAt);
@@ -1250,6 +1313,90 @@
     window.copySentence = (id) => { const txt = el(`sent-text-${id}`).textContent; const ta = document.createElement('textarea'); ta.value = txt; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); const btn = el(`copy-btn-${id}`); btn.innerHTML = `<i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-500"></i>`; window.updateIcons(); setTimeout(() => { btn.innerHTML = `<i data-lucide="copy" class="w-3.5 h-3.5"></i>`; window.updateIcons(); }, 2000); };
     window.deleteSentence = async (id) => { if(currentUser) await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'sentences', id)); }; window.deleteCategory = async (id) => { if(currentUser) await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'categories', id)); };
     window.renderColorPicker = () => { const cont = el('color-picker-container'); if(!cont) return; cont.innerHTML = ''; CATEGORY_COLORS.forEach(c => { cont.innerHTML += `<button onclick="window.selectColor('${c}')" class="w-5 h-5 md:w-6 md:h-6 rounded-full ${c} transition-transform ${selectedColor === c ? 'ring-2 ring-offset-2 ring-slate-400 scale-110' : ''}"></button>`; }); }; window.selectColor = (c) => { selectedColor = c; window.renderColorPicker(); }; window.addCategory = async () => { const name = el('new-cat-name').value.trim(); if(!name || !currentUser) return; await setDoc(doc(collection(db, 'artifacts', appId, 'public', 'data', 'categories')), { name: name, color: selectedColor, createdAt: Date.now() }); el('new-cat-name').value = ''; };
+
+    // MODUL LAPORAN ADUAN
+    window.generateLaporan = () => {
+      const tAduan = el('lap-tarikh-aduan').value || '(Tarikh)';
+      const tSiasat = el('lap-tarikh-siasat').value || '(Tarikh)';
+      const sumber = el('lap-sumber').value || '(Sumber)';
+      const nama = el('lap-nama').value || '(Nama)';
+      const kp = el('lap-kp').value || '(No KP)';
+      const tel = el('lap-tel').value || '(No Tel)';
+      const alamat = el('lap-alamat').value || '(Alamat)';
+      const kariah = el('lap-kariah').value || '(Kariah)';
+      
+      const formatPoint = (text, icon) => {
+        if(!text.trim()) return `${icon} (Tiada maklumat)`;
+        return text.split('\n').filter(l => l.trim() !== '').map(l => `${icon} ${l.trim()}`).join('\n');
+      };
+
+      const ringkasan = formatPoint(el('lap-ringkasan').value, '📌');
+      const hasil = formatPoint(el('lap-hasil').value, '🔖');
+      const rekod = formatPoint(el('lap-rekod').value, '🔖');
+      const cadangan = el('lap-cadangan').value.trim() || '(Tiada cadangan)';
+      const tindakan = formatPoint(el('lap-tindakan').value, '📋');
+
+      const reportText = `LAPORAN SIASATAN DAERAH HULU LANGAT
+
+Tarikh Terima Aduan:  ${tAduan}
+Tarikh Siasatan:  ${tSiasat}
+Sumber:  ${sumber}
+
+MAKLUMAT KES
+Nama:  ${nama}
+No KP:  ${kp}
+No Tel:  ${tel}
+Alamat: ${alamat}
+Kariah:  ${kariah}
+
+RINGKASAN KES
+${ringkasan}
+
+HASIL SIASATAN
+
+${hasil}
+
+
+REKOD BANTUAN YANG DITERIMA 2026
+
+${rekod}
+
+CADANGAN BANTUAN
+${cadangan}
+
+TINDAKAN LZS
+
+${tindakan}
+
+
+Sekian laporan
+
+Muhamad Nabeel Iqmal Bin Muhamad Zin
+EOAD Zon Beranang
+LZS Daerah Hulu Langat
+
+CC :
+KOAD Hulu Langat
+RIDZUAN AHMAD SHUHAIMI`;
+
+      el('laporan-output').value = reportText;
+    };
+
+    window.copyLaporan = () => {
+      const ta = el('laporan-output');
+      if(!ta.value) return;
+      ta.select(); document.execCommand("copy");
+      const btn = el('btn-copy-laporan');
+      const originalHTML = btn.innerHTML;
+      btn.innerHTML = `<i data-lucide="check-circle-2" class="w-3.5 h-3.5 mr-1.5 text-emerald-300"></i> Disalin!`;
+      btn.classList.replace('bg-slate-900', 'bg-emerald-700');
+      window.updateIcons();
+      setTimeout(() => {
+        btn.innerHTML = originalHTML;
+        btn.classList.replace('bg-emerald-700', 'bg-slate-900');
+        window.updateIcons();
+      }, 2000);
+    };
 
     // TETAPAN
     if(el('settings-form')) el('settings-form').addEventListener('submit', async (e) => {
