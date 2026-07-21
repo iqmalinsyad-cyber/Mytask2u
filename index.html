@@ -95,33 +95,32 @@
   <div id="system-layout" class="hidden-force flex h-screen bg-slate-100 relative w-full">
     <div id="mobile-overlay" class="hidden fixed inset-0 bg-slate-900/50 z-20 md:hidden backdrop-blur-sm" onclick="window.toggleSidebar()"></div>
 
-    <aside id="sidebar" class="fixed inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition-transform duration-300 ease-in-out w-64 bg-white border-r border-slate-200 flex flex-col justify-between z-30 shadow-2xl md:shadow-none">
-      <div>
-        <div class="h-20 flex items-center justify-center px-4 border-b border-slate-100 relative">
-          <img src="https://lh3.googleusercontent.com/d/1mnViIqClqdLFbSx5kvgw50zhgU0fs-0a" alt="Logo" class="h-10 w-auto object-contain" onerror="this.src='https://via.placeholder.com/150x50?text=Logo'" />
-          <button class="md:hidden text-slate-500 hover:text-slate-900 absolute right-4" onclick="window.toggleSidebar()"><i data-lucide="x" class="w-5 h-5"></i></button>
-        </div>
+    <aside id="sidebar" class="fixed inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition-transform duration-300 ease-in-out w-64 bg-white border-r border-slate-200 flex flex-col z-30 shadow-2xl md:shadow-none">
+      <div class="h-20 flex items-center justify-center px-4 border-b border-slate-100 relative shrink-0">
+        <img src="https://lh3.googleusercontent.com/d/1mnViIqClqdLFbSx5kvgw50zhgU0fs-0a" alt="Logo" class="h-10 w-auto object-contain" onerror="this.src='https://via.placeholder.com/150x50?text=Logo'" />
+        <button class="md:hidden text-slate-500 hover:text-slate-900 absolute right-4" onclick="window.toggleSidebar()"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+      
+      <div class="flex-1 overflow-y-auto p-4 space-y-1 custom-scrollbar">
+        <p class="px-4 text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-4">Ruang Kerja</p>
+        <button onclick="window.switchView('dashboard')" id="nav-dashboard" class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 bg-blue-600 text-white shadow-md shadow-blue-600/20"><i data-lucide="layout-dashboard" class="w-4 h-4 mr-3 text-inherit"></i> Papan Pemuka</button>
+        <button onclick="window.switchView('task')" id="nav-task" class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-slate-500 hover:bg-slate-50 hover:text-slate-900"><i data-lucide="clipboard-list" class="w-4 h-4 mr-3 text-inherit"></i> Task Siasatan</button>
+        <button onclick="window.switchView('lapangan')" id="nav-lapangan" class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-slate-500 hover:bg-slate-50 hover:text-slate-900"><i data-lucide="map-pin" class="w-4 h-4 mr-3 text-inherit"></i> Task Lapangan</button>
+        <button onclick="window.switchView('program')" id="nav-program" class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-slate-500 hover:bg-slate-50 hover:text-slate-900"><i data-lucide="calendar" class="w-4 h-4 mr-3 text-inherit"></i> Tarikh Program</button>
+        <button onclick="window.switchView('linkhub')" id="nav-linkhub" class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-slate-500 hover:bg-slate-50 hover:text-slate-900"><i data-lucide="link" class="w-4 h-4 mr-3 text-inherit"></i> LinkHub</button>
+        <button onclick="window.switchView('format')" id="nav-format" class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-slate-500 hover:bg-slate-50 hover:text-slate-900"><i data-lucide="type" class="w-4 h-4 mr-3 text-inherit"></i> Format Ayat</button>
+        <button onclick="window.switchView('laporan')" id="nav-laporan" class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-slate-500 hover:bg-slate-50 hover:text-slate-900"><i data-lucide="file-signature" class="w-4 h-4 mr-3 text-inherit"></i> Laporan Aduan</button>
         
-        <div class="p-4 space-y-1 mt-6 overflow-y-auto custom-scrollbar">
-          <p class="px-4 text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-4">Ruang Kerja</p>
-          <button onclick="window.switchView('dashboard')" id="nav-dashboard" class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 bg-blue-600 text-white shadow-md shadow-blue-600/20"><i data-lucide="layout-dashboard" class="w-4 h-4 mr-3 text-inherit"></i> Papan Pemuka</button>
-          <button onclick="window.switchView('task')" id="nav-task" class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-slate-500 hover:bg-slate-50 hover:text-slate-900"><i data-lucide="clipboard-list" class="w-4 h-4 mr-3 text-inherit"></i> Task Siasatan</button>
-          <button onclick="window.switchView('lapangan')" id="nav-lapangan" class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-slate-500 hover:bg-slate-50 hover:text-slate-900"><i data-lucide="map-pin" class="w-4 h-4 mr-3 text-inherit"></i> Task Lapangan</button>
-          <button onclick="window.switchView('program')" id="nav-program" class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-slate-500 hover:bg-slate-50 hover:text-slate-900"><i data-lucide="calendar" class="w-4 h-4 mr-3 text-inherit"></i> Tarikh Program</button>
-          <button onclick="window.switchView('linkhub')" id="nav-linkhub" class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-slate-500 hover:bg-slate-50 hover:text-slate-900"><i data-lucide="link" class="w-4 h-4 mr-3 text-inherit"></i> LinkHub</button>
-          <button onclick="window.switchView('format')" id="nav-format" class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-slate-500 hover:bg-slate-50 hover:text-slate-900"><i data-lucide="type" class="w-4 h-4 mr-3 text-inherit"></i> Format Ayat</button>
-          <button onclick="window.switchView('laporan')" id="nav-laporan" class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-slate-500 hover:bg-slate-50 hover:text-slate-900"><i data-lucide="file-signature" class="w-4 h-4 mr-3 text-inherit"></i> Laporan Aduan</button>
-          
-          <div class="mt-8 mb-4 border-t border-slate-100 pt-6">
-             <p class="px-4 text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-4">Sistem</p>
-             <button onclick="window.switchView('settings')" id="nav-settings" class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-slate-500 hover:bg-slate-50 hover:text-slate-900"><i data-lucide="settings" class="w-4 h-4 mr-3 text-inherit"></i> Tetapan Akaun</button>
-          </div>
+        <div class="mt-8 mb-4 border-t border-slate-100 pt-6">
+           <p class="px-4 text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-4">Sistem</p>
+           <button onclick="window.switchView('settings')" id="nav-settings" class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-slate-500 hover:bg-slate-50 hover:text-slate-900"><i data-lucide="settings" class="w-4 h-4 mr-3 text-inherit"></i> Tetapan Akaun</button>
         </div>
       </div>
-      <div class="p-4 border-t border-slate-100 bg-white">
+      
+      <div class="p-4 border-t border-slate-100 bg-white shrink-0">
         <button onclick="window.handleLogout()" class="w-full flex items-center px-4 py-3 text-sm font-medium text-slate-500 hover:text-red-600 hover:bg-red-50 rounded-xl transition-colors mb-4"><i data-lucide="log-out" class="w-4 h-4 mr-3 text-inherit"></i> Log Keluar</button>
         <div class="text-center">
-          <p class="text-[10px] text-slate-400 font-semibold tracking-widest uppercase mb-1">Versi 1.1.0</p>
+          <p class="text-[10px] text-slate-400 font-semibold tracking-widest uppercase mb-1">Versi 1.9.0</p>
           <p class="text-[10px] text-slate-400/80 font-medium">2026 @ Aidee Creatives</p>
         </div>
       </div>
@@ -369,9 +368,9 @@
 
           <!-- VIEW: LAPORAN ADUAN -->
           <div id="view-laporan" class="hidden-force flex-col lg:flex-row gap-6 md:gap-8 h-full pb-6 lg:pb-0 transition-opacity duration-300 w-full">
-            <div class="flex-1 flex flex-col space-y-4 md:space-y-6 w-full lg:w-1/2 overflow-y-auto custom-scrollbar pr-2">
+            <div class="w-full lg:w-[40%] xl:w-[35%] flex flex-col space-y-4 md:space-y-6 overflow-y-auto custom-scrollbar pr-2 shrink-0">
               <div class="bg-white rounded-[1.5rem] md:rounded-3xl shadow-sm border border-slate-200 p-5 md:p-6">
-                <h3 class="font-extrabold text-slate-900 text-lg mb-6 flex items-center"><i data-lucide="file-signature" class="w-5 h-5 mr-2 text-blue-600"></i> Borang Penjanaan Laporan</h3>
+                <h3 class="font-extrabold text-slate-900 text-lg mb-6 flex items-center"><i data-lucide="file-signature" class="w-5 h-5 mr-2 text-blue-600"></i> Borang Laporan</h3>
                 
                 <form id="form-laporan" class="space-y-5">
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -386,7 +385,7 @@
                   </div>
                   <div>
                     <label class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Sumber</label>
-                    <input type="text" id="lap-sumber" oninput="window.generateLaporan()" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium" placeholder="Cth: Skuad Jejak Asnaf" />
+                    <input type="text" id="lap-sumber" oninput="window.generateLaporan()" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 rounded-xl text-sm outline-none font-medium" placeholder="Cth: Aduan CMU" />
                   </div>
                   
                   <div class="pt-4 border-t border-slate-100"><p class="text-[11px] font-bold text-blue-600 uppercase tracking-widest mb-3">Maklumat Kes</p></div>
@@ -441,7 +440,7 @@
             </div>
 
             <!-- Output Editor -->
-            <div class="w-full lg:w-1/2 flex flex-col space-y-4 shrink-0">
+            <div class="flex-1 flex flex-col space-y-4 w-full">
               <div class="bg-white rounded-[1.5rem] md:rounded-3xl shadow-sm border border-slate-200 flex flex-col h-[600px] lg:h-[calc(100vh-10rem)] w-full overflow-hidden">
                 <div class="p-3 border-b border-slate-100 flex justify-between items-center bg-slate-50">
                   <h3 class="font-bold text-slate-800 text-sm ml-2 flex items-center"><i data-lucide="eye" class="w-4 h-4 mr-2 text-slate-500"></i> Pratonton Laporan</h3>
